@@ -24,6 +24,19 @@ body {
   }
 }
 
+textarea,
+code,
+pre,
+kbd {
+  font-family: var(--ff-mono);
+  font-feature-settings: normal;
+  font-size: smaller;
+}
+
+.cm-s-nord span.cm-comment {
+  color: var(--gray-4) !important;
+}
+
 ::-webkit-scrollbar {
   width: 0.75rem;
   height: 0.75rem;
