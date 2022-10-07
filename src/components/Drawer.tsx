@@ -7,8 +7,14 @@ function Drawer() {
   return (
     <Sidebar
       backgroundColor="#0d1117"
-      style={{ borderRight: "1px solid #161b22" }}
+      style={{ borderRight: "5px solid #161b22" }}
+      breakPoint="md"
     >
+      <div className="h-32 w-full flex justify-center items-center border-b-2 border-[#161b22]">
+        <a href="/">
+          <h1 className="font-sans text-2xl">Learn FrontEnd</h1>
+        </a>
+      </div>
       <Menu
         renderMenuItemStyles={({ active, disabled, level }) => ({
           ".menu-icon": {
@@ -23,9 +29,6 @@ function Drawer() {
           },
         })}
       >
-        <MenuItem href="/" active={pathname === "/"}>
-          Home
-        </MenuItem>
         <SubMenu
           label="JavaScript"
           defaultOpen={pathname.includes("javascript")}

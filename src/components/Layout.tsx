@@ -11,9 +11,9 @@ function Layout({ children }: Props) {
   return (
     <div className="w-full h-screen flex bg-white dark:bg-dark-gh">
       <Drawer />
-      <div className="w-full h-full overflow-auto">
+      <div className="w-full h-full flex flex-col">
         <Navbar />
-        {children}
+        <div className="w-full h-full overflow-auto">{children}</div>
       </div>
     </div>
   );
