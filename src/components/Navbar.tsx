@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <div className="w-full sticky top-0 navbar bg-base-300">
+    <div className="w-full sticky top-0 navbar bg-[#f6f8fa] dark:bg-base-300">
       <div className="flex-none md:hidden">
         <label
           className="btn btn-square btn-ghost"
@@ -47,7 +47,9 @@ function Navbar() {
           </svg>
         </label>
       </div>
-      <div className="flex-1 px-2 mx-2">Learn FrontEnd</div>
+      <div className="flex-1 px-2 mx-2 text-[#334115] dark:text-[#94A3B8]">
+        Learn FrontEnd
+      </div>
       <div>
         <label className="swap swap-rotate">
           <>

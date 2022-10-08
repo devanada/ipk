@@ -5,14 +5,22 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import axios from "axios";
+import { useState, useMemo } from "react";
 
 import App from "pages/App";
 import NotFound from "pages/NotFound";
+
+import { ThemeContext } from "utils/themeContext";
 
 axios.defaults.baseURL =
   "https://raw.githubusercontent.com/devanada/learning-markdown/main/";
 
 function Router() {
+  const [isLight, setIsLight] = useState<boolean>(
+    JSON.parse(localStorage.getItem("isLight") || "false")
+  );
+  const background = useMemo(() => ({ isLight, setIsLight }), [isLight]);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -55,7 +63,12 @@ function Router() {
       </>
     )
   );
-  return <RouterProvider router={router} />;
+
+  return (
+    <ThemeContext.Provider value={background}>
+      <RouterProvider router={router} />
+    </ThemeContext.Provider>
+  );
 }
 
 export default Router;

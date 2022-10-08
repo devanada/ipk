@@ -1,6 +1,6 @@
-import React, { Suspense, lazy, useState, useMemo } from "react";
+import React, { Suspense, lazy, useContext } from "react";
 
-import { ThemeContext } from "utils/themeContext";
+import { ThemeContext, contextType } from "utils/themeContext";
 const LightTheme = lazy(() => import("components/theme/Light"));
 const DarkTheme = lazy(() => import("components/theme/Dark"));
 
@@ -9,18 +9,15 @@ interface Props {
 }
 
 const ThemeSelector = ({ children }: Props) => {
-  const [isLight, setIsLight] = useState<boolean>(
-    JSON.parse(localStorage.getItem("isLight") || "false")
-  );
-  const background = useMemo(() => ({ isLight, setIsLight }), [isLight]);
+  const { isLight } = useContext<contextType>(ThemeContext);
 
   return (
-    <ThemeContext.Provider value={background}>
+    <>
       <Suspense fallback={<></>}>
         {isLight ? <LightTheme /> : <DarkTheme />}
       </Suspense>
       {children}
-    </ThemeContext.Provider>
+    </>
   );
 };
 

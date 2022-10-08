@@ -1,34 +1,48 @@
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { HomeIcon, WrenchIcon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+
+import { ThemeContext, contextType } from "utils/themeContext";
 
 function Drawer() {
+  const { isLight } = useContext<contextType>(ThemeContext);
   let { pathname } = useLocation();
 
   return (
     <Sidebar
-      backgroundColor="#0d1117"
-      style={{ borderRight: "5px solid #161b22" }}
+      backgroundColor={isLight ? "#fff" : "#0d1117"}
+      style={{
+        borderRight: isLight ? "5px solid #f6f8fa" : "5px solid #161b22",
+      }}
       breakPoint="md"
     >
-      <div className="h-32 w-full flex justify-center items-center border-b-2 border-[#161b22]">
-        <a href="/">
-          <h1 className="font-sans text-2xl">Learn FrontEnd</h1>
-        </a>
-      </div>
       <Menu
-        renderMenuItemStyles={({ active, disabled, level }) => ({
+        renderMenuItemStyles={({ active }) => ({
           ".menu-icon": {
-            backgroundColor: "#e1e1e1",
+            width: "1.5rem",
+            minWidth: "1.5rem",
+            height: "1.5rem",
           },
           ".menu-anchor": {
-            backgroundColor: active ? "#161b22" : "initial",
+            backgroundColor: active
+              ? isLight
+                ? "#f6f8fa"
+                : "#313741"
+              : "initial",
+            color: isLight ? "#334115" : "#94A3B8",
           },
           ".sub-menu-content": {
-            backgroundColor: "#0d1117",
+            backgroundColor: isLight ? "#fff" : "#0d1117",
             padding: "0px",
           },
         })}
       >
+        <MenuItem href="/" active={pathname === "/"} icon={<HomeIcon />}>
+          Home
+        </MenuItem>
+        <MenuItem icon={<WrenchIcon />}>Tools</MenuItem>
+        <div className="divider my-0"></div>
         <SubMenu
           label="JavaScript"
           defaultOpen={pathname.includes("javascript")}
