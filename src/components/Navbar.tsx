@@ -48,7 +48,7 @@ function Navbar() {
         </label>
       </div>
       <div className="flex-1 px-2 mx-2 text-[#334115] dark:text-[#94A3B8]">
-        Learn FrontEnd
+        IPK (Iringan Pengantar Koding)
       </div>
       <div>
         <label className="swap swap-rotate">
