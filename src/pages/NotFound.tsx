@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import { useTitle } from "utils/useTitle";
 
 function NotFound() {
-  useTitle(":( - Learn FrontEnd");
+  useTitle(":( | Iringan Pengantar Koding");
 
   return (
     <Layout>

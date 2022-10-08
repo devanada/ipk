@@ -28,35 +28,35 @@ function Router() {
           path="/"
           element={<App />}
           loader={() => {
-            return "Home | Learn FrontEnd";
+            return "Home | Iringan Pengantar Koding";
           }}
         />
         <Route
           path="/javascript/intro"
           element={<App />}
           loader={() => {
-            return "JavaScript ─ Intro | Learn FrontEnd";
+            return "JavaScript ─ Intro | Iringan Pengantar Koding";
           }}
         />
         <Route
           path="/react/intro"
           element={<App />}
           loader={() => {
-            return "React ─ Intro | Learn FrontEnd";
+            return "React ─ Intro | Iringan Pengantar Koding";
           }}
         />
         <Route
           path="/react/global-state/context"
           element={<App />}
           loader={() => {
-            return "React ─ Context | Learn FrontEnd";
+            return "React ─ Context | Iringan Pengantar Koding";
           }}
         />
         <Route
           path="/react/global-state/redux"
           element={<App />}
           loader={() => {
-            return "React ─ Redux | Learn FrontEnd";
+            return "React ─ Redux | Iringan Pengantar Koding";
           }}
         />
         <Route path="*" element={<NotFound />} />
