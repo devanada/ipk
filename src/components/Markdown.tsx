@@ -36,8 +36,11 @@ function Markdown({ children }: Props) {
       ]}
       components={{
         h2: HeadingRenderer,
-        ul: ({ node, ...props }) => (
-          <ul {...props} className="list-disc" ordered="false" />
+        ul: ({ ordered, node, ...props }) => (
+          <ul className="list-disc" {...props} />
+        ),
+        ol: ({ ordered, node, ...props }) => (
+          <ol className="list-decimal" {...props} />
         ),
       }}
     />
