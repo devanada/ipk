@@ -15,7 +15,7 @@ function Drawer() {
       style={{
         borderRight: isLight ? "5px solid #f6f8fa" : "5px solid #161b22",
       }}
-      breakPoint="md"
+      breakPoint="lg"
     >
       <Menu
         renderMenuItemStyles={({ active }) => ({
@@ -28,7 +28,7 @@ function Drawer() {
             backgroundColor: active
               ? isLight
                 ? "#f6f8fa"
-                : "#313741"
+                : "#161b22"
               : "initial",
             color: isLight ? "#334115" : "#94A3B8",
           },

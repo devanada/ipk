@@ -26,8 +26,8 @@ function Navbar() {
   };
 
   return (
-    <div className="w-full sticky top-0 navbar bg-[#f6f8fa] dark:bg-base-300">
-      <div className="flex-none md:hidden">
+    <div className="w-full sticky top-0 navbar bg-[#f6f8fa] dark:bg-[#161b22]">
+      <div className="flex-none lg:hidden">
         <label
           className="btn btn-square btn-ghost"
           onClick={() => toggleSidebar()}

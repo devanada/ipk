@@ -1,4 +1,3 @@
-import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -29,11 +28,7 @@ function Markdown({ children }: Props) {
       className="markdown-body"
       children={children}
       remarkPlugins={[remarkGfm, remarkToc]}
-      rehypePlugins={[
-        rehypeRaw,
-        rehypeSanitize,
-        [rehypeHighlight, { ignoreMissing: true }],
-      ]}
+      rehypePlugins={[rehypeRaw, rehypeSanitize]}
       components={{
         h2: HeadingRenderer,
         ul: ({ ordered, node, ...props }) => (
