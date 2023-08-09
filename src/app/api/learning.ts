@@ -1,7 +1,5 @@
 import rehypeHighlight from "rehype-highlight";
-import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
-import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -10,7 +8,7 @@ import path from "path";
 import fs from "fs";
 
 import { Heading, P, Code, UL, Pre } from "@/components/mdx";
-import { DIR_PATH } from "@/constants/variable";
+import { DIR_PATH_LEARNING } from "@/constants/variable";
 
 const components = {
   // h1: Heading.H1,
@@ -21,32 +19,40 @@ const components = {
   // pre: Pre,
 };
 
+const getFilePath = (readDir: string[], splitSlug: string[]) => {
+  for (const dir of readDir) {
+    if (dir.includes(".mdx")) {
+      if (dir.includes(splitSlug[1])) {
+        return path.resolve(`${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}`);
+      }
+    } else {
+      const temp = fs.readdirSync(
+        `${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}`
+      );
+      for (const val of temp) {
+        if (val.includes(splitSlug[1])) {
+          return path.resolve(
+            `${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}/${val}`
+          );
+        }
+      }
+    }
+  }
+};
+
 export const getContent = async (slug: string) => {
   const splitSlug = slug.split("-");
-  const readDir = fs.readdirSync(DIR_PATH + splitSlug[0]);
+  const readDir = fs.readdirSync(`${DIR_PATH_LEARNING}/${splitSlug[0]}`);
 
   if (!readDir) {
     redirect("/learning");
   }
 
-  let filePath = "";
-  readDir.forEach((dir) => {
-    if (dir.includes(".mdx")) {
-      filePath = path.resolve(`${DIR_PATH}/${splitSlug[0]}/${dir}`);
-    } else {
-      const temp = fs.readdirSync(DIR_PATH + splitSlug[0] + `/${dir}`);
-      temp.forEach((val) => {
-        if (val.includes(splitSlug[1])) {
-          filePath = path.resolve(`${DIR_PATH}/${splitSlug[0]}/${dir}/${val}`);
-        }
-      });
-      filePath = "";
-    }
-  });
+  let filePath = getFilePath(readDir, splitSlug);
 
   let postFile: Buffer;
   try {
-    postFile = fs.readFileSync(filePath);
+    postFile = fs.readFileSync(filePath!);
   } catch (error) {
     redirect("/learning");
   }
@@ -60,7 +66,28 @@ export const getContent = async (slug: string) => {
       parseFrontmatter: true,
       mdxOptions: {
         remarkPlugins: [remarkGfm, remarkToc],
-        rehypePlugins: [rehypeSanitize, rehypeRaw, rehypeHighlight, rehypeSlug],
+        rehypePlugins: [rehypeHighlight, rehypeSlug],
+      },
+    },
+    components: components,
+  });
+
+  return { content, frontmatter };
+};
+
+export const getFirstPage = async () => {
+  let postFile = fs.readFileSync("README.md");
+
+  const { content, frontmatter } = await compileMDX<{
+    title: string;
+    description: string;
+  }>({
+    source: postFile,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm, remarkToc],
+        rehypePlugins: [rehypeHighlight, rehypeSlug],
       },
     },
     components: components,

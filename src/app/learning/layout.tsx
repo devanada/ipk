@@ -8,9 +8,9 @@ export default function LearningLayout({
   return (
     <div className="w-full h-full flex flex-row">
       <SideBar />
-      <div className="h-full w-full overflow-auto p-9 prose max-w-none">
+      <article className="p-9 overflow-auto prose !prose-invert max-w-none h-full w-full">
         {children}
-      </div>
+      </article>
     </div>
   );
 }

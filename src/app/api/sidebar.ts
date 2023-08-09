@@ -2,7 +2,7 @@ import fs from "fs";
 
 import { SideBarType, SidebarItem, SidebarChild } from "@/types/sidebar";
 import { formatToUppercase, formatWord } from "@/utils/formatter";
-import { DIR_PATH } from "@/constants/variable";
+import { DIR_PATH_LEARNING } from "@/constants/variable";
 
 export const getSidebarList = async () => {
   const sidebarMenu = await getSidebarMenu();
@@ -11,7 +11,7 @@ export const getSidebarList = async () => {
 };
 
 export const getSidebarMenu = async () => {
-  const readDir = fs.readdirSync(DIR_PATH);
+  const readDir = fs.readdirSync(DIR_PATH_LEARNING);
   let menus: SideBarType[] = [];
 
   readDir.forEach((dir) => {
@@ -30,14 +30,14 @@ export const getSidebarMenu = async () => {
 export const getDrawerList = async (menus: SideBarType[]) => {
   const dupeMenus = menus.slice();
   dupeMenus.forEach((menu) => {
-    const items = fs.readdirSync(DIR_PATH + menu.id);
+    const items = fs.readdirSync(DIR_PATH_LEARNING + menu.id);
     items.forEach((item) => {
       const sidebarItem: SidebarItem = {
         title: formatToUppercase(formatWord(item)),
         slug: `/learning/${menu.id}-${formatWord(item)}`,
       };
       if (!item.includes(".mdx")) {
-        const childs = fs.readdirSync(DIR_PATH + menu.id + `/${item}`);
+        const childs = fs.readdirSync(DIR_PATH_LEARNING + menu.id + `/${item}`);
         const sidebarChild: SidebarChild[] = [];
         childs.forEach((child) => {
           const temp: SidebarChild = {

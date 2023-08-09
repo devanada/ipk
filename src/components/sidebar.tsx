@@ -14,7 +14,7 @@ export default async function SideBar() {
       <input className="drawer-toggle" id="my-drawer-2" type="checkbox" />
       <div className="drawer-side">
         <label className="drawer-overlay" htmlFor="my-drawer-2"></label>
-        <ul className="menu w-80 h-full bg-[#09090B] text-base-content border-r-4 border-[#2A323C]">
+        <ul className="menu w-80 h-full bg-dark">
           {sidebarList.map((sidebarMenu) => {
             if (sidebarMenu.children) {
               return (

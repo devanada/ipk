@@ -1,28 +1,38 @@
-import remarkGfm from "remark-gfm";
-import remarkToc from "remark-toc";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { serialize } from "next-mdx-remote/serialize";
 import { redirect } from "next/navigation";
 import path from "path";
 import fs from "fs";
 
-import { blogList } from "@/constants/blog";
+import { DIR_PATH_BLOG } from "@/constants/variable";
 import { BlogPreview } from "@/types/blog";
 
 const components = {
   // add custom component here
 };
 
-export const getListBlog = async () => {
-  const postFilePaths = fs
-    .readdirSync("src/contents/blog")
+interface Filters {
+  limit?: number;
+}
+
+export const getListBlog = async (filters: Filters) => {
+  const { limit } = filters;
+
+  let postFilePaths = fs
+    .readdirSync(DIR_PATH_BLOG)
     .filter((postFilePath) => {
       return path.extname(postFilePath).toLowerCase() === ".mdx";
+    })
+    .sort((a, b) => {
+      return Number(b.match(/(\d+)/g)![0]) - Number(a.match(/(\d+)/g)![0]);
     });
+  if (limit) postFilePaths = postFilePaths.slice(0, limit);
 
   const postPreviews: BlogPreview[] = [];
 
@@ -32,15 +42,12 @@ export const getListBlog = async () => {
       "utf8"
     );
 
-    // serialize the MDX content to a React-compatible format
-    // and parse the frontmatter
     const serializedPost = await serialize(postFile, {
       parseFrontmatter: true,
     });
 
     postPreviews.push({
       ...serializedPost.frontmatter,
-      // add the slug to the frontmatter info
       slug: postFilePath.replace(".mdx", ""),
     } as BlogPreview);
   }
@@ -49,18 +56,28 @@ export const getListBlog = async () => {
 };
 
 export const getDetailBlog = async (slug: string) => {
-  const findBySlug = blogList.find((item) => item.key === slug);
+  const postFilePath = fs
+    .readdirSync(DIR_PATH_BLOG)
+    .filter((postFilePath) => {
+      return path.extname(postFilePath).toLowerCase() === ".mdx";
+    })
+    .map((val) => {
+      return val.replace(".mdx", "");
+    })
+    .find((val) => val === slug);
 
-  if (!findBySlug) {
+  if (!postFilePath) {
     redirect("/");
   }
 
-  const filePath = path.resolve(findBySlug.render);
+  const filePath = path.resolve(DIR_PATH_BLOG + `${postFilePath}.mdx`);
   const postFile = fs.readFileSync(filePath);
 
   const { content, frontmatter } = await compileMDX<{
     title: string;
     description: string;
+    previewImage: string;
+    publishedAt: string;
   }>({
     source: postFile,
     options: {
