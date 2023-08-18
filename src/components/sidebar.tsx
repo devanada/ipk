@@ -18,19 +18,14 @@ export default async function SideBar() {
           {sidebarList.map((sidebarMenu) => {
             if (sidebarMenu.children) {
               return (
-                <div
-                  className={clsx("collapse collapse-arrow")}
-                  key={sidebarMenu.id}
-                >
+                <div className={clsx("collapse collapse-arrow")} key={sidebarMenu.id}>
                   <input
                     type="radio"
-                    name={`sidebar-accordion-${sidebarMenu.id}`}
+                    aria-label={`sidebar-accordion-${sidebarMenu.id}`}
                     defaultChecked={pathname.includes(sidebarMenu.id)}
                   />
-                  <div className="collapse-title font-medium">
-                    {sidebarMenu.title}
-                  </div>
-                  <div className="collapse-content">
+                  <div className="collapse-title font-medium">{sidebarMenu.title}</div>
+                  <menu className="collapse-content">
                     {sidebarMenu.children.map((sidebarItem) => {
                       if (sidebarItem.children) {
                         const findBySlug = sidebarItem.children.find(
@@ -43,21 +38,20 @@ export default async function SideBar() {
                           >
                             <input
                               type="radio"
-                              name={`sidebar-menu-accordion-${sidebarItem.title}`}
+                              aria-label={`sidebar-menu-accordion-${sidebarItem.title}`}
                               defaultChecked={pathname === findBySlug?.slug}
                             />
                             <div className="collapse-title font-medium">
                               {sidebarItem.title}
                             </div>
-                            <div className="collapse-content">
+                            <menu className="collapse-content">
                               {sidebarItem.children.map((sidebarChild) => {
                                 return (
                                   <li key={sidebarChild.title}>
                                     <a
                                       className={clsx(
                                         "font-medium",
-                                        pathname === sidebarChild.slug &&
-                                          "active"
+                                        pathname === sidebarChild.slug && "active"
                                       )}
                                       href={sidebarChild.slug}
                                     >
@@ -66,7 +60,7 @@ export default async function SideBar() {
                                   </li>
                                 );
                               })}
-                            </div>
+                            </menu>
                           </div>
                         );
                       } else {
@@ -86,7 +80,7 @@ export default async function SideBar() {
                         );
                       }
                     })}
-                  </div>
+                  </menu>
                 </div>
               );
             } else {

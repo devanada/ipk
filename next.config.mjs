@@ -1,3 +1,4 @@
+import million from "million/compiler";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeHighlight from "rehype-highlight";
@@ -8,7 +9,7 @@ import withMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  reactStrictMode: false,
+  reactStrictMode: true,
   experimental: {
     appDir: true,
     mdxRs: false,
@@ -25,6 +26,10 @@ const nextConfig = {
   },
 };
 
+const millionConfig = {
+  auto: { rsc: true },
+};
+
 const mdxConfig = withMDX({
   options: {
     extension: /\.mdx?$/,
@@ -34,4 +39,4 @@ const mdxConfig = withMDX({
   },
 });
 
-export default mdxConfig(nextConfig);
+export default million.next(mdxConfig(nextConfig), millionConfig);
