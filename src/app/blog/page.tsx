@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const blogList = await getListBlog({ limit: 5 });
+  const blogList = await getListBlog({});
 
   return (
     <div className="mb-40">
