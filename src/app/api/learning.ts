@@ -7,16 +7,10 @@ import { redirect } from "next/navigation";
 import path from "path";
 import fs from "fs";
 
-import { Heading, P, Code, UL, Pre } from "@/components/mdx";
 import { DIR_PATH_LEARNING } from "@/constants/variable";
 
 const components = {
-  // h1: Heading.H1,
-  // h2: Heading.H2,
-  // p: P,
-  // code: Code,
-  // ul: UL,
-  // pre: Pre,
+  // add custom component here
 };
 
 const getFilePath = (readDir: string[], splitSlug: string[]) => {
@@ -72,7 +66,8 @@ export const getContent = async (slug: string) => {
 };
 
 export const getFirstPage = async () => {
-  let postFile = fs.readFileSync("src/contents/README.md");
+  const readDir = path.resolve("src/contents/README.mdx");
+  let postFile = fs.readFileSync(readDir);
 
   const { content, frontmatter } = await compileMDX<{
     title: string;

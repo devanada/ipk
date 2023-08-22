@@ -18,7 +18,7 @@ export default async function SideBar() {
           {sidebarList.map((sidebarMenu) => {
             if (sidebarMenu.children) {
               return (
-                <div className={clsx("collapse collapse-arrow")} key={sidebarMenu.id}>
+                <div className="collapse collapse-arrow" key={sidebarMenu.id}>
                   <input
                     type="radio"
                     aria-label={`sidebar-accordion-${sidebarMenu.id}`}
@@ -33,7 +33,7 @@ export default async function SideBar() {
                         );
                         return (
                           <div
-                            className={clsx("collapse collapse-arrow")}
+                            className="collapse collapse-arrow"
                             key={sidebarItem.title}
                           >
                             <input
