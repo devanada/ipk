@@ -9,7 +9,6 @@ export default async function SideBar() {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") ?? "";
 
-  console.log(pathname);
   return (
     <div className="lg:drawer-open">
       <input className="drawer-toggle" id="my-drawer-2" type="checkbox" />
