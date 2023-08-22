@@ -26,14 +26,10 @@ const getFilePath = (readDir: string[], splitSlug: string[]) => {
         return path.resolve(`${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}`);
       }
     } else {
-      const temp = fs.readdirSync(
-        `${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}`
-      );
+      const temp = fs.readdirSync(`${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}`);
       for (const val of temp) {
         if (val.includes(splitSlug[1])) {
-          return path.resolve(
-            `${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}/${val}`
-          );
+          return path.resolve(`${DIR_PATH_LEARNING}/${splitSlug[0]}/${dir}/${val}`);
         }
       }
     }
@@ -76,7 +72,7 @@ export const getContent = async (slug: string) => {
 };
 
 export const getFirstPage = async () => {
-  let postFile = fs.readFileSync("README.md");
+  let postFile = fs.readFileSync("src/contents/README.md");
 
   const { content, frontmatter } = await compileMDX<{
     title: string;

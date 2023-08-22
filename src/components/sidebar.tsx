@@ -7,7 +7,7 @@ export default async function SideBar() {
   const sidebarList = await getSidebarList();
 
   const headersList = headers();
-  const pathname = headersList.get("x-invoke-path") ?? "";
+  const pathname = headersList.get("x-pathname") ?? "";
 
   return (
     <div className="lg:drawer-open">
