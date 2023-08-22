@@ -4,7 +4,8 @@ IPK singkatan dari Iringan Pengantar Koding, merupakan platform yang dibuat seba
 
 ## Documentation
 
-[Deployment](https://ipk.devanada.com/)
+- [Deployment](https://ipk.devanada.com)
+- [Repository](https://github.com/devanada/ipk)
 
 ## Tech Stack
 

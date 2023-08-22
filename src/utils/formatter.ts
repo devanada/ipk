@@ -1,6 +1,7 @@
 export const formatToUppercase = (word: string) => {
   const result = word
     .toLowerCase()
+    .replace(/-/, " ")
     .split(" ")
     .map((val) => val.charAt(0).toUpperCase() + val.substring(1))
     .join(" ");
@@ -8,11 +9,7 @@ export const formatToUppercase = (word: string) => {
 };
 
 export const formatWord = (word: string) => {
-  let dupeWord = word;
-  if (dupeWord.includes("-")) {
-    const removeNumeric = dupeWord.split("-");
-    dupeWord = removeNumeric[1];
-  }
-  const result = dupeWord.replace(/\.[^/.]+$/, "").replace("_", " ");
-  return result;
+  const removeNum = word.replace(/^\d+-/, "");
+  const removeExt = removeNum.replace(/\.[^/.]+$/, "").replace("_", " ");
+  return removeExt;
 };
