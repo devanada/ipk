@@ -9,6 +9,7 @@ export default async function SideBar() {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") ?? "";
 
+  console.log(pathname);
   return (
     <div className="lg:drawer-open">
       <input className="drawer-toggle" id="my-drawer-2" type="checkbox" />
@@ -18,7 +19,7 @@ export default async function SideBar() {
           {sidebarList.map((sidebarMenu) => {
             if (sidebarMenu.children) {
               return (
-                <div className={clsx("collapse collapse-arrow")} key={sidebarMenu.id}>
+                <div className="collapse collapse-arrow" key={sidebarMenu.id}>
                   <input
                     type="radio"
                     aria-label={`sidebar-accordion-${sidebarMenu.id}`}
@@ -33,7 +34,7 @@ export default async function SideBar() {
                         );
                         return (
                           <div
-                            className={clsx("collapse collapse-arrow")}
+                            className="collapse collapse-arrow"
                             key={sidebarItem.title}
                           >
                             <input
