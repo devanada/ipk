@@ -1,20 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,jsx,ts,tsx,md,mdx}',
+    './components/**/*.{js,jsx,ts,tsx,md,mdx}',
+    './src/**/*.{js,jsx,ts,tsx,md,mdx}'
   ],
   theme: {
-    extend: {
-      colors: {
-        dark: "#111010",
-        codes: "#20BB05",
-      },
-    },
+    extend: {}
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  daisyui: {
-    themes: ["dark"],
-  },
-};
+  plugins: []
+}
