@@ -18,8 +18,17 @@ export default {
     link: "https://github.com/devanada/ipk",
   },
   docsRepositoryBase: "https://github.com/devanada/ipk",
+  toc: {
+    backToTop: true,
+  },
+  editLink: {
+    text: null,
+  },
+  feedback: {
+    content: null,
+  },
   footer: {
-    text: "Iringan Pengantar Koding",
+    text: <span>Iringan Pengantar Koding {new Date().getFullYear()}</span>,
   },
   sidebar: {
     autoCollapse: true,
