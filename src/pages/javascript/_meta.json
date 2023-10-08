@@ -1,8 +1,9 @@
 {
-    "intro": "Intro",
-    "variable": "Variable",
-    "data-type": "Data Type",
-    "function": "Function",
-    "branching": "Branching",
-    "looping": "Looping"
+  "intro": "Intro",
+  "variable": "Variable",
+  "data-type": "Data Type",
+  "function": "Function",
+  "branching": "Branching",
+  "looping": "Looping",
+  "asynchronous": "Asynchronous"
 }
