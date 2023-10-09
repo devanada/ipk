@@ -1,12 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,jsx,ts,tsx,md,mdx}',
-    './components/**/*.{js,jsx,ts,tsx,md,mdx}',
-    './src/**/*.{js,jsx,ts,tsx,md,mdx}'
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx,md,mdx}"],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        rataalada: "hsl(120, 100%, 50%)",
+        "rataalada-semi": "hsl(120, 50%, 50%)",
+      },
+    },
   },
-  plugins: []
-}
+  plugins: [],
+  darkMode: "class",
+};
