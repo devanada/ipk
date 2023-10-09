@@ -17,32 +17,17 @@ const config: DocsThemeConfig = {
     content: null,
   },
   head: () => {
-    const { frontMatter } = useConfig();
-
     const ogConfig = {
       title: "IPK",
       description: "Iringan Pengantar Koding",
       favicon: "/favicon.ico",
     };
-    const favicon = String(ogConfig.favicon);
-    const title = String(frontMatter.title || ogConfig.title);
-    const description = String(frontMatter.description || ogConfig.description);
 
     return (
       <>
-        <meta name="description" content={description} />
-        <meta property="og:description" content={description} />
-
-        <link rel="shortcut icon" href={favicon} type="image/svg+xml" />
-        <link rel="apple-touch-icon" href={favicon} type="image/svg+xml" />
-        <meta name="apple-mobile-web-app-title" content={title} />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content={ogConfig.title} />
+        <meta property="og:description" content={ogConfig.description} />
       </>
     );
   },
