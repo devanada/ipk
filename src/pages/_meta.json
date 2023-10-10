@@ -1,7 +1,20 @@
 {
-    "index": "Introduction",
-    "javascript": "JavaScript",
-    "html": "HTML",
-    "react": "React",
-    "nextjs": "Next.js"
-  }
+  "-- Getting Started": {
+    "type": "separator",
+    "title": "Getting Started"
+  },
+  "index": "Introduction",
+  "installation": "Installation",
+  "-- Fundamental": {
+    "type": "separator",
+    "title": "Fundamental"
+  },
+  "javascript": "JavaScript",
+  "html": "HTML",
+  "-- Advanced": {
+    "type": "separator",
+    "title": "Advanced"
+  },
+  "react": "React",
+  "nextjs": "Next.js"
+}

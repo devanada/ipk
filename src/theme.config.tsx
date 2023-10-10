@@ -2,20 +2,11 @@ import { useRouter } from "next/router";
 import { type DocsThemeConfig, useConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span className="font-mono text-3xl text-rataalada">{"<IPK/>"}</span>,
   project: {
     link: "https://github.com/devanada/ipk",
   },
   docsRepositoryBase: "https://github.com/devanada/ipk",
-  toc: {
-    backToTop: true,
-  },
-  editLink: {
-    text: null,
-  },
-  feedback: {
-    content: null,
-  },
+  logo: <span className="font-mono text-3xl text-rataalada">{"<IPK/>"}</span>,
   head: () => {
     const ogConfig = {
       title: "IPK",
@@ -35,19 +26,21 @@ const config: DocsThemeConfig = {
     text: <span>Iringan Pengantar Koding {new Date().getFullYear()}</span>,
   },
   sidebar: {
+    toggleButton: true,
     autoCollapse: true,
     defaultMenuCollapseLevel: 2,
   },
-  useNextSeoProps() {
-    const { asPath } = useRouter();
-
-    if (["/"].includes(asPath)) {
-      return { titleTemplate: "IPK" };
-    }
-
-    return {
-      titleTemplate: "%s – IPK",
-    };
+  search: {
+    placeholder: "Search...",
+  },
+  toc: {
+    backToTop: true,
+  },
+  editLink: {
+    text: null,
+  },
+  feedback: {
+    content: null,
   },
   nextThemes: {
     defaultTheme: "dark",
@@ -60,6 +53,17 @@ const config: DocsThemeConfig = {
   primarySaturation: {
     light: 50,
     dark: 100,
+  },
+  useNextSeoProps() {
+    const { asPath } = useRouter();
+
+    if (["/"].includes(asPath)) {
+      return { titleTemplate: "IPK" };
+    }
+
+    return {
+      titleTemplate: "%s – IPK",
+    };
   },
 };
 
