@@ -3,6 +3,8 @@ title: "Intro to React"
 description: "Pengantar ke React: Pelajari tentang framework JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
 ---
 
+import { Tabs, Tab, Callout, FileTree } from "nextra/components";
+
 # React.js | Introduction
 
 ## Overview
@@ -12,87 +14,158 @@ React adalah salah satu library JavaScript yang paling populer dan powerful untu
 Penggunaan utama React adalah untuk membangun komponen-komponen UI yang dapat digunakan kembali. Dengan menggunakan pendekatan komponen, kita dapat memisahkan UI menjadi bagian-bagian kecil yang terkelola dengan baik. Hal ini membantu meningkatkan efisiensi dalam pengembangan serta pemeliharaan kode.
 Salah satu keunggulan utama React adalah kemampuannya dalam memperbarui hanya bagian-bagian tertentu dari antarmuka pengguna yang berubah, tanpa harus melakukan reload halaman secara keseluruhan. Ini dikarenakan adanya konsep Virtual DOM pada React, di mana perubahan hanya diterapkan pada elemen-elemen yang benar-benar berubah.
 
-Dalam artikel ini, kami akan membahas dasar-dasar React beserta manfaatnya serta alasan mengapa Anda harus mempelajarinya. Kami juga akan melihat beberapa konsep penting dalam React seperti komponen dan peningkatan performa aplikasi dengan menggunakan teknik-teknik optimalisasi. Mari kita mulai perjalanan menuju menguasai dunia pembangunan frontend dengan React!
-
-## Apa itu React dan Mengapa Hal Ini Sangat Berguna?
+## Apa itu React dan Apa Saja Keunggulannya?
 
 React adalah sebuah library JavaScript yang sangat populer untuk membangun antarmuka pengguna (UI) modern. Dikembangkan oleh tim Facebook, React digunakan oleh banyak perusahaan besar seperti Instagram, Netflix, dan Airbnb. Apa yang membuat React begitu berguna adalah kemampuannya dalam memecah antarmuka pengguna menjadi komponen-komponen kecil yang dapat diatur dengan lebih mudah.
 
-Dalam dunia pengembangan web saat ini, tuntutan akan aplikasi yang cepat, interaktif, dan responsif semakin meningkat. Dengan menggunakan React, Anda dapat mencapai semua hal tersebut dengan lebih efisien. React menggunakan konsep Virtual DOM (Document Object Model) yang memungkinkan update hanya pada bagian-bagian tertentu dari halaman web tanpa perlu memuat ulang seluruh halaman tersebut.
+React disebut sebagai "Single Page Application" (SPA) karena fokus utamanya adalah membuat aplikasi web yang bekerja sebagai satu halaman tunggal, tanpa perlu melakukan pembaruan atau pemuatan ulang halaman secara keseluruhan saat pengguna berinteraksi dengan aplikasi. Istilah "Single Page Application" merujuk pada aplikasi web yang hanya memuat satu halaman HTML dasar, dan selanjutnya mengganti kontennya secara dinamis menggunakan JavaScript.
 
-Selain itu, React memiliki fitur-fitur canggih seperti komponen-komponen reusable dan unidirectional data flow yang membuat pengembangan aplikasi menjadi lebih terorganisir dan mudah dipelajari. Dengan menggunakan konsep komponen, Anda dapat membagi tugas pembangunan UI menjadi potongan-potongan kecil yang independen satu sama lain. Hal ini memungkinkan kolaborasi tim secara efektif dan meningkatkan produktivitas dalam pengembangan aplikasi.
+Dalam dunia pengembangan web saat ini, tuntutan akan aplikasi yang cepat, interaktif, dan responsif semakin meningkat. Dengan menggunakan React, Kamu dapat mencapai semua hal tersebut dengan lebih efisien. React menggunakan konsep Virtual DOM (Document Object Model) yang memungkinkan update hanya pada bagian-bagian tertentu dari halaman web tanpa perlu memuat ulang seluruh halaman tersebut.
 
-Reusabilitas juga merupakan salah satu kelebihan utama dari React. Anda bisa membuat komponen-komponen UI sekali saja dan menggunakannya kembali di berbagai bagian aplikasi Anda tanpa harus menulis ulang kode yang sama. Dengan demikian, pengembangan aplikasi menjadi lebih cepat dan efisien. Selain itu, ekosistem React yang kaya dengan berbagai library dan alat bantu juga memungkinkan Anda untuk memperluas fungsionalitas aplikasi dengan mudah.
+Selain itu, React memiliki fitur-fitur canggih seperti komponen-komponen reusable dan unidirectional data flow yang membuat pengembangan aplikasi menjadi lebih terorganisir dan mudah dipelajari. Dengan menggunakan konsep komponen, Kamu dapat membagi tugas pembangunan UI menjadi potongan-potongan kecil yang independen satu sama lain. Hal ini memungkinkan kolaborasi tim secara efektif dan meningkatkan produktivitas dalam pengembangan aplikasi.
 
-## Pengenalan React: Mengapa Anda Harus Mempelajarinya?
+Reusabilitas juga merupakan salah satu kelebihan utama dari React. Kamu bisa membuat komponen-komponen UI sekali saja dan menggunakannya kembali di berbagai bagian aplikasi Kamu tanpa harus menulis ulang kode yang sama. Dengan demikian, pengembangan aplikasi menjadi lebih cepat dan efisien. Selain itu, ekosistem React yang kaya dengan berbagai library dan alat bantu juga memungkinkan Kamu untuk memperluas fungsionalitas aplikasi dengan mudah.
 
-React, sebuah library JavaScript yang sangat populer, telah merevolusi cara kita membangun antarmuka pengguna modern. Mengapa Anda harus meluangkan waktu untuk mempelajari React? Karena React memberikan banyak keuntungan dan manfaat yang dapat meningkatkan produktivitas dan kualitas pengembangan aplikasi web Anda.
+## Pengenalan React: Mengapa Harus Mempelajarinya?
+
+React, sebuah library JavaScript yang sangat populer, telah merevolusi cara kita membangun antarmuka pengguna modern. Mengapa Kamu harus meluangkan waktu untuk mempelajari React? Karena React memberikan banyak keuntungan dan manfaat yang dapat meningkatkan produktivitas dan kualitas pengembangan aplikasi web Kamu.
 
 Satu hal yang membuat React menonjol adalah kemampuannya untuk mengubah cara kita berpikir tentang pembangunan antarmuka pengguna. Dengan pendekatan berbasis komponen, React memungkinkan kita untuk membagi-bagi aplikasi menjadi bagian-bagian yang lebih kecil dan terkelola dengan baik. Ini tidak hanya membuat kode lebih mudah dipahami dan dikelola, tetapi juga memungkinkan tim pengembang bekerja secara efisien dalam kolaborasi.
 
 React juga sangat populer karena performanya yang luar biasa. Dengan menggunakan Virtual DOM, React hanya melakukan perubahan pada elemen-elemen yang benar-benar berubah dalam tampilan, daripada merender ulang keseluruhan tampilan setiap kali ada perubahan data. Hal ini menghasilkan aplikasi yang lebih responsif dan efisien dengan waktu respon yang cepat.
 
-Selain itu, banyak perusahaan besar seperti Facebook, Airbnb, Instagram, dan Netflix telah mengadopsi React dalam proyek-proyek mereka. Ini menunjukkan bahwa kemampuan dan potensi dari React telah terbukti secara industri. Dengan belajar React, Anda akan mendapatkan keterampilan penting yang dicari oleh perusahaan-perusahaan teknologi terkemuka, membuka peluang karir yang menjanjikan dalam pengembangan aplikasi web.
+Selain itu, banyak perusahaan besar seperti Facebook, Airbnb, Instagram, dan Netflix telah mengadopsi React dalam proyek-proyek mereka. Ini menunjukkan bahwa kemampuan dan potensi dari React telah terbukti secara industri. Dengan belajar React, Kamu akan mendapatkan keterampilan penting yang dicari oleh perusahaan-perusahaan teknologi terkemuka, membuka peluang karir yang menjanjikan dalam pengembangan aplikasi web.
 
-## Menguasai Dasar-dasar Javascript Sebelum Anda Memulai
+## Installation
 
-Sebelum memasuki dunia React yang menakjubkan, adalah penting untuk memiliki pemahaman yang kuat tentang dasar-dasar bahasa pemrograman Javascript. Mengapa? Karena React sendiri dikembangkan dengan menggunakan Javascript dan banyak konsep dalam React didasarkan pada pemahaman yang baik tentang bahasa ini. Jadi, mari kita lihat beberapa konsep dasar yang perlu dikuasai sebelum kita melangkah lebih jauh!
+Untuk membuat sebuah project React diperlukan tools untuk membantu kita setting up, salah satu tools yang dapat kalian pakai yaitu [vite](https://vitejs.dev/). Vite merupakan sebuah build tool yang dapat membantu kita untuk membuat web project yang memiliki tujuan untuk memberikan pengalaman development yang cepat, selengkapnya di [Getting Started](https://vitejs.dev/guide/#overview).
 
-### Sintaks Dasar Javascript
+<Callout type="info" emoji="ℹ️">
+  Untuk memastikan pembuatan project React, Vite memerlukan versi Node.js 14.18+
+  ataupun 16+.
+</Callout>
 
-Agar dapat memahami dan menerapkan konsep-konsep Javascript secara efektif dalam pengembangan aplikasi React, penting untuk menguasai sintaks dasarnya. Mengenal tipe data, operator, pernyataan kontrol aliran (misalnya if-else statements dan loops), serta cara mendefinisikan variabel adalah langkah awal yang krusial.
+Pilih salah satu perintah, sesuaikan dengan package manager yang kamu miliki atau yang ingin kamu gunakan.
 
-Memiliki pemahaman yang kuat tentang objek juga sangat penting karena objek adalah elemen kunci dalam pengembangan React. Dapatkan kejelasan tentang cara membuat objek, mengakses properti dan metode mereka, serta bagaimana menggunakan objek bawaan seperti Array dan String.
+<Tabs items={["JavaScript", "TypeScript"]}>
+  <Tab>
+    ```bash copy
+    # npm 6.x
+    npm create vite@latest my-react-app --template react
 
-Jangan lupa untuk mempelajari fungsi dalam Javascript - salah satu konsep terpenting di dunia pemrograman! Pahami bagaimana mendefinisikan fungsi, memberikan argumen ke dalamnya, dan mengembalikan nilai dari sebuah fungsi. Fungsi juga sering digunakan di React untuk mengatur perilaku komponen-komponennya.
+    # npm 7+, extra double-dash is needed:
 
-### Mengelola State dan Event Handling
+    npm create vite@latest my-react-app -- --template react
 
-Salah satu fitur paling kuat dalam React adalah kemampuannya untuk mengelola state aplikasi dengan mudah. Untuk memahami konsep ini, penting untuk menguasai cara kerja variabel state dalam Javascript dan bagaimana mengubahnya secara dinamis menggunakan setState() di React.
+    # yarn
+    yarn create vite my-react-app --template react
 
-Selain itu, pemahaman tentang event handling juga penting saat bekerja dengan React. Anda perlu menangani event-event seperti klik tombol atau pengisian formulir dan merespons mereka dengan tindakan tertentu. Belajar tentang event listeners dan cara menghubungkannya ke fungsi-fungsi yang tepat dalam komponen akan membantu Anda membuat interaksi yang responsif dalam aplikasi React Anda.
+    # pnpm
+    pnpm create vite my-react-app --template react
+    ```
 
-Ketika Anda memiliki pemahaman yang kuat tentang dasar-dasar Javascript, langkah selanjutnya adalah melangkah ke dunia React dengan keyakinan dan kepercayaan diri. Penguasaan dasar-dasar ini akan memberikan fondasi yang kokoh bagi pengembangan aplikasi React yang sukses!
+  </Tab>
+  <Tab>
+    ```bash copy
+    # npm 6.x
+    npm create vite@latest my-react-app --template react-ts
 
-## Membuat Project React Pertama Anda: Let's Get Started!
+    # npm 7+, extra double-dash is needed:
 
-Setelah mempelajari dasar-dasar React dan mengenal konsep komponen, saatnya untuk mulai membuat proyek React pertama Anda! Langkah ini akan membantu Anda mempraktikkan apa yang telah dipelajari sebelumnya dan mengembangkan pemahaman yang lebih dalam tentang cara kerja React.
+    npm create vite@latest my-react-app -- --template react-ts
 
-Langkah pertama adalah memastikan bahwa lingkungan pengembangan Anda sudah siap. Pastikan Node.js terinstal di sistem Anda. Setelah itu, kita dapat menggunakan `npx create-react-app` untuk membuat proyek React baru dengan cepat dan mudah. Ini akan membuat proyek dengan struktur direktori yang disiapkan dan berisi semua file dan dependensi yang diperlukan.
+    # yarn
+    yarn create vite my-react-app --template react-ts
 
-Selanjutnya, kita dapat membuka proyek kita dalam editor kode favorit kita. Ada banyak editor yang bisa digunakan seperti Visual Studio Code, Sublime Text, atau Atom. Pilihlah yang paling nyaman bagi Anda dan mulailah menjelajahi kode proyek.
+    # pnpm
+    pnpm create vite my-react-app --template react-ts
+    ```
+
+  </Tab>
+</Tabs>
+
+Selanjutnya, kita dapat membuka proyek kita dalam editor kode favorit kita. Ada banyak editor yang bisa digunakan seperti Visual Studio Code, Sublime Text, atau Atom. Pilihlah yang paling nyaman dan mulailah menjelajahi kode proyek.
 
 Ketika membuka proyek React untuk pertama kalinya, ada beberapa file penting yang perlu diperhatikan. index.html adalah file utama halaman web kita. Di dalamnya terdapat sebuah div dengan id 'root' di mana elemen-elemen React akan ditampilkan.
 
-## Meningkatkan Projek React Anda dengan Menggunakan Typescript
+Setelah berhasil men-generate project React dengan menggunakan Vite, buka folder project-nya lalu jalankan perintah dibawah untuk meng-install dependency bawaan yang telah di generate.
 
-Saat membangun proyek React, salah satu cara terbaik untuk meningkatkan kualitas dan efisiensi kode Anda adalah dengan menggunakan Typescript. Typescript adalah bahasa pemrograman statis yang mengatasi beberapa kelemahan JavaScript tradisional. Dengan menyertakan jenis data yang didefinisikan secara jelas, Typescript membantu mencegah kesalahan umum saat mengembangkan aplikasi.
+```bash copy
+npm install
+```
 
-Dengan menggunakan Typescript dalam proyek React Anda, Anda akan mendapatkan manfaat dari fitur-fitur seperti tipe data yang ketat, inferensi jenis yang kuat, dan penanganan kesalahan yang lebih baik. Ini semua berarti bahwa Anda dapat menulis kode yang lebih aman, mudah dipelihara, dan lebih mudah dikembangkan oleh tim Anda.
+Setelah proses instalasi dependency berhasil, nantinya akan menghasilkan folder baru didalam root directory yang bernama `node_modules`, folder ini berisi kumpulan library atau dependency yang pernah kita install. Selanjutnya jalankan perintah dibawah ini untuk menjalankan project lalu akses `http://localhost:3000/` untuk mengakses project React pada browser.
 
-Salah satu keuntungan utama dalam menggunakan Typescript dengan React adalah kemampuan untuk mendeteksi banyak masalah potensial pada tahap kompilasi. Misalnya, jika ada komponen di proyek Anda yang membutuhkan properti tertentu tetapi tidak menerimanya sebagai argumen masukan, Typescript akan memberi tahu Anda tentang kesalahan tersebut sebelum aplikasi dijalankan.
+```bash copy
+npm run dev
+```
+
+## Meningkatkan Projek React dengan Menggunakan Typescript
+
+Saat membangun proyek React, salah satu cara terbaik untuk meningkatkan kualitas dan efisiensi kode Kamu adalah dengan menggunakan Typescript. Typescript adalah bahasa pemrograman statis yang mengatasi beberapa kelemahan JavaScript tradisional. Dengan menyertakan jenis data yang didefinisikan secara jelas, Typescript membantu mencegah kesalahan umum saat mengembangkan aplikasi.
+
+Dengan menggunakan Typescript dalam proyek React Kamu, Kamu akan mendapatkan manfaat dari fitur-fitur seperti tipe data yang ketat, inferensi jenis yang kuat, dan penanganan kesalahan yang lebih baik. Ini semua berarti bahwa Kamu dapat menulis kode yang lebih aman, mudah dipelihara, dan lebih mudah dikembangkan oleh tim Kamu.
+
+Salah satu keuntungan utama dalam menggunakan Typescript dengan React adalah kemampuan untuk mendeteksi banyak masalah potensial pada tahap kompilasi. Misalnya, jika ada komponen di proyek Kamu yang membutuhkan properti tertentu tetapi tidak menerimanya sebagai argumen masukan, Typescript akan memberi tahu Kamu tentang kesalahan tersebut sebelum aplikasi dijalankan.
 
 Tidak hanya itu, tetapi penggunaan Typescript juga memfasilitasi proses refaktorisasi kode. Saat mengembangkan aplikasi React dengan kompleksitas yang semakin tinggi seiring berjalannya waktu, refaktorisasi dapat menjadi tantangan besar tanpa adanya bantuan alat seperti types dan interfaces dari Typescript. Kemampuan untuk menjaga kode tetap bersih, terstruktur, dan mudah dimengerti adalah kunci untuk mengembangkan aplikasi React yang skalabel.
 
-## Mengenal Konsep Komponen dalam React: Membangun Blok-Blok Pembangun!
+## Folder Structure Dalam React
 
-Dalam pengembangan aplikasi web modern, konsep komponen telah menjadi fondasi yang penting. Di dalam React, konsep ini menjadi pusat dari semua pengembangan. Jadi apa sebenarnya komponen dalam React? Dalam konteks React, komponen dapat didefinisikan sebagai blok pembangun yang mandiri, yang menggabungkan logika dan tampilan untuk membentuk bagian-bagian UI yang dapat digunakan secara terpisah atau bersama-sama dalam aplikasi.
+Folder structure dalam React tidak ada aturan yang baku, tetapi ada beberapa konvensi umum yang digunakan oleh komunitas untuk mengorganisasi proyek React. Struktur folder yang baik harus membantu dalam memudahkan pengembangan, pemeliharaan, dan kolaborasi.
 
-Salah satu keuntungan utama dari menggunakan komponen di React adalah reusabilitas. Anda dapat menggunakan dan memanfaatkan kembali komponen-komponen yang telah dibuat sebelumnya untuk membangun aplikasi baru dengan cepat dan efisien. Pemisahan logika dan tampilan pada setiap komponen juga memungkinkan pemeliharaan kode yang lebih mudah dan skalabilitas yang lebih baik.
+<FileTree>
+  <FileTree.Folder name="node_modules"></FileTree.Folder>
+  <FileTree.Folder name="public"></FileTree.Folder>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="__tests__">
+      <FileTree.Folder name="pages"></FileTree.Folder>
+    </FileTree.Folder>
+    <FileTree.Folder name="components">
+      <FileTree.File name="button.jsx" />
+      <FileTree.File name="input.jsx" />
+      <FileTree.File name="layout.jsx" />
+    </FileTree.Folder>
+    <FileTree.Folder name="pages">
+      <FileTree.File name="index.jsx" />
+    </FileTree.Folder>
+    <FileTree.Folder name="routes">
+      <FileTree.File name="index.jsx" />
+    </FileTree.Folder>
+    <FileTree.Folder name="styles">
+      <FileTree.File name="global.css" />
+    </FileTree.Folder>
+    <FileTree.Folder name="utils"></FileTree.Folder>
+    <FileTree.File name="main.jsx" />
+  </FileTree.Folder>
+  <FileTree.File name=".gitignore" />
+  <FileTree.File name="index.html" />
+  <FileTree.File name="package.json" />
+  <FileTree.File name="vite.config.js" />
+</FileTree>
 
-React menyediakan beberapa cara untuk membuat dan menggabungkan komponen, termasuk penggunaan fungsi (functional components) dan kelas (class components). Fungsi komponen merupakan bentuk sederhana dari sebuah fungsi JavaScript biasa, sedangkan kelas komponen menggunakan sintaks class dengan metode-metode spesifik seperti render() untuk menampilkan tampilan ke layar.
+- `node_modules`: Merupakan folder yang berisi kumpulan library atau dependency yang pernah di install dalam project kita, folder ini tidak di push kedalam repository kita, namun akan secara otomatis ada ketika kita menjalankan `npm install` atau `npm i` didalam root folder.
+- `public`: Folder yang biasanya berisi asset-asset lokal kita, seperti favicon, gambar, dll.
+- `src`: Folder utama yang nantinya akan tampil pada saat mengakses halaman website kita, semua penambahan halaman, komponen, dll akan ditempatkan didalam folder ini.
+  - `__tests__`: Folder ini berfungsi sebagai wadah untuk menempatkan file-file testing kita, yang mana didalamnya masih ada folder maupun file pendukung testing.
+  - `components`: Folder ini akan kita gunakan sebagai tempat untuk menaruh component-component reusable yang nantinya dapat kita gunakan didalam project react kita.
+  - `pages`: Tempat dimana kita menaruh semua halaman yang nantinya akan tampil didalam website kita, biasanya didalam folder pages ini masih ada beberapa folder lagi namun itu semua tergantung dari apa saja halaman yang ada.
+  - `routes`: Folder yang isinya merupakan kumpulan routes yang ada di website kita, disini adalah tempat untuk kita menentukan nama route yang bisa diakses untuk setiap halaman web.
+  - `styles`: Adalah sebuah folder yang berisi file-file css yang kita buat.
+  - `utils`: Folder yang dimana berisi semua konfigurasi ataupun function helper yang kita buat. Biasanya berisi folder konfigurasi dari api, formatter, custom hooks, redux, dll.
+  - `main.jsx`: Merupakan entry point atau file utama dari project React.
+- `index.html`: File ini merupakan satu-satunya html yang ada dan nantinya akan kalian lihat pada saat membuka halaman website, karena React itu SPA (Single Page Application) jadinya hanya ada satu file html saja yg ada didalamnya, selebihnya dia akan berganti halaman dengan cara merubah text html didalam body.
+- `package.json`: Berisi informasi seputar project React, seperti script yang dapat dijalankan, dan juga dependency yang pernah di install.
 
-Membangun blok-blok pembangunan dengan memecah aplikasi ke dalam berbagai komponennya juga membantu meningkatkan pemeliharaan dan kebersihan kode. Anda dapat memisahkan fungsionalitas aplikasi menjadi bagian-bagian yang lebih kecil, sehingga memudahkan tim pengembang untuk bekerja secara terpisah di komponen yang berbeda. Selain itu, jika suatu komponen perlu diperbarui atau diperbaiki di masa depan, Anda hanya perlu fokus pada komponen tersebut tanpa harus merubah seluruh aplikasi.
+## Mengoptimalkan Kinerja Aplikasi dengan React: Tips dan Trik Terbaik
 
-## Mengoptimalkan Kinerja Aplikasi Anda dengan React: Tips dan Trik Terbaik
-
-Apakah Anda ingin menghadirkan pengalaman yang lancar dan responsif bagi pengguna aplikasi React Anda? Jika ya, maka mengoptimalkan kinerja aplikasi menjadi hal yang sangat penting. Dalam bagian ini, kami akan membahas beberapa tips dan trik terbaik untuk membantu Anda meningkatkan kinerja aplikasi React Anda.
+Apakah Kamu ingin menghadirkan pengalaman yang lancar dan responsif bagi pengguna aplikasi React Kamu? Jika ya, maka mengoptimalkan kinerja aplikasi menjadi hal yang sangat penting. Dalam bagian ini, kami akan membahas beberapa tips dan trik terbaik untuk membantu Kamu meningkatkan kinerja aplikasi React Kamu.
 
 ### Menghindari Rerender yang Tidak Perlu
 
 Salah satu kekuatan utama React adalah kemampuannya untuk melakukan rerender hanya ketika diperlukan. Namun, dalam beberapa kasus, komponen dapat secara tidak sengaja melakukan rerender berulang-ulang tanpa alasan yang jelas. Ini dapat mengakibatkan penurunan kinerja yang signifikan.
 
-Oleh karena itu, penting bagi Anda untuk memastikan bahwa komponen hanya melakukan rerender ketika ada perubahan pada data yang relevan. Menggunakan metode shouldComponentUpdate atau React.memo dapat membantu dalam mengoptimalkan kinerja aplikasi dengan menghindari rerender yang tidak perlu.
+Oleh karena itu, penting bagi Kamu untuk memastikan bahwa komponen hanya melakukan rerender ketika ada perubahan pada data yang relevan. Menggunakan metode shouldComponentUpdate atau React.memo dapat membantu dalam mengoptimalkan kinerja aplikasi dengan menghindari rerender yang tidak perlu.
 
 ### Penggunaan Key Props dengan Tepat
 
@@ -106,36 +179,38 @@ Saat mengembangkan aplikasi React, terkadang kita cenderung membuat komponen yan
 
 Oleh karena itu, penting untuk memisahkan komponen menjadi bagian-bagian yang lebih kecil dan lebih terfokus. Dengan cara ini, kita dapat meningkatkan kinerja aplikasi dengan mengurangi waktu pemrosesan dan mempercepat rerender.
 
-Dengan menerapkan tips-tips ini, Anda dapat mengoptimalkan kinerja aplikasi React Anda dan memberikan pengalaman yang luar biasa bagi pengguna. Ingatlah bahwa tujuan utama dari optimisasi kinerja adalah untuk meningkatkan kepuasan pengguna dan membuat mereka merasa senang menggunakan aplikasi Anda!
+Dengan menerapkan tips-tips ini, Kamu dapat mengoptimalkan kinerja aplikasi React Kamu dan memberikan pengalaman yang luar biasa bagi pengguna. Ingatlah bahwa tujuan utama dari optimisasi kinerja adalah untuk meningkatkan kepuasan pengguna dan membuat mereka merasa senang menggunakan aplikasi Kamu!
 
 ## Mengatasi Tantangan Umum saat Menggunakan React
 
-React adalah kerangka kerja JavaScript yang kuat dan populer untuk pengembangan antarmuka pengguna. Meskipun memiliki banyak manfaat, ada beberapa tantangan umum yang mungkin dihadapi oleh para pengembang ketika menggunakan React. Namun, dengan pemahaman yang baik tentang tantangan ini dan strategi yang tepat, Anda dapat mengatasinya dengan mudah.
+React adalah kerangka kerja JavaScript yang kuat dan populer untuk pengembangan antarmuka pengguna. Meskipun memiliki banyak manfaat, ada beberapa tantangan umum yang mungkin dihadapi oleh para pengembang ketika menggunakan React. Namun, dengan pemahaman yang baik tentang tantangan ini dan strategi yang tepat, Kamu dapat mengatasinya dengan mudah.
 
 ### 1. Pengelolaan State yang Kompleks
 
-Saat mengembangkan aplikasi web, sering kali kita perlu mengelola state atau keadaan aplikasi secara efisien. Dalam React, menangani state kompleks dapat menjadi tantangan. Namun, dengan menggunakan konsep Redux atau Context API, Anda dapat menyederhanakan pengelolaan state dan membuat kode Anda lebih terorganisir.
+Saat mengembangkan aplikasi web, sering kali kita perlu mengelola state atau keadaan aplikasi secara efisien. Dalam React, menangani state kompleks dapat menjadi tantangan. Namun, dengan menggunakan konsep Redux atau Context API, Kamu dapat menyederhanakan pengelolaan state dan membuat kode Kamu lebih terorganisir.
 
-Creative Content: Bayangkan bahwa pengelolaan state adalah seperti menjaga sebuah taman bunga indah. Dengan menggunakan alat yang tepat seperti Redux atau Context API, Anda menjadi seorang tukang kebun berbakat yang memastikan setiap bunga tetap segar dan terjaga dengan baik.
+Creative Content: Bayangkan bahwa pengelolaan state adalah seperti menjaga sebuah taman bunga indah. Dengan menggunakan alat yang tepat seperti Redux atau Context API, Kamu menjadi seorang tukang kebun berbakat yang memastikan setiap bunga tetap segar dan terjaga dengan baik.
 
 ### 2. Performa Aplikasi
 
 Kinerja aplikasi React mungkin menjadi masalah jika tidak dikelola dengan baik. Terkadang render ulang yang berlebihan atau komponen tak teroptimalkan dapat menyebabkan performa aplikasi menurun. Untungnya, ada beberapa teknik optimisasi kinerja React seperti lazy loading komponen dan memoization untuk mencegah masalah ini.
 
-Creative Content: Bayangkan performa aplikasi Anda seperti seorang atlet yang berlari di lapangan. Dengan menggunakan teknik optimisasi kinerja React, Anda memberikan pelatihan dan peralatan terbaik bagi mereka untuk mencapai rekor pribadi terbaik dan berlari dengan cepat tanpa henti.
+Creative Content: Bayangkan performa aplikasi Kamu seperti seorang atlet yang berlari di lapangan. Dengan menggunakan teknik optimisasi kinerja React, Kamu memberikan pelatihan dan peralatan terbaik bagi mereka untuk mencapai rekor pribadi terbaik dan berlari dengan cepat tanpa henti.
 
 ### 3. Integrasi dengan Library atau Framework Lain
 
 Ketika mengembangkan aplikasi React, mungkin ada kebutuhan untuk mengintegrasikan dengan library atau framework lain seperti Bootstrap atau jQuery. Tantangan yang sering muncul adalah menyelaraskan logika kerangka kerja ini dengan paradigma React. Solusinya adalah menggunakan wrapper library yang dirancang khusus untuk integrasi tersebut.
 
-Creative Content: Bayangkan bahwa Anda membangun sebuah orkestra symphony yang megah. Setiap instrumen mewakili sebuah library atau framework dan React menjadi konduktor utamanya. Dengan penggunaan wrapper library, semua instrumen dipadukan secara harmonis sehingga melahirkan komposisi musik yang indah.
+Creative Content: Bayangkan bahwa Kamu membangun sebuah orkestra symphony yang megah. Setiap instrumen mewakili sebuah library atau framework dan React menjadi konduktor utamanya. Dengan penggunaan wrapper library, semua instrumen dipadukan secara harmonis sehingga melahirkan komposisi musik yang indah.
 
 ### 4. Kurva Pembelajaran yang Curam
 
-React adalah kerangka kerja JavaScript yang kuat namun kompleks, sehingga mempelajarinya bisa menjadi tantangan bagi pemula. Namun, ada banyak sumber daya online seperti dokumentasi resmi React dan tutorial interaktif yang dapat membantu Anda mempelajari dasar-dasar dan teknik tingkat lanjut dalam waktu singkat.
+React adalah kerangka kerja JavaScript yang kuat namun kompleks, sehingga mempelajarinya bisa menjadi tantangan bagi pemula. Namun, ada banyak sumber daya online seperti dokumentasi resmi React dan tutorial interaktif yang dapat membantu Kamu mempelajari dasar-dasar dan teknik tingkat lanjut dalam waktu singkat.
 
-Creative Content: Bayangkan bahwa pembelajaran React adalah naik gunung tertinggi di dunia. Ketika Anda mencapai puncaknya, Anda diberikan pandangan indah yang tak tergantikan dan perasaan kepuasan yang luar biasa. Semua usaha dan tantangan yang Anda hadapi bernilai setimpal dengan apa yang telah Anda raih.
+Creative Content: Bayangkan bahwa pembelajaran React adalah naik gunung tertinggi di dunia. Ketika Kamu mencapai puncaknya, Kamu diberikan pandangan indah yang tak tergantikan dan perasaan kepuasan yang luar biasa. Semua usaha dan tantangan yang Kamu hadapi bernilai setimpal dengan apa yang telah Kamu raih.
 
-## Conclusion: Menjadi Ahli dalam Pengembangan Frontend Dengan React!
+## Kesimpulan
 
-Dalam artikel ini, kita telah menjelajahi dunia React dan memahami mengapa platform ini begitu berharga dalam pengembangan frontend. Kami telah mengeksplorasi dasar-dasar JavaScript yang penting sebelum memulai dengan React, serta menguasai konsep komponen yang menjadi pondasi utama dalam pembangunan aplikasi dengan React. Kita juga mempelajari beberapa tips dan trik untuk meningkatkan kinerja aplikasi React, serta cara mengatasi tantangan umum yang mungkin muncul selama proses pengembangan. Dengan pengetahuan ini, Anda siap untuk memulai perjalanan menuju keahlian dalam pengembangan frontend dengan menggunakan React. Seperti semua hal dalam hidup, penguasaan terhadap React tidak datang secara instan.
+React merupakan library UI yang dapat membantu kita untuk membuat antarmuka web yang cukup populer dan banyak digunakan oleh perusahaan-perusahaan besar seperti Meta (Facebook), Netflix, Airbnb, Tokopedia, dll. React juga memiliki komunitas yang besar sehingga kita tidak perlu khawatir ketika menemui kendala, dan juga banyak library atau dependency pembantu sehingga memungkinkan kita untuk dapat membuat website impian kita.
+
+React juga bisa disebut sebagai Single Page Application (SPA) karena didalam React hanya ada satu file HTML, selebihnya untuk dapat berpindah atau mengganti konten didalamnya perlu adanya library pembantu seperti React Router agar pengguna dapat bernavigasi didalam website kita.
