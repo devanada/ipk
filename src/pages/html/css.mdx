@@ -1,0 +1,256 @@
+---
+title: "Intro to CSS"
+description: "Panduan komprehensif yang menjelaskan konsep dasar dan prinsip CSS untuk membantu Anda memulai membuat situs web yang menarik."
+---
+
+# HTML | CSS
+
+## Overview
+
+CSS (Cascading Style Sheets) adalah sebuah kode yang dapat memberikan tampilan secara estetik terhadap sebuah konten web. CSS memungkinkan kita untuk memisahkan struktur (HTML) dari tampilan (CSS) halaman web, memberikan fleksibilitas dan kontrol yang lebih besar dalam merancang tampilan halaman. Dalam modul ini, kita akan mempelajari dasar-dasar CSS dan cara menggunakannya untuk merancang tampilan web yang menarik.
+
+## Pengertian CSS
+
+Seperti HTML, CSS bukan termasuk kedalam bahasa pemrograman, dia juga bukan termasuk kedalam bahasa markup. CSS adalah sebuah **style sheet language**, yang mana memungkinkan kita untuk memberikan sebuah gaya atau tampilan yang menarik dan estetik pada sebuah halaman web, agar pengguna nyaman dalam mengakses website kita.
+
+## Struktur Pada CSS
+
+Struktur dalam CSS merujuk pada cara aturan gaya (style rules) ditulis, diatur, dan digunakan untuk mengubah tampilan elemen HTML dalam halaman web. Struktur CSS terdiri dari beberapa komponen utama, termasuk selector, properti, dan nilai. Berikut adalah penjelasan rinci tentang struktur CSS:
+
+1. Selector: Selector adalah bagian pertama dari sebuah aturan gaya CSS. Ini digunakan untuk memilih elemen HTML yang akan diberikan gaya. Selector dapat berupa elemen HTML, atribut, id, class, atau kombinasi dari semua ini. Contoh:
+   - Selector Elemen: p memilih semua elemen `<p>` di halaman.
+   - Selector ID: #header memilih elemen dengan id="header".
+   - Selector Kelas: .important memilih semua elemen dengan class="important".
+   - Selector Kombinasi: h2.special memilih elemen `<h2>` dengan class="special".
+2. Properti: Properti adalah atribut atau karakteristik yang ingin kita ubah pada elemen yang dipilih. Setiap properti mendefinisikan apa yang akan diubah, seperti warna teks, ukuran font, margin, dan banyak lainnya. Contoh properti:
+   - color: Mengatur warna teks.
+   - font-size: Mengatur ukuran font.
+   - margin: Mengatur margin elemen.
+   - background-color: Mengatur warna latar belakang.
+3. Nilai: Nilai adalah nilai konkret yang diberikan kepada properti yang ingin diubah. Nilai-nilai ini bervariasi tergantung pada properti yang digunakan. Contoh-nilai termasuk:
+   - Untuk properti color: Nilai bisa berupa nama warna (misalnya, red, blue) atau - kode warna (misalnya, #FF0000).
+   - Untuk properti font-size: Nilai bisa berupa ukuran dalam piksel (misalnya, 16px) atau ukuran dalam em (misalnya, 1.2em).
+4. Aturan Gaya: Aturan gaya adalah keseluruhan struktur yang terdiri dari selector, properti, dan nilai. Ini digunakan untuk memberi tahu browser bagaimana mengubah tampilan elemen yang dipilih. Aturan gaya ditulis di dalam blok {}. Contoh aturan gaya:
+
+```css copy
+p {
+  color: blue;
+  font-size: 16px;
+}
+```
+
+Di sini, p adalah selector, color dan font-size adalah properti, dan blue dan 16px adalah nilai.
+
+5. Komentar: Komentar adalah bagian opsional dalam CSS yang memungkinkan kita menambahkan catatan atau penjelasan dalam kode CSS kita. Komentar dimulai dengan `/*` dan diakhiri dengan `*/`. Contoh:
+
+```css copy
+/* Ini adalah komentar CSS */
+p {
+  color: red;
+}
+```
+
+Struktur dalam CSS ini membantu kita mengorganisasi dan mendefinisikan gaya halaman web kita dengan cara yang terstruktur dan mudah dibaca. Dengan menguasai cara menggunakan selector, properti, dan nilai, kita dapat mengubah tampilan elemen HTML sesuai kebutuhan, memberikan desain yang konsisten dan menarik pada halaman web kita.
+
+## Cara Menggunakan CSS
+
+### External CSS
+
+Ini melibatkan pembuatan file CSS terpisah yang ditempatkan di luar file HTML. Kita menghubungkan file CSS eksternal ini ke halaman HTML kita dengan menggunakan tag `<link>`. Ini adalah cara yang paling umum digunakan karena memungkinkan penggunaan ulang kode CSS pada banyak halaman.
+
+```css copy
+/* style.css */
+h1 {
+  color: red;
+  font-size: 24px;
+  text-align: center;
+}
+```
+
+```html copy
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <!-- Konten HTML -->
+  </body>
+</html>
+```
+
+### Internal CSS
+
+Internal CSS ditempatkan di dalam tag `<style>` yang berada di dalam elemen `<head>` halaman HTML. Ini berguna ketika kita ingin menggunakan gaya hanya untuk satu halaman web tertentu.
+
+```html copy
+<!doctype html>
+<html>
+  <head>
+    <style>
+      /* CSS di sini */
+    </style>
+  </head>
+  <body>
+    <!-- Konten HTML -->
+  </body>
+</html>
+```
+
+### Inline CSS
+
+Ini diterapkan secara langsung pada elemen HTML tertentu menggunakan atribut `style`. Ini berguna jika kita ingin mengatur tampilan elemen individual.
+
+```html copy
+<p style="color: blue; font-size: 16px;">Ini adalah teks berwarna biru.</p>
+```
+
+```html copy
+<p style="background-color: yellow; padding: 10px;">
+  Ini adalah teks dengan latar belakang kuning dan padding.
+</p>
+```
+
+## Contoh Penerapan CSS
+
+Berikut adalah contoh beberapa properti CSS yang umum digunakan:
+
+- Contoh 1: Mengubah Warna Teks
+
+```css copy
+p {
+  color: blue;
+}
+```
+
+- Contoh 2: Mengatur Padding dan Margin
+
+```css copy
+div {
+  padding: 10px;
+  margin: 20px;
+}
+```
+
+- Contoh 3: Mengubah Ukuran Font
+
+```css copy
+h1 {
+  font-size: 24px;
+}
+```
+
+- Contoh 4: Menyembunyikan Elemen
+
+```css copy
+#hidden-element {
+  display: none;
+}
+```
+
+- Contoh 5: Mengubah Warna Latar Belakang
+
+```css copy
+body {
+  background-color: #f0f0f0;
+}
+```
+
+- Contoh 6: Memilih Beberapa Element Sekaligus
+
+```css copy
+p,
+li,
+h1 {
+  color: red;
+}
+```
+
+Dan masih banyak lagi yang bisa digunakan terkait CSS, selengkapnya disini
+
+## Selector pada CSS
+
+Selector digunakan untuk memilih elemen HTML yang akan diberi style. Ada banyak jenis selector, termasuk:
+
+- Selector Elemen: Ini memilih elemen berdasarkan jenisnya, seperti p untuk paragraf.
+
+- Selector ID: Ini memilih elemen berdasarkan atribut id. Contoh: #header akan memilih elemen dengan id="header".
+
+- Selector Kelas: Ini memilih elemen berdasarkan atribut class. Contoh: .important akan memilih semua elemen dengan class="important".
+
+- Selector Kombinasi: Kita dapat menggabungkan seleksi. Misalnya, h2.special akan memilih elemen h2 dengan class="special".
+
+- Selector Turunan: Ini memungkinkan kita memilih elemen yang ada dalam elemen lain. Misalnya, ul li akan memilih semua elemen li yang berada dalam elemen ul.
+
+- Selector Pseudokelas dan Pseudoelemen: Ini digunakan untuk menambahkan gaya ke elemen berdasarkan keadaan tertentu. Misalnya, a:hover akan memilih tautan yang sedang dihover oleh pengguna.
+
+## Media Query dan Responsive Design
+
+Media query adalah aturan CSS yang memungkinkan kita mengubah tampilan dan perilaku elemen HTML berdasarkan karakteristik perangkat atau lingkungan tampilan. Ini dapat digunakan untuk membuat desain web responsif yang beradaptasi dengan baik pada berbagai perangkat, mulai dari desktop hingga ponsel.
+
+Aturan media query terdiri dari dua bagian utama: media type dan media feature.
+
+- Media Type: Ini mengacu pada tipe perangkat atau lingkungan tampilan, seperti screen (layar), print (cetak), atau speech (suara).
+- Media Feature: Ini adalah karakteristik perangkat atau tampilan yang ingin kita sasar, seperti lebar layar, tinggi layar, orientasi, dan lain-lain. Contoh aturan media query:
+
+```css copy
+@media screen and (max-width: 768px) {
+  /* Styles yang akan diterapkan jika lebar layar kurang dari atau sama dengan 768px */
+}
+```
+
+### Menambahkan Media Query ke Stylesheet
+
+Untuk menggunakan media query dalam CSS, kita harus menambahkannya ke dalam stylesheet. Ini dapat dilakukan dengan cara berikut:
+
+```css copy
+/* CSS biasa */
+body {
+  background-color: #f0f0f0;
+  font-size: 16px;
+}
+
+/* Media query untuk layar berukuran kecil */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+```
+
+### Contoh Penggunaan Media Query
+
+Berikut adalah contoh penggunaan media query untuk mengubah tampilan situs web responsif:
+
+```css copy
+/* Default style */
+body {
+  font-size: 16px;
+}
+
+/* Media query untuk perangkat dengan lebar layar kurang dari 768px */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  /* Menyembunyikan sidebar atau mengubah tata letak */
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Media query untuk perangkat dengan lebar layar lebih dari 1200px */
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+  /* Mengubah tata letak elemen lain */
+  .header {
+    padding: 30px;
+  }
+}
+```
+
+## Kesimpulan
+
+Dengan memahami CSS, kita dapat mengendalikan tampilan dan presentasi halaman web dengan lebih baik. Kita telah belajar tentang penggunaan eksternal, internal, dan inline CSS, serta berbagai jenis selector yang dapat digunakan untuk memilih elemen. Dengan pengetahuan ini, kita dapat meningkatkan kemampuan desain web kita dan memberikan pengalaman pengguna yang lebih baik.
