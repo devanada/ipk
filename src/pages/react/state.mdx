@@ -1,0 +1,81 @@
+---
+title: "React State"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+# React | State
+
+## Overview
+
+React State adalah salah satu konsep fundamental dalam pengembangan aplikasi React. Ini adalah salah satu alat yang paling penting yang memungkinkan kita untuk mengelola dan menyimpan data yang dapat berubah selama siklus hidup aplikasi React. Pada sub bab ini, kita akan memberikan gambaran tentang apa yang akan dibahas dalam modul ini, serta pentingnya pemahaman React State dalam pengembangan React.
+
+## Pengertian State
+
+State dalam React adalah objek JavaScript yang digunakan untuk menyimpan data yang akan berubah selama siklus hidup komponen. Ini memungkinkan komponen untuk "mengingat" informasi, dan ketika data berubah, komponen akan diperbarui ulang secara otomatis.
+
+State dapat didefinisikan sebagai data yang dimiliki oleh suatu komponen. Dalam React, state sering digunakan untuk menyimpan informasi yang dapat berubah seiring berjalannya waktu atau sebagai respons terhadap interaksi pengguna. State lebih sering digunakan pada komponen yang memiliki dinamika perubahan data, seperti form, counter, atau kondisi tampilan.
+
+## Kenapa State itu Penting dalam React?
+
+State sangat penting dalam pengembangan aplikasi dengan React karena memungkinkan komponen untuk memiliki perubahan dinamis dan responsif terhadap interaksi pengguna. Dengan menggunakan state, kita dapat mengupdate tampilan komponen secara otomatis ketika data berubah, tanpa harus melakukan reload halaman secara keseluruhan. Berikut beberapa alasan mengapa state sangat penting dalam pengembangan React:
+
+- Memungkinkan pengelolaan data dinamis.
+- Memungkinkan aplikasi untuk bereaksi terhadap perubahan data.
+- Mengoptimalkan kinerja dengan pembaruan terfokus.
+
+## State untuk Class Component dan Functional Component
+
+Dalam React, terdapat dua jenis komponen: class component dan functional component. Baik class component maupun functional component dapat memiliki state.
+
+### Menggunakan State pada Class Component
+
+Class component menggunakan this.state untuk mengelola state. Ini adalah cara tradisional dalam React sebelum Hooks diperkenalkan.
+
+```jsx copy
+import React, { Component } from "react";
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+### Menggunakan State pada Functional Component
+
+Functional component menggunakan Hook seperti useState untuk mengelola state. Ini adalah pendekatan yang lebih modern dan disarankan untuk pengembangan React saat ini.
+
+```jsx copy
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+## Kesimpulan
+
+Dalam modul ini, kita telah memahami penggunaan React State, pengertian state, dan mengapa state sangat penting dalam pengembangan React. Kita juga telah melihat perbedaan antara penggunaan state dalam class component dan functional component, serta contoh implementasinya. Dengan pemahaman tentang state, Kamu dapat membangun aplikasi React yang lebih dinamis dan responsif. State adalah salah satu konsep kunci yang memungkinkan Kamu menghasilkan pengalaman pengguna yang lebih baik dalam aplikasi Kamu.

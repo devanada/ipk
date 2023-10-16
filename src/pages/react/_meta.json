@@ -1,5 +1,7 @@
 {
-    "intro": "Intro",
-    "global-state": "Global State",
-    "deployment": "Deployment"
+  "intro": "Intro",
+  "state": "State",
+  "props": "Props",
+  "global-state": "Global State",
+  "deployment": "Deployment"
 }
