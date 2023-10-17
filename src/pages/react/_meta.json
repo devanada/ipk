@@ -1,5 +1,6 @@
 {
   "intro": "Intro",
+  "component": "Component",
   "state": "State",
   "props": "Props",
   "global-state": "Global State",
