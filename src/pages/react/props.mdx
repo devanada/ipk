@@ -66,13 +66,11 @@ Props dan State adalah dua konsep yang penting dalam React, tetapi mereka memili
 
 Meskipun Props memiliki banyak kelebihan, ada beberapa kekurangan yang perlu kita pertimbangkan:
 
-1. **Prospering Prop Drilling**: Ketika aplikasi kita memiliki banyak tingkatan komponen di dalam hirarki, penggunaan props untuk mengirim data dari komponen ke komponen bisa menjadi rumit dan memakan waktu. Ini dikenal sebagai "prop drilling," dan dapat membuat kode menjadi sulit dipahami.
+1. **Prop Drilling**: Ketika aplikasi kita memiliki banyak tingkatan komponen di dalam hirarki, penggunaan props untuk mengirim data dari komponen ke komponen bisa menjadi rumit dan memakan waktu. Ini dikenal sebagai "prop drilling," dan dapat membuat kode menjadi sulit dipahami.
 
-2. **Read-Only Nature**: Props adalah read-only, yang berarti kita tidak dapat mengubah nilai prop langsung di dalam komponen anak. Jika kita perlu mengubah data, kita harus memperbarui data di komponen "induk" dan mengirimkannya lagi ke komponen anak.
+2. **Read-Only**: Props adalah read-only, yang berarti kita tidak dapat mengubah nilai prop langsung di dalam komponen anak. Jika kita perlu mengubah data, kita harus memperbarui data di komponen "induk" dan mengirimkannya lagi ke komponen anak.
 
 3. **Kompleksitas Codebase**: Dalam aplikasi yang sangat besar, penggunaan props untuk mengirim data ke komponen dapat menghasilkan banyak prop yang harus dikelola, yang dapat meningkatkan kompleksitas codebase.
-
-4. **Kinerja**: Mengirimkan props secara berlebihan ke komponen dapat mempengaruhi kinerja aplikasi, terutama jika data yang dikirimkan sangat besar.
 
 ```mermaid
 graph TD
@@ -140,6 +138,52 @@ export default App;
 
 Pada kedua contoh di atas, kita mengirimkan prop name dari komponen App ke komponen Greeting untuk menampilkan pesan salam.
 
+## Implementasi Default Props Sebagai Nilai Awal
+
+Dalam React, default props adalah cara untuk memberikan nilai default kepada prop komponen jika prop tersebut tidak disediakan oleh komponen induk. Ini memungkinkan komponen untuk bekerja dengan baik bahkan jika prop tertentu tidak diatur atau ditulis pada komponen induk.
+
+- Functional Component
+
+```jsx copy
+import React from "react";
+
+function GreetingFunctional({ name = "Guest" }) {
+  return (
+    <div>
+      <p>Hello, {name}!</p>
+    </div>
+  );
+}
+
+export default GreetingFunctional;
+```
+
+Dalam contoh di atas, kami menggunakan destructuring dalam parameter fungsi komponen untuk mengambil prop name dan sekaligus memberikan nilai default "Guest" jika prop tersebut tidak diberikan.
+
+- Class Component
+
+```jsx copy
+import React, { Component } from "react";
+
+class GreetingClass extends Component {
+  render() {
+    const { name = "Guest" } = this.props;
+
+    return (
+      <div>
+        <p>Hello, {name}!</p>
+      </div>
+    );
+  }
+}
+
+export default GreetingClass;
+```
+
+Pada contoh di atas, kita menggunakan destructuring dalam metode render dari komponen kelas untuk mengambil nilai name dari prop dan memberikan nilai default "Guest" jika tidak ada prop name yang diberikan.
+
+Dengan diterapkannya default props memungkinkan kita untuk membuat komponen React yang lebih reusable dan lebih mudah untuk dirubah bahkan jika prop tertentu tidak disediakan oleh komponen induk.
+
 ## Kesimpulan
 
-Dalam modul pembelajaran ini, kita telah menjelaskan konsep React Props yang penting dalam pengembangan aplikasi React. Props memungkinkan kita untuk mengirim data antar komponen, membuat komponen yang dapat digunakan kembali, dan memungkinkan komunikasi antar komponen. Kita juga memahami perbedaan antara Props dan State serta melihat contoh implementasinya dalam class component dan functional component. Selain itu, kita juga mengevaluasi kekurangan dari penggunaan Props untuk membantu Anda memahami kapan dan bagaimana menggunakan props dengan bijak. Teruslah berlatih dan eksplorasi lebih lanjut!
+Dalam modul pembelajaran ini, kita telah menjelaskan konsep React Props yang penting dalam pengembangan aplikasi React. Props memungkinkan kita untuk mengirim data antar komponen, membuat komponen yang dapat digunakan kembali, dan memungkinkan komunikasi antar komponen. Kita juga memahami perbedaan antara Props dan State serta melihat contoh implementasinya dalam class component dan functional component. Selain itu, kita juga mengevaluasi kekurangan dari penggunaan Props untuk membantu Anda memahami kapan dan bagaimana menggunakan props dengan bijak.

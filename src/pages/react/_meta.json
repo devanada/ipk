@@ -3,6 +3,7 @@
   "component": "Component",
   "state": "State",
   "props": "Props",
+  "event-handling": "Event Handling",
   "global-state": "Global State",
   "deployment": "Deployment"
 }

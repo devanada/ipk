@@ -76,6 +76,50 @@ function Counter() {
 export default Counter;
 ```
 
+## Hal Yang Harus Diperhatikan Terkait State
+
+Dalam React, state mengacu pada data yang digunakan dalam komponen untuk mengontrol perilakunya dan menampilkan perubahan. State digunakan untuk mengatur dan menyimpan informasi yang dapat berubah seiring waktu. Ada beberapa hal yang harus diperhatikan ketika menggunakan State, yaitu:
+
+- **Props vs. State**: Props adalah data yang diberikan ke komponen sebagai argumen, sementara state adalah data internal komponen yang dapat berubah. Perbedaan utama adalah bahwa state dapat diubah, sementara props tidak bisa.
+
+- **Penting untuk Perubahan UI**: State sangat penting ketika Anda ingin mengubah tampilan komponen atau mengatur perilaku berdasarkan interaksi pengguna, data dinamis, atau peristiwa lainnya.
+
+- **Merubah state**: State hanya dapat diubah menggunakan `updater` seperti `setState()`. Ini adalah metode asinkron yang memicu pembaharuan ulang komponen. React akan memeriksa perubahan state dan menggabungkan perubahan tersebut ke dalam virtual DOM untuk memutuskan apa yang harus diperbarui di tampilan aktual. Manipulasi langsung terhadap state, seperti `this.state.counter = 5` atau `counter = 5`, tidak akan memicu pembaruan tampilan.
+
+- **Asynchronous**: Updater pada state merupakan proses yang terjadi secara asynchronous, karena React melakukan optimisasi dan pengelolaan perubahan state secara efisien untuk meminimalkan biaya komputasi dan memaksimalkan kinerja. Hal ini dapat dimengerti melalui beberapa alasan:
+
+  1.  Batching Perubahan: React mengumpulkan beberapa pembaruan state yang dipicu dalam satu siklus pembaruan dan mengeksekusinya dalam satu batch, bukan secara segera. Hal ini membantu menghindari pembaruan berlebih dan meningkatkan kinerja.
+
+  2.  Pengoptimalan Pembaruan: React dapat menggabungkan beberapa perubahan state ke dalam satu perubahan jika mereka terjadi dalam waktu yang cukup dekat. Ini mengurangi jumlah pembaruan tampilan yang perlu dilakukan, menghemat waktu komputasi.
+
+  3.  Async untuk Menghindari Deadlock: Perubahan state yang sifatnya asinkron membantu menghindari masalah deadlock yang dapat terjadi jika pembaruan state dilakukan secara langsung dalam mode sinkron. Ini memungkinkan React untuk mengeksekusi perubahan state ketika diperlukan, misalnya, ketika ada waktu luang dalam siklus render.
+
+  4.  Optimasi Kinerja: Dengan menggabungkan perubahan state dalam batch dan menjalankannya secara asinkron, React dapat menghindari pembaruan tampilan yang tidak perlu, sehingga meningkatkan kinerja aplikasi.
+
+```jsx copy
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function incrementCount() {
+    setCount(count + 1);
+    console.log(count); // 0
+  }
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => incrementCount()}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+Dari contoh kode diatas, nilai state yang sudah kita rubah setelah menggunakan updater tidak akan bisa digunakan secara langsung dalam satu proses yang sama karena sifatnya yang asynchronous, menjadikan keluaran dari console.log akan tetap menampilkan nilai 0 daripada 1.
+
 ## Kesimpulan
 
 Dalam modul ini, kita telah memahami penggunaan React State, pengertian state, dan mengapa state sangat penting dalam pengembangan React. Kita juga telah melihat perbedaan antara penggunaan state dalam class component dan functional component, serta contoh implementasinya. Dengan pemahaman tentang state, Kamu dapat membangun aplikasi React yang lebih dinamis dan responsif. State adalah salah satu konsep kunci yang memungkinkan Kamu menghasilkan pengalaman pengguna yang lebih baik dalam aplikasi Kamu.

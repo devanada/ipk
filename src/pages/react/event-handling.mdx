@@ -1,0 +1,103 @@
+---
+title: "React Event Handling"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+# React | Event Handling
+
+## Overview
+
+React adalah salah satu perpustakaan JavaScript yang sangat populer untuk membangun antarmuka pengguna yang dinamis dan responsif. Salah satu fitur kunci dalam pengembangan aplikasi React adalah kemampuannya untuk menangani peristiwa atau event handling. Event handling adalah cara kita mengelola interaksi pengguna dengan antarmuka aplikasi kita. Dalam konteks React, ini mencakup semua tindakan yang dilakukan oleh pengguna, seperti mengklik tombol, mengisi formulir, atau menggulir halaman.
+
+Dalam React, event handling memungkinkan kita untuk merespons peristiwa tersebut dengan mengubah tampilan atau perilaku komponen React. Contoh kasus penggunaan event handling meliputi validasi formulir, tindakan setelah mengklik tombol, atau menampilkan dan menyembunyikan elemen berdasarkan tindakan pengguna. Event handling sangat penting dalam membangun aplikasi React yang interaktif dan dinamis.
+
+## Pengertian Event Handling
+
+Pengertian Event Handling dalam konteks React adalah kemampuan untuk mendengarkan, merespons, dan mengelola peristiwa atau tindakan yang dilakukan oleh pengguna pada komponen React. Event handling memungkinkan kita untuk menjalankan fungsi atau metode tertentu ketika peristiwa tertentu terjadi. Dalam React, peristiwa ini dapat berupa tindakan seperti mengklik tombol, mengisi formulir, menekan tombol keyboard, atau bahkan mengarahkan kursor mouse.
+
+Event handling pada dasarnya melibatkan penggunaan fungsi atau metode yang dipanggil ketika peristiwa tertentu terjadi. React menyediakan mekanisme untuk menghubungkan event handling dengan elemen antarmuka pengguna sehingga kita dapat merespons tindakan pengguna dengan mudah.
+
+## Kenapa Harus Menerapkan Event Handling
+
+Mengapa harus menerapkan event handling dalam pengembangan aplikasi React? Ini adalah pertanyaan yang relevan. Ada beberapa alasan kuat mengapa event handling sangat penting:
+
+1. Interaktivitas
+   Event handling memungkinkan aplikasi kita menjadi interaktif. Dengan merespons tindakan pengguna, aplikasi kita dapat memberikan pengalaman yang lebih menarik dan mudah digunakan.
+
+2. Validasi Data
+   Event handling memungkinkan kita untuk memvalidasi data yang dimasukkan oleh pengguna, misalnya dalam formulir. Kita dapat menampilkan pesan kesalahan atau mencegah pengiriman data yang tidak valid.
+
+3. Perubahan Dinamis
+   Event handling memungkinkan kita untuk mengubah tampilan atau perilaku komponen secara dinamis. Misalnya, kita dapat menampilkan atau menyembunyikan elemen berdasarkan tindakan pengguna.
+
+4. Pengalaman Pengguna yang Lebih Baik
+   Dengan mengimplementasikan event handling, kita dapat meningkatkan pengalaman pengguna. Aplikasi yang merespons cepat terhadap tindakan pengguna cenderung lebih memuaskan.
+
+## Contoh Penerapan Event Handling
+
+Selanjutnya, kita akan melihat contoh penerapan event handling pada kedua jenis komponen utama dalam React, yaitu komponen fungsional (functional components) dan komponen kelas (class components).
+
+### Penerapan Event Handling pada Functional Component
+
+Functional component adalah jenis komponen yang berbasis fungsi. Untuk menerapkan event handling pada komponen fungsional, kita dapat menggunakan hook seperti `useState` dan `useEffect`. Berikut adalah contoh penggunaan event handling pada komponen fungsional:
+
+```jsx copy
+import React, { useState } from "react";
+
+function FunctionalComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Nilai Count: {count}</p>
+      <button onClick={handleIncrement}>Tambah</button>
+    </div>
+  );
+}
+
+export default FunctionalComponent;
+```
+
+Pada contoh di atas, kita menggunakan hook useState untuk mengelola keadaan (state) komponen. Ketika tombol "Tambah" diklik, fungsi handleIncrement dipanggil untuk mengubah nilai count.
+
+### Penerapan Event Handling pada Class Component
+
+Class component adalah jenis komponen yang berbasis kelas. Event handling pada class component melibatkan mendefinisikan metode event handling di dalam kelas komponen. Berikut adalah contoh penggunaan event handling pada komponen kelas:
+
+```jsx copy
+import React, { Component } from "react";
+
+class ClassComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Nilai Count: {this.state.count}</p>
+        <button onClick={this.handleIncrement}>Tambah</button>
+      </div>
+    );
+  }
+}
+
+export default ClassComponent;
+```
+
+Pada contoh di atas, kita mendefinisikan metode handleIncrement di dalam kelas ClassComponent. Metode ini digunakan untuk mengubah nilai count saat tombol "Tambah" diklik.
+
+## Kesimpulan
+
+Dalam modul ini, kita telah membahas event handling dalam konteks React. Event handling memungkinkan kita untuk merespons peristiwa atau tindakan pengguna dengan merubah tampilan atau perilaku komponen React. Hal ini penting untuk membuat aplikasi React yang interaktif, responsif, dan memuaskan bagi pengguna.
+
+Kita juga telah melihat contoh penerapan event handling pada komponen fungsional dan komponen kelas. Baik komponen fungsional maupun komponen kelas dapat digunakan untuk mengelola event handling, dan kita dapat memilih metode yang sesuai dengan kebutuhan proyek kita.
