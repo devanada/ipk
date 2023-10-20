@@ -3,6 +3,7 @@
   "component": "Component",
   "state": "State",
   "props": "Props",
+  "data-fetch": "Data Fetch",
   "event-handling": "Event Handling",
   "global-state": "Global State",
   "deployment": "Deployment"
