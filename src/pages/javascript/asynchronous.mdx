@@ -51,7 +51,7 @@ JavaScript memiliki beberapa sintaks untuk mengimplementasikan kode asynchronous
 
 Sebagai contoh, kita akan melihat penggunaan XMLHttpRequest dalam JavaScript untuk melakukan permintaan ke server secara asynchronous. Berikut adalah contoh sintaks:
 
-```javascript
+```javascript copy
 function fetchData(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
@@ -80,7 +80,7 @@ Gagasan di balik callback functions adalah bahwa kita memberikan fungsi sebagai 
 
 Berikut adalah contoh sederhana untuk memahami penggunaan callback functions:
 
-```javascript
+```javascript copy
 // Fungsi async yang mengambil data dari server simulasi
 function fetchDataFromServer(callback) {
   setTimeout(function () {
@@ -111,7 +111,7 @@ Setelah 2 detik (simulasi waktu pengambilan data), data diterima, dan callback p
 
 Callback hell, juga dikenal sebagai "Pyramid of Doom," terjadi ketika kita memiliki banyak callback bersarang dalam kode JavaScript, yang membuatnya sulit dibaca dan dikelola.
 
-```javascript
+```javascript copy
 function loadDataFromServer(callback) {
   setTimeout(function () {
     const data = "Data dari server";
@@ -154,11 +154,32 @@ Saat bekerja dengan asynchronous code dalam JavaScript, callback hell adalah mas
 
 Untungnya, JavaScript menyediakan solusi yang elegan untuk mengatasi callback hell, yaitu menggunakan Promise. Sebuah Promise adalah objek yang merepresentasikan sebuah nilai yang mungkin belum tersedia saat fungsi asynchronus sedang dieksekusi. Dengan menggunakan Promise, kita dapat mengubah kodisi callback menjadi kode berurutan yang lebih mudah dibaca dan dipelihara.
 
+```mermaid
+---
+title: Promise States
+---
+flowchart LR
+    A(Promise)
+    B[".then(onFulfillment)"]
+    C[".then(onFulfillment)\n.catch(onRejection)"]
+    D[async action]
+    E[error handling]
+    F(Promise)
+    G[".then()\n.catch()"]
+
+    A --fulfill--> B
+    A --reject--> C
+    B --> D
+    B & C--return--> F
+    C --> E
+    F --> G
+```
+
 Promise memiliki tiga status: pending (sedang menunggu), fulfilled (berhasil), dan rejected (gagal). Ketika sebuah promise berhasil atau gagal, kita dapat menentukan tindakan apa yang harus dilakukan selanjutnya menggunakan metode .then() untuk handle kasus berhasil dan .catch() untuk handle kasus gagal.
 
 Berikut contoh penggunaan Promise dalam mengubah callback hell menjadi kode berurutan:
 
-```javascript
+```javascript copy
 function loadDataFromServer() {
   return new Promise(function (resolve, reject) {
     setTimeout(function () {
