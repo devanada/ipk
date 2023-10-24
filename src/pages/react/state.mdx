@@ -31,7 +31,7 @@ Dalam React, terdapat dua jenis komponen: class component dan functional compone
 
 Class component menggunakan this.state untuk mengelola state. Ini adalah cara tradisional dalam React sebelum Hooks diperkenalkan.
 
-```jsx copy
+```jsx copy showLineNumbers filename="counter.jsx"
 import React, { Component } from "react";
 
 class Counter extends Component {
@@ -59,7 +59,7 @@ export default Counter;
 
 Functional component menggunakan Hook seperti useState untuk mengelola state. Ini adalah pendekatan yang lebih modern dan disarankan untuk pengembangan React saat ini.
 
-```jsx copy
+```jsx copy showLineNumbers filename="counter.jsx"
 import React, { useState } from "react";
 
 function Counter() {
@@ -96,7 +96,7 @@ Dalam React, state mengacu pada data yang digunakan dalam komponen untuk mengont
 
   4.  Optimasi Kinerja: Dengan menggabungkan perubahan state dalam batch dan menjalankannya secara asinkron, React dapat menghindari pembaruan tampilan yang tidak perlu, sehingga meningkatkan kinerja aplikasi.
 
-```jsx copy
+```jsx copy showLineNumbers filename="counter.jsx"
 import React, { useState } from "react";
 
 function Counter() {

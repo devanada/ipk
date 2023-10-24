@@ -81,8 +81,7 @@ Sebelum kita dapat mulai menggunakan React Router, kita perlu menginstalnya. Rea
 
 Buat file baru `index.jsx` pada folder `routes` untuk menampung routes yang kita buat untuk project kita. Tambahkan `<RouterProvider>` dan `createBrowserRouter` ke dalam komponen utama aplikasi kita dan tentukan rute-rute yang sesuai dengan komponen-komponen yang ingin ditampilkan.
 
-```jsx copy
-// src/routes/index.jsx
+```jsx copy showLineNumbers filename="src/routes/index.jsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 export default function Router() {
@@ -94,8 +93,7 @@ export default function Router() {
 
 Setelah itu, import file yang terdapat pada `src/routes/index.jsx` kedalam file entry point `main.jsx` yang ada didalam folder `src`, dan tambahkan didalam `<React.StrictMode>`
 
-```jsx copy
-// src/main.jsx
+```jsx copy showLineNumbers filename="src/main.jsx" {4,8}
 import ReactDOM from "react-dom/client";
 import React from "react";
 
@@ -112,8 +110,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 Buat komponen-komponen untuk setiap halaman yang ingin kita tampilkan. Ini bisa berupa komponen fungsional atau kelas.
 
-```jsx copy
-// src/pages/index.jsx
+```jsx copy showLineNumbers filename="src/pages/index.jsx"
 import { Link } from "react-router-dom";
 
 export default function Index() {
@@ -126,8 +123,7 @@ export default function Index() {
 }
 ```
 
-```jsx copy
-// src/pages/about.jsx
+```jsx copy showLineNumbers filename="src/pages/about.jsx"
 import { useNavigate } from "react-router-dom";
 
 export default function About() {
@@ -144,10 +140,13 @@ export default function About() {
 
 **Langkah 4: Menyusun Komponen**
 
-Tambahkan halaman-halaman yang sudah kita buat pada langkah sebelumnya kedalam file `src/routes/index.jsx`, lalu buat object didalam `createBrowserRouter([])` untuk menambahkan route baru pada website kita. Tentukan `path` sesuai dengan keinginan kita (pastikan ikuti [best practice](#best-practice-menentukan-path-dalam-router))
+Tambahkan halaman-halaman yang sudah kita buat pada langkah sebelumnya kedalam file `src/routes/index.jsx`, lalu buat object didalam `createBrowserRouter([])` untuk menambahkan route baru pada website kita. Tentukan `path` sesuai dengan keinginan kita (pastikan ikuti [best practice](#best-practice-menentukan-path-dalam-router)).
 
-```jsx copy
-// src/routes/index.jsx
+Jangan lupa untuk menambahkan error page pada path `"*"` agar pengguna diperlihatkan halaman `404 page not found` sebagai penanda bahwa path yang pengguna akses tidak ditemukan atau tidak ada. Kalian juga bisa membuat sebuah halaman tersendiri untuk menampilkan halaman error ini.
+
+```jsx copy showLineNumbers filename="src/routes/index.jsx" {3-4,8-19}
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Home from "../pages";
 import AboutUs from "../pages/about";
 

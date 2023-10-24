@@ -58,7 +58,7 @@ Struktur dalam CSS ini membantu kita mengorganisasi dan mendefinisikan gaya hala
 
 Ini melibatkan pembuatan file CSS terpisah yang ditempatkan di luar file HTML. Kita menghubungkan file CSS eksternal ini ke halaman HTML kita dengan menggunakan tag `<link>`. Ini adalah cara yang paling umum digunakan karena memungkinkan penggunaan ulang kode CSS pada banyak halaman.
 
-```css copy
+```css copy showLineNumbers filename="style.css"
 /* style.css */
 h1 {
   color: red;
@@ -67,7 +67,7 @@ h1 {
 }
 ```
 
-```html copy
+```html copy showLineNumbers filename="index.html"
 <!doctype html>
 <html>
   <head>
@@ -83,7 +83,7 @@ h1 {
 
 Internal CSS ditempatkan di dalam tag `<style>` yang berada di dalam elemen `<head>` halaman HTML. Ini berguna ketika kita ingin menggunakan gaya hanya untuk satu halaman web tertentu.
 
-```html copy
+```html copy showLineNumbers filename="index.html"
 <!doctype html>
 <html>
   <head>
@@ -203,7 +203,7 @@ Aturan media query terdiri dari dua bagian utama: media type dan media feature.
 
 Untuk menggunakan media query dalam CSS, kita harus menambahkannya ke dalam stylesheet. Ini dapat dilakukan dengan cara berikut:
 
-```css copy
+```css copy showLineNumbers
 /* CSS biasa */
 body {
   background-color: #f0f0f0;
@@ -222,7 +222,7 @@ body {
 
 Berikut adalah contoh penggunaan media query untuk mengubah tampilan situs web responsif:
 
-```css copy
+```css copy showLineNumbers
 /* Default style */
 body {
   font-size: 16px;

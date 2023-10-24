@@ -51,7 +51,7 @@ Contoh penggunaan metode GET dengan fetch:
 
 <Tabs items={["Fetch API", "axios"]}>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     fetch("https://api.example.com/posts", {
         method: "GET",
     })
@@ -61,7 +61,7 @@ Contoh penggunaan metode GET dengan fetch:
     ```
   </Tab>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     axios
         .get("https://api.example.com/posts")
         .then((response) => console.log(response.data))
@@ -76,7 +76,7 @@ Contoh penggunaan metode POST dengan axios:
 
 <Tabs items={["Fetch API", "axios"]}>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     fetch("https://api.example.com/posts", {
         method: "POST",
         body: JSON.stringify({
@@ -90,7 +90,7 @@ Contoh penggunaan metode POST dengan axios:
     ```
   </Tab>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     axios
         .post("https://api.example.com/posts", {
             title: "Judul Posting",
@@ -108,7 +108,7 @@ Contoh penggunaan metode PUT dengan fetch:
 
 <Tabs items={["Fetch API", "axios"]}>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     fetch("https://api.example.com/posts/123", {
         method: "PUT",
         body: JSON.stringify({
@@ -121,7 +121,9 @@ Contoh penggunaan metode PUT dengan fetch:
     ```
   </Tab>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
+    import axios from "axios"
+
     axios
         .put("https://api.example.com/posts/123", {
             title: "Judul yang Diperbarui",
@@ -129,6 +131,7 @@ Contoh penggunaan metode PUT dengan fetch:
         .then((response) => console.log("Data berhasil diperbarui"))
         .catch((error) => console.log(error));
     ```
+
   </Tab>
 </Tabs>
 
@@ -138,7 +141,7 @@ Contoh penggunaan metode DELETE dengan axios:
 
 <Tabs items={["Fetch API", "axios"]}>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
     fetch("https://api.example.com/posts/123", {
         method: "DELETE",
     })
@@ -148,7 +151,9 @@ Contoh penggunaan metode DELETE dengan axios:
     ```
   </Tab>
   <Tab>
-    ```javascript copy
+    ```javascript copy showLineNumbers
+    import axios from "axios"
+    
     axios
         .delete("https://api.example.com/posts/123")
         .then((response) => console.log("Data berhasil dihapus"))
@@ -165,7 +170,7 @@ Masing-masing dari metode ini digunakan sesuai kebutuhan aplikasi kita. Sekarang
 
 Fetch API adalah cara bawaan untuk melakukan data fetching dalam JavaScript. Berikut adalah contoh penggunaan Fetch API untuk mengambil daftar posting dari server:
 
-```javascript copy
+```javascript copy showLineNumbers
 fetch("https://api.example.com/posts")
   .then((response) => response.json())
   .then((data) => {
@@ -181,7 +186,9 @@ fetch("https://api.example.com/posts")
 
 Axios adalah pustaka JavaScript yang populer untuk melakukan data fetching. Ini menyediakan antarmuka yang mudah digunakan dan memiliki banyak fitur yang berguna. Berikut adalah contoh penggunaan Axios untuk mengambil data pengguna dari server:
 
-```javascript copy
+```javascript copy showLineNumbers
+import axios from "axios";
+
 axios
   .get("https://api.example.com/users/123")
   .then((response) => {

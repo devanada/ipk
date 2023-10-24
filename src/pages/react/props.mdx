@@ -15,7 +15,7 @@ Props adalah singkatan dari "properties," yang merupakan mekanisme penting dalam
 
 Props biasanya didefinisikan sebagai atribut dalam elemen JSX saat kita menggunakan komponen. Misalnya, jika kita memiliki komponen bernama Product dan ingin mengirimkan informasi produk ke dalamnya, kita akan menggunakan props. Berikut adalah contoh sederhana penggunaan props:
 
-```jsx copy
+```jsx copy showLineNumbers filename="products.jsx"
 import React from "react";
 
 function Product(props) {
@@ -100,7 +100,7 @@ Prop drilling dapat menyebabkan kode menjadi sulit dipelihara dan membingungkan.
 
 Kita akan menggunakan class component untuk contoh ini. Berikut adalah contoh implementasi props pada class component:
 
-```jsx copy
+```jsx copy showLineNumbers filename="greeting.jsx"
 import React, { Component } from "react";
 
 class Greeting extends Component {
@@ -122,7 +122,7 @@ export default App;
 
 Sekarang, mari lihat bagaimana kita dapat mengimplementasikan props pada functional component:
 
-```jsx copy
+```jsx copy showLineNumbers filename="greeting.jsx"
 import React from "react";
 
 function Greeting(props) {
@@ -144,7 +144,7 @@ Dalam React, default props adalah cara untuk memberikan nilai default kepada pro
 
 - Functional Component
 
-```jsx copy
+```jsx copy showLineNumbers filename="greeting.jsx"
 import React from "react";
 
 function GreetingFunctional({ name = "Guest" }) {
@@ -162,7 +162,7 @@ Dalam contoh di atas, kami menggunakan destructuring dalam parameter fungsi komp
 
 - Class Component
 
-```jsx copy
+```jsx copy showLineNumbers filename="greeting.jsx"
 import React, { Component } from "react";
 
 class GreetingClass extends Component {

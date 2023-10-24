@@ -17,7 +17,7 @@ Dalam kode, komponen biasanya diimplementasikan sebagai kelas atau fungsi. Kompo
 
 Contoh penggunaan komponen dalam React:
 
-```jsx copy
+```jsx copy showLineNumbers filename="welcome.jsx"
 import React, { Component } from "react";
 
 class Welcome extends Component {
@@ -157,7 +157,7 @@ Mari pertimbangkan contoh kasus di mana kita tidak membuat komponen yang dapat d
 
 ### Tanpa Komponen yang Dapat Digunakan Kembali
 
-```jsx copy
+```jsx copy showLineNumbers filename="products.jsx"
 // ProductDetail.js
 import React from "react";
 
@@ -191,8 +191,7 @@ Ketika kita ingin menampilkan detail produk di tempat lain dalam aplikasi, kita 
 
 Sebaliknya, jika kita membuat komponen yang dapat digunakan kembali, kita bisa menghindari duplikasi kode. Mari kita lihat contoh penggunaan komponen yang dapat digunakan kembali.
 
-```jsx copy
-// Product.js
+```jsx copy showLineNumbers filename="product-detail.jsx"
 import React from "react";
 
 function ProductDetail(props) {
@@ -208,8 +207,7 @@ function ProductDetail(props) {
 export default ProductDetail;
 ```
 
-```jsx copy
-// ProductList.js
+```jsx copy showLineNumbers filename="products.jsx"
 import React from "react";
 import ProductDetail from "./Product";
 
