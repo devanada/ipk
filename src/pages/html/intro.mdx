@@ -3,6 +3,8 @@ title: "Intro to HTML"
 description: "Panduan komprehensif yang menjelaskan konsep dasar dan prinsip HTML untuk membantu Anda memulai membuat situs web yang menarik."
 ---
 
+import { FileTree } from "nextra/components";
+
 # HTML | Introduction
 
 ## Overview
@@ -48,6 +50,14 @@ Dengan mengikuti langkah-langkah di atas, kita dapat dengan mudah menjalankan da
 
 Saat Kita mempelajari HTML, penting untuk memahami struktur dasar dari sebuah dokumen HTML. Struktur ini mencakup elemen-elemen utama yang digunakan untuk membentuk halaman web yang dapat diakses dan dimengerti oleh browser. Dengan mengikuti struktur yang benar, Kita akan dapat membuat halaman web yang terstruktur dengan baik dan mudah dibaca oleh mesin pencari.
 
+| Element            |                Deskripsi                 |
+| :----------------- | :--------------------------------------: |
+| `<! DOCTYPE html>` | Mendefinisikan dokumen ini sebagai HTML5 |
+| `<html>`           |      Elemen root dari halaman HTML       |
+| `<head>`           |  Berisi informasi meta tentang dokumen   |
+| `<title>`          |      Menentukan judul untuk dokumen      |
+| `<body>`           |   Berisi konten halaman yang terlihat    |
+
 Salah satu elemen penting dalam struktur HTML adalah `<html>` tag, yang menandai awal dan akhir dari dokumen HTML. Di dalam tag `<html>`, Kita akan menemukan dua bagian utama: `<head>` dan `<body>`. Bagian `<head>` berisi informasi meta tentang halaman web Kita, seperti judul, deskripsi, dan penautan ke stylesheet eksternal jika ada. Bagian `<body>`, di sisi lain, merupakan area utama di mana konten aktual dari halaman web ditempatkan.
 
 Lalu ada juga tag `<!DOCTYPE html>`, yang memberi tahu browser bahwa dokumen tersebut adalah dokumen HTML versi terbaru. Penting untuk menyertakan tag ini di awal setiap dokumen HTML agar browser dapat menginterpretasikan kode dengan benar. Selain itu, ada juga beberapa elemen lain seperti `<header>`.
@@ -72,6 +82,33 @@ Berikut ini adalah contoh struktur dasar dari dokumen HTML:
   </body>
 </html>
 ```
+
+## Struktur Folder Pada HTML
+
+Folder structure pada HTML sebetulnya cukup bervariatif dan tidak ada standart khusus, namun umumnya terdiri dari `index.html` sebagai halaman utama dan beberapa file HTML lainnya didalam root directory, dan juga ada folder `assets` yang didalmnya juga terdapat folder `css`, `images`, dan `js`.
+
+<FileTree>
+  <FileTree.Folder name="assets" defaultOpen>
+    <FileTree.Folder name="css" defaultOpen>
+      <FileTree.File name="index.css" />
+    </FileTree.Folder>
+    <FileTree.Folder name="images" defaultOpen>
+      <FileTree.File name="image1.jpg" />
+      <FileTree.File name="image2.jpeg" />
+      <FileTree.File name="image3.png" />
+    </FileTree.Folder>
+    <FileTree.Folder name="js" defaultOpen>
+      <FileTree.File name="index.js" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+  <FileTree.File name="index.html" />
+</FileTree>
+
+- `index.html`: File ini merupakan halaman awal atau utama dari sebuah website. Semua halaman HTML biasa ditempatkan didalam root folder.
+- `assets`: Folder utama yang nantinya akan berisi folder-folder seperti `css`, `images`, dan `js`.
+  - `css`: Folder ini berfungsi sebagai tempat untuk menempatkan file css yang akan kita gunakan didalam HTML kita (tempat file css eksternal).
+  - `images`: Folder ini akan kita gunakan sebagai tempat untuk menaruh gambar-gambar yang ditampilkan pada HTML sebagai aset lokal.
+  - `js` atau `scripts`: Untuk menempatkan file javascript atau script.
 
 ## Cara Membuat HTML
 
