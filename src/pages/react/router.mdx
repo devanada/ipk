@@ -1,0 +1,180 @@
+---
+title: "React Router"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+import { Tabs, Tab } from "nextra/components";
+
+# React | Router
+
+## Overview
+
+Routing adalah komponen kunci dalam pengembangan aplikasi web modern. Dalam konteks React, penggunaan React Router memungkinkan kita untuk menciptakan aplikasi yang responsif dan berbasis komponen, yang dapat memuat konten dinamis secara efisien. Tanpa routing, aplikasi kita mungkin hanya terdiri dari satu halaman statis. Ini memungkinkan pengguna untuk berpindah antara berbagai tampilan dan komponen dalam aplikasi web tanpa harus me-refresh halaman secara manual.
+
+## Pengertian Routing
+
+Routing adalah proses yang memungkinkan kita untuk menentukan bagaimana aplikasi web kita harus menangani permintaan pengguna terhadap URL. Ini melibatkan pengaitan URL dengan tampilan atau komponen yang sesuai dalam aplikasi kita.
+
+Misalnya, ketika pengguna mengklik tautan atau memasukkan URL tertentu, routing akan menentukan komponen React mana yang harus ditampilkan di halaman tersebut.
+
+## Kenapa Routing Diperlukan dalam Web Development
+
+Penting untuk memahami mengapa routing menjadi komponen utama dalam pengembangan web.
+
+- **Pemisahan Halaman**:
+  Routing memungkinkan kita untuk memisahkan aplikasi web kita menjadi berbagai halaman atau tampilan yang berbeda. Ini membantu dalam organisasi kode dan pemeliharaan.
+
+- **Navigasi yang Responsif**:
+  Dengan routing, pengguna dapat dengan mudah berpindah antar halaman tanpa harus memuat ulang seluruh aplikasi. Hal ini membuat aplikasi web kita lebih responsif dan cepat.
+
+- **Dukungan Bookmark dan Bagikan**:
+  Dengan routing, setiap halaman dalam aplikasi memiliki URL unik. Ini memungkinkan pengguna untuk bookmark atau berbagi tautan langsung ke halaman tertentu.
+
+- **Manajemen State**:
+  Routing juga membantu dalam manajemen state aplikasi. Setiap halaman dapat memiliki state dan logika yang terkait dengannya, yang tidak mempengaruhi halaman lain.
+
+## Best Practice Menentukan Path dalam Router
+
+Dalam React Router, menentukan path (URL) dengan bijak adalah kunci keberhasilan. Berikut adalah beberapa praktik terbaik:
+
+1. **Gunakan Nama yang Deskriptif**:
+   Pilih nama yang deskriptif untuk path, sehingga mudah dipahami oleh pengembang dan pengguna. Misalnya, `/about` untuk halaman "Tentang Kami".
+
+2. **Gunakan Path Parameter**:
+   Path parameter memungkinkan kita untuk menangani data yang berbeda dengan path yang sama. Contoh: `/user/:id` untuk menampilkan detail pengguna.
+
+3. **Gunakan Redirects**:
+   Gunakan Redirect untuk mengalihkan pengguna dari path lama ke path baru. Ini penting saat kita melakukan perubahan pada routing dalam pengembangan.
+
+4. **Gunakan URL Query String**:
+   URL query string memungkinkan kita untuk menyertakan parameter tambahan dalam URL. Ini berguna untuk filter dan pencarian. Contoh: `/products?category=shoes`.
+
+## Langkah-langkah Penerapan Routing pada Aplikasi React Kita
+
+Sebelum kita dapat mulai menggunakan React Router, kita perlu menginstalnya. React Router memiliki dua versi utama: React Router DOM untuk aplikasi web dan React Router Native untuk aplikasi mobile. Untuk aplikasi web, kita perlu menginstal React Router DOM.
+
+**Langkah 1: Instalasi React Router DOM**
+
+1.  Buka terminal dan masuk ke direktori proyek React kita.
+2.  Jalankan perintah berikut untuk menginstall library `react-router-dom`:
+
+<Tabs items={["npm", "yarn"]}>
+  <Tab>
+
+    ```bash copy
+    npm install react-router-dom
+    ```
+
+  </Tab>
+  <Tab>
+
+    ```bash copy
+    yarn add react-router-dom
+    ```
+
+  </Tab>
+</Tabs>
+
+3. Setelah selesai, kita dapat mengimpor komponen dan mulai menggunakannya dalam proyek.
+
+**Langkah 2: Konfigurasi Routing**
+
+Buat file baru `index.jsx` pada folder `routes` untuk menampung routes yang kita buat untuk project kita. Tambahkan `<RouterProvider>` dan `createBrowserRouter` ke dalam komponen utama aplikasi kita dan tentukan rute-rute yang sesuai dengan komponen-komponen yang ingin ditampilkan.
+
+```jsx copy
+// src/routes/index.jsx
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+export default function Router() {
+  const router = createBrowserRouter([]);
+
+  return <RouterProvider router={router} />;
+}
+```
+
+Setelah itu, import file yang terdapat pada `src/routes/index.jsx` kedalam file entry point `main.jsx` yang ada didalam folder `src`, dan tambahkan didalam `<React.StrictMode>`
+
+```jsx copy
+// src/main.jsx
+import ReactDOM from "react-dom/client";
+import React from "react";
+
+import App from "./routes";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+**Langkah 3: Buat Komponen Halaman**
+
+Buat komponen-komponen untuk setiap halaman yang ingin kita tampilkan. Ini bisa berupa komponen fungsional atau kelas.
+
+```jsx copy
+// src/pages/index.jsx
+import { Link } from "react-router-dom";
+
+export default function Index() {
+  return (
+    <div>
+      <p>Hello World</p>
+      <Link to="/about">GO TO ABOUT PAGE</Link>
+    </div>
+  );
+}
+```
+
+```jsx copy
+// src/pages/about.jsx
+import { useNavigate } from "react-router-dom";
+
+export default function About() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <p>This is about page</p>
+      <button onClick={() => navigate("/")}>GO TO INDEX PAGE</button>
+    </div>
+  );
+}
+```
+
+**Langkah 4: Menyusun Komponen**
+
+Tambahkan halaman-halaman yang sudah kita buat pada langkah sebelumnya kedalam file `src/routes/index.jsx`, lalu buat object didalam `createBrowserRouter([])` untuk menambahkan route baru pada website kita. Tentukan `path` sesuai dengan keinginan kita (pastikan ikuti [best practice](#best-practice-menentukan-path-dalam-router))
+
+```jsx copy
+// src/routes/index.jsx
+import Home from "../pages";
+import AboutUs from "../pages/about";
+
+export default function Router() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/about",
+      element: <AboutUs />,
+    },
+    {
+      path: "*",
+      element: <div>404 page not found</div>,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+}
+```
+
+**Langkah 5: Navigasi**
+
+Gunakan komponen seperti `<Link>` atau hooks `useNavigate` untuk memungkinkan pengguna berpindah antar halaman seperti pada langkah 3 diatas.
+
+## Kesimpulan
+
+Dalam modul ini, kita telah belajar tentang React Router, konsep routing dalam pengembangan web, mengapa routing diperlukan, praktik terbaik dalam menentukan path, instalasi React Router, dan langkah-langkah penerapan routing dalam aplikasi React. Routing adalah elemen kunci dalam menciptakan aplikasi web yang responsif dan dinamis. Dengan pemahaman ini, Kamu dapat membangun aplikasi React yang lebih kuat dan lebih menarik bagi penggunamu.

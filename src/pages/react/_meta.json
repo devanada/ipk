@@ -5,6 +5,7 @@
   "props": "Props",
   "data-fetch": "Data Fetch",
   "event-handling": "Event Handling",
+  "router": "Router",
   "global-state": "Global State",
   "deployment": "Deployment"
 }
