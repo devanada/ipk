@@ -1,0 +1,174 @@
+---
+title: "React Hooks"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+# React | Hooks
+
+## Overview
+
+React adalah perpustakaan JavaScript yang digunakan untuk membangun antarmuka pengguna (UI) yang interaktif dan dinamis. Sejak diluncurkan, React telah mengalami banyak evolusi dan peningkatan. Salah satu perubahan paling signifikan adalah penambahan React Hooks, yang pertama kali diperkenalkan dalam versi React 16.8. Hooks adalah fungsi khusus yang memungkinkan kita untuk "mengaitkan" fitur-fitur React ke dalam komponen fungsional.
+
+## Apa itu Hooks
+
+Hooks adalah fungsi-fungsi khusus dalam React yang memungkinkan kamu untuk menggunakan state dan fungsi-fungsi React lainnya dalam komponen fungsional, yang sebelumnya hanya dapat diimplementasikan dalam komponen kelas. Sebelum adanya Hooks, penggunaan state dan efek samping (side effects) dalam komponen fungsional menjadi sulit dan membingungkan.
+
+Dengan Hooks, kamu dapat mengakses berbagai fitur React, seperti state, side effect, dan lifecycle component, didalam komponen fungsional tanpa perlu mengubahnya menjadi komponen kelas. Ini membuat kode lebih sederhana, mudah dibaca, dan lebih mudah diuji.
+
+Mari kita lihat contoh sederhana penggunaan Hooks:
+
+```jsx copy showLineNumbers filename="src/pages/counter.jsx"
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+Dalam contoh di atas, kita menggunakan hook useState untuk mengelola state dalam komponen fungsional Counter. Ini memungkinkan kita untuk mengakses dan memperbarui nilai count tanpa harus menggunakan this seperti pada komponen kelas.
+
+## Kenapa Hooks Tercipta
+
+Hooks diciptakan oleh tim pengembang React dengan beberapa tujuan utama:
+
+1. **Membuat Logika Terkait Lebih Terkonsentrasi**: Sebelum adanya Hooks, logika terkait sering tersebar dalam berbagai metode berbeda dalam komponen kelas, seperti componentDidMount, componentDidUpdate, dan componentWillUnmount. Dengan Hooks, semua logika terkait dapat ditempatkan dalam satu komponen fungsional.
+
+2. **Menghindari Masalah this**: Dalam komponen kelas, penggunaan this dapat menjadi rumit dan menimbulkan masalah. Dengan Hooks, tidak ada lagi penggunaan this, sehingga mengurangi peluang terjadinya kesalahan.
+
+3. **Reusabilitas**: Hooks memungkinkan kita untuk membuat logika yang dapat digunakan kembali (custom hooks) dengan mudah, sehingga meningkatkan reusabilitas kode.
+
+4. **Mempermudah Pengujian**: Komponen fungsional dengan Hooks lebih mudah diuji karena logikanya dapat diisolasi lebih baik.
+
+5. **Mendukung Komponen Fungsional**: Hooks memungkinkan pengembang untuk menggunakan semua fitur React dalam komponen fungsional tanpa harus mengubahnya menjadi komponen kelas.
+
+Dengan tujuan-tujuan ini, Hooks telah membuat pengembangan aplikasi React menjadi lebih efisien dan kuat.
+
+## Kelebihan Pada Penerapan Hooks
+
+Penerapan Hooks dalam pengembangan aplikasi React memiliki beberapa kelebihan yang membuatnya menjadi pilihan yang kuat:
+
+1. **Kode Lebih Bersih**: Hooks memungkinkan pemisahan logika yang berbeda menjadi fungsi-fungsi yang lebih kecil dan terfokus, sehingga membuat kode menjadi lebih bersih dan mudah dibaca.
+
+2. **Reusabilitas**: Dengan custom hooks, kamu dapat mengisolasi logika tertentu dan menggunakan kembali di berbagai komponen. Ini meningkatkan reusabilitas kode kamu.
+
+3. **Performa yang Lebih Baik**: Hooks dapat membantu mengoptimalkan performa aplikasi React dengan cara yang lebih baik karena kamu memiliki kontrol yang lebih baik atas efek samping dan pembaruan komponen.
+
+4. **Pengujian yang Lebih Mudah**: Komponen fungsional dengan Hooks lebih mudah diuji karena kamu dapat menguji setiap fungsi hook secara terpisah.
+
+5. **Kesesuaian dengan Functional Programming**: Hooks mendekatkan React pada paradigma pemrograman fungsional, yang merupakan pendekatan yang populer dalam pengembangan perangkat lunak modern.
+
+## Jenis-jenis Hooks
+
+Ada beberapa jenis Hooks yang telah disediakan oleh React, di antaranya:
+
+- `useState`: Digunakan untuk mengelola state dalam komponen fungsional.
+
+- `useEffect`: Digunakan untuk menangani side effect, seperti pengambilan data dari server atau manipulasi DOM. Ketika terdapat perubahan state didalam useEffect, mengakibatkan komponen akan dimuat kembali(rerender).
+
+- `useContext`: Digunakan untuk mengakses konteks aplikasi, yang memungkinkan berbagi data di seluruh komponen.
+
+- `useReducer`: Digunakan untuk mengelola state yang lebih kompleks, terutama dalam kasus-kasus di mana state memiliki logika yang lebih rumit.
+
+- `useRef`: Digunakan untuk mengakses elemen DOM secara langsung dalam komponen fungsional.
+
+- `useMemo` dan `useCallback`: Digunakan untuk mengoptimalkan kinerja dengan menghindari perhitungan yang tidak perlu.
+
+- `useLayoutEffect`: Mirip dengan useEffect, tetapi dijalankan secara sinkron setelah semua perubahan tata letak selesai.
+
+## Implementasi Hooks
+
+Mari kita pelajari bagaimana mengimplementasikan berbagai jenis Hooks dalam aplikasi React. Setiap jenis hook memiliki kegunaan yang khusus, dan kita akan membahas penggunaannya dengan contoh kode yang jelas. Mari kita lihat contoh penggunaan `useState` dan `useEffect`:
+
+```jsx copy showLineNumbers filename="src/pages/counter.jsx"
+import React, { useState, useEffect } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+Dalam contoh di atas, kita menggunakan `useState` untuk mengelola state `count` dan `useEffect` untuk mengubah judul halaman sesuai dengan nilai `count`. `useEffect` juga memiliki dependency array `[count]`, yang menjelaskan bahwa efek tersebut hanya akan dijalankan jika `count` berubah.
+
+## Rules of Hooks
+
+Penggunaan Hooks dalam React memiliki aturan tertentu yang perlu diikuti agar komponen bekerja dengan benar. Memahami dan mematuhi aturan-aturan ini sangat penting untuk menghindari masalah dalam aplikasi React. Berikut adalah beberapa aturan utama yang perlu diikuti:
+
+1. **Hooks hanya digunakan dalam komponen fungsional**: Hooks hanya boleh digunakan dalam komponen fungsional React. Mereka tidak boleh digunakan dalam fungsi biasa atau dalam komponen kelas.
+
+2. **Hooks hanya dipanggil pada level atas**: Hooks selalu dipanggil pada level atas dari komponen fungsional. Ini berarti mereka tidak boleh dipanggil dalam blok if, loop, atau fungsi bersarang. Ini penting untuk memastikan bahwa Hooks selalu dipanggil dalam urutan yang konsisten.
+
+3. **Hooks selalu dipanggil dalam urutan yang sama**: Hooks selalu dipanggil dalam urutan yang sama dalam setiap pemanggilan fungsi komponen. Ini berarti kita tidak boleh memanggil Hooks secara kondisional. Mereka harus selalu dipanggil dalam urutan yang sama dalam setiap siklus render komponen.
+
+4. **Hooks hanya dipanggil dari komponen React**: Hooks hanya boleh dipanggil dari dalam komponen React. Mereka tidak boleh dipanggil dari fungsi biasa atau di luar lingkup komponen React.
+
+5. **Gunakan Hooks sesuai peraturan**: React memiliki beberapa Hooks bawaan, seperti useState, useEffect, dan sebagainya. Pastikan untuk menggunakan Hooks sesuai peraturan yang sesuai dengan jenisnya. Misalnya, useState digunakan untuk mengelola state, sementara useEffect digunakan untuk menangani efek samping.
+
+6. **Gunakan dependency array dengan bijak**: Saat menggunakan useEffect, pastikan untuk menyediakan dependency array yang sesuai. Ini membantu mengontrol kapan efek tersebut harus dijalankan dan menghindari perubahan tak terduga.
+
+7. **Hindari Hooks dalam loop**: Hindari menggunakan Hooks dalam loop, karena ini dapat mengakibatkan pemanggilan berulang yang tidak diinginkan. Selalu panggil Hooks di level atas komponen.
+
+Memahami dan mengikuti aturan-aturan ini adalah kunci untuk menghindari bug yang sulit diidentifikasi dalam aplikasi React. Kesalahan dalam penggunaan Hooks dapat menyebabkan masalah seperti ketidakstabilan komponen atau siklus render yang tidak terduga. Dengan mematuhi aturan-aturan ini, kamu dapat memastikan bahwa aplikasi React kamu berjalan dengan baik dan sesuai dengan harapan.
+
+## Cara Membuat Custom Hooks
+
+Selain menggunakan Hooks bawaan React, kita juga dapat membuat custom hooks untuk mengisolasi dan mengatur logika khusus dalam aplikasi kita. Custom hooks adalah cara yang kuat untuk meningkatkan reusabilitas kode.
+
+Di bawah ini adalah contoh pembuatan custom hook yang memungkinkan kita untuk mengelola tema dalam aplikasi:
+
+```jsx copy showLineNumbers filename="src/utils/hooks/useTheme.jsx"
+import { useState } from "react";
+
+function useTheme(initialTheme) {
+  const [theme, setTheme] = useState(initialTheme);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  return [theme, toggleTheme];
+}
+
+export default useTheme;
+```
+
+Kemudian, kita dapat menggunakannya dalam komponen aplikasi:
+
+```jsx copy showLineNumbers filename="src/pages/index.jsx"
+import React from "react";
+import useTheme from "../utils/hooks/useTheme";
+
+function App() {
+  const [theme, toggleTheme] = useTheme("light");
+
+  return (
+    <div className={theme}>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Current Theme: {theme}</p>
+    </div>
+  );
+}
+```
+
+Dalam contoh di atas, kita telah membuat custom hook useTheme untuk mengelola tema dalam aplikasi, dan kemudian menggunakannya dalam komponen App.
+
+## Kesimpulan
+
+React Hooks adalah alat yang kuat untuk meningkatkan produktivitas dan kualitas kode kamu, dan mereka memungkinkan kamu untuk mengambil keuntungan penuh dari pendekatan komponen fungsional dalam pengembangan aplikasi web. Selain hooks bawaan dari React, kita juga dapat membuat sebuah custom hooks sendiri, memungkinkan kita mendaur ulang logika-logika yang ada didalam aplikasi.

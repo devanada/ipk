@@ -6,6 +6,7 @@
   "data-fetch": "Data Fetch",
   "event-handling": "Event Handling",
   "router": "Router",
+  "hooks": "Hooks",
   "global-state": "Global State",
   "deployment": "Deployment"
 }
