@@ -1,0 +1,242 @@
+---
+title: "React Form Validation"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+import { Tabs, Tab } from "nextra/components";
+
+# React | Form Validation
+
+## Overview
+
+Formulir adalah komponen penting dalam sebagian besar aplikasi web yang memungkinkan pengguna berinteraksi dengan data. Namun, agar data yang masuk ke aplikasi kita valid, kita perlu melakukan validasi.
+
+Proses validasi tanpa menggunakan library pembantu masih bisa dilakukan, hanya saja membutuhkan effort lebih untuk memastikan agar semua input telah terisi dan juga benar dalam pengisian nilainya. Kali ini kita akan eksplorasi terkait validasi pada sebuah formulir dengan menggunakan pendekatan yang mudah untuk diterapkan.
+
+## Pengertian Form Validation
+
+Form Validation adalah proses memeriksa apakah data yang dimasukkan oleh pengguna sesuai dengan aturan atau kriteria tertentu sebelum data tersebut diproses lebih lanjut. Validasi dapat mencakup pemeriksaan tipe data, panjang, keharusan (wajib diisi), dan bahkan validasi berdasarkan skema khusus.
+
+Dalam React, validasi biasanya dilakukan dengan menggunakan JavaScript, dan seringkali bersamaan dengan JavaScript Frameworks seperti React. Validasi ini memastikan bahwa data yang diambil dari formulir adalah data yang dapat diandalkan dan sesuai dengan kebutuhan aplikasi.
+
+```jsx copy showLineNumbers filename="scr/pages/index.jsx"
+import React, { useState } from "react";
+
+function App() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username && password) {
+      // Lakukan sesuatu dengan data yang sudah divalidasi
+    } else {
+      alert("Harap isi semua field.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+export default App;
+```
+
+## Kenapa Validasi Pada Form Itu Penting
+
+Validasi pada form sangat penting karena itu adalah cara untuk memastikan bahwa data yang dimasukkan oleh pengguna adalah data yang sah, aman, dan sesuai dengan kebutuhan aplikasi. Validasi membantu kita untuk:
+
+1. **Mencegah Data Tidak Valid**: Mencegah pengguna mengirimkan data yang tidak valid atau merusak ke server. Ini dapat membantu melindungi aplikasi dari serangan seperti SQL injection atau Cross-Site Scripting (XSS).
+
+2. **Mengoptimalkan Pengalaman Pengguna**: Validasi dapat memberikan umpan balik kepada pengguna tentang apa yang salah dengan data yang mereka masukkan, membantu mereka memahami apa yang diperlukan untuk mengisi formulir dengan benar.
+
+3. **Meningkatkan Kualitas Data**: Dengan validasi, kita dapat memastikan data yang masuk sesuai dengan kebutuhan aplikasi, sehingga mengurangi kesalahan dan ketidaksesuaian data.
+
+4. **Mengurangi Kesalahan dalam Aplikasi**: Dengan memvalidasi data di sisi klien sebelum mengirimkannya ke server, kita dapat mengurangi jumlah kesalahan yang harus diperbaiki di server.
+
+5. **Mematuhi Regulasi dan Kebijakan Keamanan**: Validasi adalah komponen penting dalam memastikan aplikasi mematuhi regulasi dan kebijakan keamanan yang berlaku.
+
+## Library Yang Dapat Digunakan
+
+Ada berbagai library dan alat yang dapat Anda gunakan untuk melakukan validasi pada formulir React. Beberapa di antaranya termasuk:
+
+1. **Formik**: Formik adalah library yang populer untuk mengelola formulir dalam React, termasuk validasi. Ia menyediakan dukungan yang kuat untuk validasi formulir dan integrasi yang baik dengan React.
+
+2. **React Hook Form**: Ini adalah library lain yang memfasilitasi pengelolaan formulir dan validasi dalam React menggunakan React Hooks.
+
+3. **Yup**: Yup adalah library validasi yang dapat digunakan bersama dengan Formik atau tanpa Formik. Ia memungkinkan Anda mendefinisikan skema validasi dalam bentuk yang deklaratif.
+
+4. **Zod**: Sama seperti Yup, Zod berfungsi sebagai skema validasi yang sangat cocok digunakan ketika project React kita menggunakan TypeScript karena pada Zod kita dapat mendeklarasikan validator hanya sekali dan Zod akan secara otomatis mengatur tipe data-nya.
+
+5. **Joi**: Meskipun umumnya digunakan di sisi server (Node.js), Joi juga bisa digunakan di sisi klien untuk validasi data dalam formulir React.
+
+6. **Validate.js**: Validate.js adalah library yang agnostik terhadap kerangka kerja yang memungkinkan Anda mendefinisikan validasi dalam bentuk objek konfigurasi.
+
+Pemilihan library akan tergantung pada kebutuhan Anda dan sejauh mana Anda ingin mengotomatisasi proses validasi dan manajemen formulir dalam aplikasi React Anda.
+
+## Form Validation + Schema Validation, Kombinasi Ciamik
+
+Ketika kita berbicara tentang validasi formulir dalam aplikasi React, seringkali kita berhadapan dengan dua jenis validasi: Validasi Form dan Validasi Skema (Schema Validation). Kombinasi keduanya dapat membentuk pendekatan yang kuat untuk memastikan keamanan dan keakuratan data dalam aplikasi kita.
+
+Validasi Form berkaitan dengan validasi data pada tingkat formulir, seperti memeriksa apakah semua input telah diisi atau apakah password cocok dengan konfirmasi password. Ini dapat dilakukan dengan mudah menggunakan JavaScript biasa atau dengan bantuan library formulir seperti Formik/React Hook Form.
+
+Validasi Skema (Schema Validation) melibatkan validasi data berdasarkan struktur dan tipe datanya. Ini berarti memeriksa apakah data yang dimasukkan sesuai dengan struktur yang diharapkan. Contohnya, memastikan alamat email benar-benar merupakan alamat email atau bahwa tanggal lahir yang dimasukkan adalah dalam format yang benar. Library seperti Yup/Zod adalah alat yang berguna untuk validasi skema.
+
+Contoh Kode Kombinasi Validasi Form dan Validasi Skema:
+
+<Tabs items={["Formik + Yup", "RHF + Zod"]}>
+  <Tab>
+
+```jsx copy showLineNumbers filename="scr/pages/index.jsx"
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email("Email tidak valid").required("Email wajib diisi"),
+  password: Yup.string().required("Password wajib diisi"),
+});
+
+function App() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      // Lakukan sesuatu dengan data yang sudah divalidasi
+    },
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <div>
+        <input
+          type="text"
+          placeholder="Email"
+          name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+export default App;
+```
+
+  </Tab>
+  <Tab>
+
+```jsx copy showLineNumbers filename="scr/pages/index.jsx"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, Controller } from "react-hook-form";
+import React from "react";
+import { z } from "zod";
+
+const schema = z.object({
+  email: z.string().email("Email tidak valid"),
+  password: z
+    .string()
+    .min(8, "Password minimal 8 karakter")
+    .required("Password wajib diisi"),
+});
+
+function App() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data) => {
+    // Validasi skema menggunakan Zod
+    try {
+      // Data valid, lakukan sesuatu dengan data
+    } catch (error) {
+      // Tangani kesalahan validasi skema
+      console.error(error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label>Email</label>
+        <Controller
+          name="email"
+          control={control}
+          defaultValue=""
+          render={({ field }) => <input type="text" {...field} />}
+        />
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
+      <div>
+        <label>Password</label>
+        <Controller
+          name="password"
+          control={control}
+          defaultValue=""
+          render={({ field }) => <input type="password" {...field} />}
+        />
+        {errors.password && <p>{errors.password.message}</p>}
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+export default App;
+```
+
+  </Tab>
+</Tabs>
+
+Kombinasi ini memungkinkan kita untuk melakukan validasi data di tingkat formulir (Form Validation) dan juga memeriksa apakah data sesuai dengan skema yang diharapkan (Schema Validation) dengan bantuan Yup. Ini adalah pendekatan ciamik untuk memastikan data yang diterima aplikasi kita valid dari berbagai segi.
+
+## Kesimpulan
+
+Validasi formulir adalah komponen penting dalam memastikan data yang masuk ke aplikasi kita adalah data yang valid, aman, dan sesuai dengan kebutuhan aplikasi.
+
+Kita juga telah melihat mengapa validasi pada formulir sangat penting untuk mencegah data yang tidak valid, meningkatkan pengalaman pengguna, mengoptimalkan kualitas data, mengurangi kesalahan dalam aplikasi, dan mematuhi regulasi dan kebijakan keamanan.
+
+Selain itu, kita telah menjelajahi beberapa library yang dapat digunakan untuk mengimplementasikan validasi dalam aplikasi React, seperti Formik, Yup, React Hook Form, Joi, dan Validate.js.
+
+Terakhir, kita telah melihat kombinasi validasi formulir (Form Validation) dan validasi skema (Schema Validation), yang merupakan pendekatan ciamik untuk memastikan keakuratan dan keamanan data dalam aplikasi React kita.
