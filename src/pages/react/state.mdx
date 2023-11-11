@@ -82,7 +82,7 @@ Dalam React, state mengacu pada data yang digunakan dalam komponen untuk mengont
 
 - **Props vs. State**: Props adalah data yang diberikan ke komponen sebagai argumen, sementara state adalah data internal komponen yang dapat berubah. Perbedaan utama adalah bahwa state dapat diubah, sementara props tidak bisa.
 
-- **Penting untuk Perubahan UI**: State sangat penting ketika Anda ingin mengubah tampilan komponen atau mengatur perilaku berdasarkan interaksi pengguna, data dinamis, atau peristiwa lainnya.
+- **Penting untuk Perubahan UI**: State sangat penting ketika kamu ingin mengubah tampilan komponen atau mengatur perilaku berdasarkan interaksi pengguna, data dinamis, atau peristiwa lainnya.
 
 - **Merubah state**: State hanya dapat diubah menggunakan `updater` seperti `setState()`. Ini adalah metode asinkron yang memicu pembaharuan ulang komponen. React akan memeriksa perubahan state dan menggabungkan perubahan tersebut ke dalam virtual DOM untuk memutuskan apa yang harus diperbarui di tampilan aktual. Manipulasi langsung terhadap state, seperti `this.state.counter = 5` atau `counter = 5`, tidak akan memicu pembaruan tampilan.
 

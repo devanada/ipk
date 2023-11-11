@@ -9,5 +9,6 @@
   "hooks": "Hooks",
   "form-validation": "Form Validation",
   "global-state": "Global State",
-  "deployment": "Deployment"
+  "deployment": "Deployment",
+  "testing": "Testing"
 }

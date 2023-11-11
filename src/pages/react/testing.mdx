@@ -1,0 +1,267 @@
+---
+title: "React Testing"
+description: "Pengantar ke React: Pelajari tentang library JavaScript yang populer untuk membuat antarmuka pengguna yang interaktif dan responsif."
+---
+
+import { Tabs, Tab, Callout } from "nextra/components";
+
+# React | Testing
+
+## Overview
+
+React merupakan salah satu library JavaScript yang populer untuk membangun antarmuka pengguna. Dalam pengembangan perangkat lunak, pengujian (testing) menjadi langkah yang sangat penting untuk memastikan kestabilan, kehandalan, dan kinerja aplikasi. Pada pembelajaran ini, kita akan fokus pada pengujian React menggunakan framework testing modern yang disebut Vitest.
+
+## Pengertian Testing Secara Umum
+
+Pengujian adalah proses penting dalam siklus pengembangan perangkat lunak yang bertujuan untuk memastikan bahwa suatu sistem berfungsi sesuai dengan yang diharapkan. Secara umum, pengujian dapat dibagi menjadi beberapa jenis, termasuk pengujian unit, pengujian integrasi, dan pengujian antarmuka pengguna (UI).
+
+Pengujian unit berkaitan dengan pengujian komponen atau fungsi kecil dalam kode, sedangkan pengujian integrasi menguji cara komponen-komponen tersebut berinteraksi satu sama lain. Pengujian UI, di sisi lain, memastikan bahwa antarmuka pengguna berfungsi dengan baik.
+
+## Kenapa Testing Itu Penting Untuk Dilakukan Terutama Frontend
+
+Testing menjadi kunci dalam memastikan bahwa aplikasi yang kita kembangkan dapat berjalan dengan baik di berbagai lingkungan dan kondisi. Terutama pada pengembangan frontend, di mana interaksi langsung dengan pengguna terjadi, pengujian membantu mengidentifikasi dan memperbaiki bug atau masalah potensial sebelum aplikasi mencapai pengguna akhir.
+
+Dengan melakukan pengujian secara teratur, kita dapat meningkatkan kualitas perangkat lunak, meningkatkan produktivitas tim pengembang, dan meminimalkan risiko kerusakan pada aplikasi.
+
+## Macam-Macam Testing
+
+### Unit Test
+
+Pengujian unit fokus pada pengujian komponen kecil atau fungsi dalam isolasi. Ini memastikan bahwa setiap bagian kecil dari kode berperilaku sesuai dengan yang diharapkan. Sebagai contoh, mari kita lihat pengujian unit sederhana pada fungsi penjumlahan:
+
+```js copy showLineNumbers filename="penjumlahan.js"
+function tambah(a, b) {
+  return a + b;
+}
+
+test("menambahkan dua angka", () => {
+  expect(tambah(1, 2)).toBe(3);
+});
+```
+
+### Integration Test
+
+Pengujian integrasi memeriksa bagaimana komponen-komponen berinteraksi satu sama lain. Contohnya, dalam pengembangan React, kita mungkin ingin memastikan bahwa komponen A dapat berkomunikasi dengan komponen B dengan benar.
+
+```jsx copy showLineNumbers
+// KomponenA.js
+function KomponenA() {
+  // ...
+  return <div>A</div>;
+}
+
+// KomponenB.js
+function KomponenB() {
+  // ...
+  return <div>B</div>;
+}
+
+// Integrasi.test.js
+test("Komponen A dan B berinteraksi dengan baik", () => {
+  // Logika pengujian integrasi di sini
+});
+```
+
+### UI Test
+
+Pengujian antarmuka pengguna memastikan bahwa antarmuka pengguna berfungsi sesuai yang diharapkan. Dalam pengembangan React, kita dapat menggunakan alat seperti Vitest untuk melakukan pengujian ini.
+
+```jsx copy showLineNumbers
+// UITest.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("mengrender komponen App dengan benar", () => {
+  render(<App />);
+  const linkElement = screen.getByText(/Selamat Datang/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+## Vitest, Framework Testing Kekinian
+
+Vitest adalah framework pengujian modern untuk JavaScript, yang dirancang khusus untuk proyek-proyek React. Dengan fitur-fitur seperti mocking yang kuat, dukungan untuk asynchronous testing, dan integrasi yang baik dengan React, Vitest menjadi pilihan yang kuat untuk pengujian frontend.
+
+Vitest sangatlah cocok digunakan ketika kita men-generate project dengan menggunakan Vite, semua konfigurasi Vite yang sudah ada dapat digunakan. Selain itu, penggunaan seperti `expect`, `snapshot`, `coverage`, dll pada library `Jest` juga bisa digunakan. Uniknya lagi, Vitest hanya menjalankan perubahan pada code yang sedang dibuka/diubah tanpa perlu menjalankan semua test scenario, dan juga Vitest secara dasar support ESM, TypeScript, dan JavaScript.
+
+## Implementasi Testing Pada Project React Vite
+
+Sekarang, mari kita lihat bagaimana kita dapat mengimplementasikan pengujian menggunakan Vitest pada proyek React dengan Vite.
+
+1. Vitest perlu di pasang pada project yang kita kerjakan dengan cara seperti dibawah (sesuaikan dengan package manager yang digunakan).
+   <Callout type="info" emoji="ℹ️">
+     Vitest memerlukan versi Vite >= 3.0.0 dan versi Node >= 14.18
+   </Callout>
+
+<Tabs items={["npm", "yarn", "pnpm", "bun"]}>
+  <Tab>
+    ```bash copy
+    npm install -D vitest
+    ```
+
+  </Tab>
+  <Tab>
+    ```bash copy
+    yarn add -D vitest
+    ```
+
+  </Tab>
+  <Tab>
+    ```bash copy
+    pnpm add -D vitest
+    ```
+
+  </Tab>
+  <Tab>
+    ```bash copy
+    bun add -D vitest
+    ```
+
+  </Tab>
+</Tabs>
+
+`@vitest/coverage-v8` juga dapat di install jikalau ingin mendapatkan report hasil testing berupa HTML.
+
+Setelah itu tambahkan script baru dalam file `package.json` untuk mempermudah menjalankan testing.
+
+```json copy showLineNumbers filename="package.json" {11-12}
+{
+  "name": "project-name",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    // ........
+  },
+  "devDependencies": {
+    // ........
+    "@vitest/coverage-v8": "^0.34.6",
+    "vitest": "^0.34.5"
+  }
+}
+```
+
+2. Pada file `vite.config.ts`/`vite.config.js`, tambahkan beberapa baris code seperti dibawah ini.
+
+```ts copy showLineNumbers filename="vite.config.ts" {15-21}
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    host: true,
+  },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    coverage: {
+      provider: "v8",
+    },
+  },
+});
+```
+
+3. Buat sebuah folder khusus yang menampung file-file testing didalam folder `src` seperti misalnya `__tests__`, setelah itu buat sebuah file yang nantinya akan kita gunakan me-`render` component nantinya.
+
+```jsx copy showLineNumbers filename="src/__tests__/test-utils.jsx"
+import { BrowserRouter } from "react-router-dom";
+import { render } from "@testing-library/react";
+
+import { ThemeProvider } from "@/utils/contexts/theme";
+
+const Providers = ({ children }) => {
+  return (
+    <BrowserRouter>
+      <ThemeProvider>{children}</ThemeProvider>
+    </BrowserRouter>
+  );
+};
+
+const customRender = (component) => {
+  return render(component, {
+    wrapper: Providers,
+  });
+};
+
+export * from "@testing-library/react";
+export { customRender as render };
+```
+
+4. Setelah itu kita bisa memulai membuat file testing untuk setiap `pages` dan `components` yang kita miliki. Disini kita akan mencoba ambil satu sample saja yaitu untuk mengetes component Navbar. Pastikan untuk menamai file testing kalian dengan format seperti `navbar.test.jsx`.
+
+```jsx copy showLineNumbers filename="src/__tests__/components/navbar.test.jsx"
+import "@testing-library/jest-dom";
+
+import { render, screen, within, fireEvent, act } from "@/__tests__/test-utils";
+
+import Navbar from "@/components/navbar";
+
+describe("Navbar Component", () => {
+  beforeEach(async () => {
+    await act(async () => {
+      render(<Navbar />);
+    });
+  });
+
+  it("should render the navbar", () => {
+    const navbar = screen.getByLabelText("navbar");
+
+    expect(navbar).toBeInTheDocument;
+  });
+
+  it("should render FaSun when changing the theme to light", async () => {
+    const navbar = screen.getByLabelText("navbar");
+    const darkBtn = within(navbar).getByLabelText("btn-theme-dark");
+
+    expect(darkBtn).toBeInTheDocument;
+
+    await act(async () => {
+      fireEvent.click(darkBtn);
+    });
+
+    expect(within(navbar).getByLabelText("btn-theme-light")).toBeInTheDocument;
+  });
+
+  it("should render FaMoon when changing the theme back to dark", async () => {
+    const navbar = screen.getByLabelText("navbar");
+    const lightBtn = within(navbar).getByLabelText("btn-theme-light");
+
+    expect(lightBtn).toBeInTheDocument;
+
+    await act(async () => {
+      fireEvent.click(lightBtn);
+    });
+
+    expect(within(navbar).getByLabelText("btn-theme-dark")).toBeInTheDocument;
+  });
+});
+```
+
+5. Lanjut buat file testing untuk semua `pages` dan `components` yang dimiliki, usahakan untuk dapat meng-cover keseluruhan baris dan perkondisian. Kita juga dapat membuat sebuah report yang berisi tentang file apa saja yang sudah di cover beserta berapa persen coverage-nya dengan menambahkan library `@vitest/coverage-v8` yang sudah disebut pada step awal sebelumnya, jalankan dengan menulis perintah seperti dibawah.
+
+```bash copy
+npm run coverage
+```
+
+Nantinya perintah ini akan menghasilkan sebuah folder baru bernama `coverage` didalam folder root project. Didalam folder tersebut terdapat file `index.html` yang dapat kalian buka pada peramban yang kalian gunakan untuk melihat hasil laporan testing berbentuk visual agar mempermudah pembacaan.
+
+![Testing Coverage](/images/testing-coverage.png)
+
+## Kesimpulan
+
+Pengujian React menggunakan Vitest merupakan langkah penting dalam memastikan kualitas dan kehandalan aplikasi frontend. Dengan memahami konsep pengujian unit, integrasi, dan antarmuka pengguna, serta mengimplementasikannya menggunakan Vitest, kita dapat membangun aplikasi yang lebih tangguh dan dapat diandalkan. Pengujian membantu mencegah bug sejak awal, meningkatkan kolaborasi tim, dan memberikan kepercayaan kepada pengguna akhir. Dengan adanya framework modern seperti Vitest, proses pengujian dapat dilakukan dengan lebih efisien dan efektif pada proyek React.
