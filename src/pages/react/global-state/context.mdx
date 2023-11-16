@@ -3,6 +3,8 @@ title: "React Context"
 description: "JavaScript is a programming language that used in many platform."
 ---
 
+import { Callout } from "nextra/components";
+
 # Global State | Context
 
 ## Overview
@@ -28,15 +30,55 @@ const App = () => {
 export default App;
 ```
 
-## Introducing Context
+React Context merupakan salah satu fitur yang kuat dalam ekosistem React yang memungkinkan kita berbagi data di antara komponen-komponen tanpa harus menyampaikan prop secara langsung melalui hirarki komponen. Context menyederhanakan manajemen state global dalam aplikasi React. Dengan menggunakan Context, kita dapat mengakses data dari mana saja dalam pohon komponen tanpa perlu menyusun prop-drilling yang kompleks.
+
+Penggunaan Context sangat penting ketika kita memiliki data yang dibutuhkan oleh banyak komponen di dalam aplikasi kita. Sebagai contoh, tema aplikasi, informasi pengguna yang masuk, atau preferensi pengguna dapat diakses melalui Context.
+
+## Pengertian Context
 
 Terkadang, data dilempar dari atas ke bawah (parent to child) melalui props, namun ada beberapa kondisi dan situasi dimana terdapat sebuah data (seperti tema, pilihan bahasa) yang dibutuhkan oleh banyak komponen didalam aplikasi kita.
 
-**Context** memberikan sebuah cara untuk melakukan passing sebuah data melalui component tree tanpa perlu passing props di setiap level.
+Context adalah cara untuk menyampaikan data melalui pohon komponen tanpa harus menyusun prop secara manual di setiap tingkat. Context memberikan cara untuk mengonfigurasi dan berbagi nilai-nilai ini pada tingkat global, membuatnya dapat diakses oleh komponen-komponen di seluruh aplikasi.
 
-Dengan kata lain, **Context** seperti sebuah variabel global yang bisa diakses kapanpun dan dimanapun tanpa parsing props di setiap komponen yang kita miliki.
+Context memberikan sebuah cara untuk melakukan passing sebuah data melalui component tree tanpa perlu passing props di setiap level. Dengan kata lain, Context seperti sebuah variabel global yang bisa diakses kapanpun dan dimanapun tanpa parsing props di setiap komponen yang kita miliki.
 
-![React Context](https://res.cloudinary.com/hypeotesa/image/upload/v1665159088/react-context-3_gvcsrj.svg "React Context")
+```mermaid
+---
+title: React Context
+---
+flowchart TB
+    App(App)
+    A(Context.Provider)
+    B("Component1")
+    C("Component2")
+    D("Component3")
+    F("--Consumer--
+    Component4")
+    G("--Context--
+    value = My Value")
+
+    App --> A
+    A --> ContextProvider
+    subgraph ContextProvider
+        direction TB
+        B
+        C --> D & F
+    end
+    G --> F
+    A --> G
+```
+
+## Kelebihan dan Kekurangan Context
+
+Kelebihan:
+
+- **Pemeliharaan State yang Mudah**: Context memungkinkan kita untuk mengelola state secara global tanpa perlu menyusun banyak prop. Ini membuat pemeliharaan state menjadi lebih mudah dan mengurangi kompleksitas kode.
+- **Mengurangi Prop-Drilling**: Dengan menggunakan Context, kita dapat menghindari prop-drilling, yaitu menyalurkan prop dari komponen ke komponen. Hal ini membuat kode lebih bersih dan lebih mudah dipahami.
+
+Kekurangan:
+
+- **Memerlukan Perhatian Khusus untuk Kinerja**: Tidak direkomendasikan untuk mengkombinasikan Context dengan hook lain seperti useReducer untuk merubah sebuah nilai karena alasan performa
+- **Perubahan Nilai Dapat Men-trigger Render Ulang** : Ketika nilai dari sebuah Context berubah atau diganti, maka seluruh component yang mengkonsumsi Context akan re-render
 
 ## Kapan menggunakan Context
 
@@ -46,7 +88,8 @@ Dengan kata lain, **Context** seperti sebuah variabel global yang bisa diakses k
 
 ## Apa saja penggunaan Context pada umumnya
 
-- Global State
+Karena masalah kekurangan yang ada pada bagian [Kelebihan dan Kekurangan](#kelebihan-dan-kekurangan-context) diatas, umumnya penggunaan Context dapat diterapkan untuk beberapa fitur yang tingkat perubahan nilainya tidak sering dilakukan, contohnya seperti berikut:
+
 - Tema
 - Konfigurasi aplikasi
 - Username dari user yang telah login
@@ -54,49 +97,119 @@ Dengan kata lain, **Context** seperti sebuah variabel global yang bisa diakses k
 - Preferensi bahasa
 - etc
 
-## Langkah-langkah penggunaan **Context**
+## Langkah-Langkah Implementasi Context
 
-1. Buat **Context** dengan menggunakan method `createContext` lalu export
+<Callout type="info" emoji="ℹ️">
+  Didalam contoh ini, kita menggunakan TailwindCSS sebagai pilihan framework css
+  dan Shadcn/ui sebagai pilihan reusable components.
+</Callout>
 
-```javascript
-export const MyContext = React.createContext(defaultValue);
-```
+1. Buat sebuah file yang nantinya digunakan untuk membuat Context dengan menggunakan method `createContext`. Di skenario ini, kita akan membuat suatu Context yang nantinya dapat merubah tema dari website kita, dimana pada file ini nantinya akan meng-export dua hal, yaitu `ThemeProvider` sebagai component wrapper agar context dapat digunakan dan juga sebuah hooks yang bernama `useTheme`.
 
-2. Import **Context** yang telah dibuat sebelumnya dan bungkus component tree dengan Context Provider, dan letakkan value apapun yang kita inginkan dengan menggunakan value prop
+```jsx copy showLineNumbers filename="src/utils/contexts/theme.jsx"
+import { createContext, useMemo, useState, useContext, useEffect } from "react";
 
-```javascript
-{/* ... */}
+const initialState = {
+  theme: "system",
+  setTheme: () => null,
+};
 
-import { MyContext } from "../your/context/path";
+const ThemeProviderContext = createContext(initialState);
 
-function App() {
-      return (
-        <MyContext.Provider value={/* some value */}>
-            <BrowserRouter>
-                {/* other component */}
-            </BrowserRouter>
-        </MyContext.Provider>
-      )
+export function ThemeProvider({
+  children,
+  defaultTheme = "system",
+  storageKey = "vite-ui-theme",
+  ...props
+}) {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem(storageKey) || defaultTheme
+  );
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = useMemo(
+    () => ({
+      theme,
+      setTheme: (theme) => {
+        localStorage.setItem(storageKey, theme);
+        setTheme(theme);
+      },
+    }),
+    [theme]
+  );
+
+  return (
+    <ThemeProviderContext.Provider {...props} value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
+  );
 }
-```
 
-3. Baca value yang telah disimpan kedalam **Context** dengan menggunakan hooks `useContext`
+export const useTheme = () => {
+  const context = useContext(ThemeProviderContext);
 
-```javascript
-/* ... */
+  if (context === undefined)
+    throw new Error("useTheme must be used within a ThemeProvider");
 
-import { useContext } from "react";
-
-import { MyContext } from "../your/context/path";
-
-const SomeComponent = () => {
-  const context = useContext(MyContext);
-
-  /* ... */
+  return context;
 };
 ```
 
-## Kekurangan React **Context**
+2. Import `ThemeProvider` yang telah dibuat sebelumnya dan bungkus component tree dengan `ThemeProvider` pada file `main.jsx`.
 
-- Tidak direkomendasikan untuk mengkombinasikan **Context** dengan hook lain seperti **useReducer** untuk merubah sebuah nilai karena alasan performa
-- Ketika nilai dari sebuah Context berubah atau diganti, maka seluruh component yang mengkonsumsi **Context** akan **re-render**
+```jsx copy showLineNumbers filename="src/main.jsx" {5, 8, 10}
+import ReactDOM from "react-dom/client";
+
+import App from "@/routes";
+
+import { TokenProvider } from "@/utils/contexts/token";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+```
+
+3. Setelah itu kita dapat memanggil hook `useTheme` dan merubah nilai tema di semua halaman/component yang kita buat asalkan component tersebut masih dalam lingkup `ThemeProvider`.
+
+```jsx copy showLineNumbers filename="src/components/navbar.jsx" {5, 8, 12-14}
+/* ... */
+
+import { Button } from "@/components/ui/button";
+
+import { useTheme } from "@/utils/contexts/theme";
+
+const SomeComponent = () => {
+  const { setTheme } = useTheme();
+
+  return (
+    /* ... */
+    <Button onClick={() => setTheme("light")}>Light</Button>
+    <Button onClick={() => setTheme("dark")}>Dark</Button>
+    <Button onClick={() => setTheme("system")}>System</Button>
+    /* ... */
+  )
+};
+```
+
+## Kesimpulan
+
+Dengan menggunakan React Context, kita dapat mengelola state secara global dengan lebih efisien, menghindari prop-drilling, dan membuat kode lebih bersih. Penting untuk memahami kelebihan, kekurangan, dan best practice penggunaan Context agar dapat mengimplementasikannya secara optimal dalam pengembangan aplikasi React. Context adalah alat yang kuat ketika digunakan dengan bijak, dan dapat meningkatkan pengalaman pengembangan React secara keseluruhan.
