@@ -1,0 +1,69 @@
+---
+title: "Deployment"
+description: "Deployment is a must to do so that your app can be access from internet."
+---
+
+import { Callout } from "nextra/components";
+
+# Deployment
+
+## Overview
+
+Deployment merupakan langkah krusial dalam siklus pengembangan perangkat lunak yang memungkinkan aplikasi dapat diakses oleh pengguna akhir. Kami akan membahas konsep dasar, teknologi yang terlibat, dan alur kerja optimal untuk membantumu mengatasi tantangan deployment.
+
+## Pengertian Deployment Secara Umum
+
+Deployment merujuk pada proses memindahkan aplikasi dari lingkungan pengembangan ke lingkungan produksi, di mana aplikasi dapat diakses oleh pengguna akhir. Dalam konteks React, ini melibatkan pembuatan build produksi, penanganan konfigurasi server, dan aspek-aspek lain yang memastikan aplikasi dapat berjalan dengan baik. Pemahaman yang kuat tentang langkah-langkah ini akan membantu pengembang React untuk memahami bagaimana aplikasi mereka dapat diterapkan dengan sukses.
+
+## Kenapa Deployment itu Penting
+
+Deployment adalah tahap penting dalam siklus pengembangan perangkat lunak karena menentukan apakah aplikasi akan berfungsi sebagaimana mestinya di tangan pengguna akhir. Proses ini bukan hanya tentang "mengirim" kode ke server, tetapi juga melibatkan pengaturan keamanan, manajemen sumber daya, dan pemantauan performa. Tanpa deployment yang tepat, aplikasi dapat mengalami masalah seperti kerentanan keamanan, kinerja buruk, atau ketidakstabilan yang dapat merugikan pengguna.
+
+## Beberapa Platform Gratis untuk Deploy Project React
+
+Terdapat beberapa platform gratis yang dapat digunakan untuk deployment proyek React, termasuk Netlify, Vercel, GitHub Pages, Surge.sh, dll. Semua platform sebenarnya sama saja, yang membedakan hanya pada bagaimana proses deployment dilakukan pada pertama kali, dan juga beberapa fitur unggulan pada platform tersebut.
+
+Disini kita akan mencoba untuk men-deploy proyek React Vite kita dengan menggunakan Vercel.
+
+<Callout type="info" emoji="ℹ️">
+  Karena app React kita merupakan SPA (Single Page Application), maka kita perlu
+  menambahkan file `vercel.json` agar deep linking dapat berjalan.
+</Callout>
+
+Sebelum proses deployment dilakukan, pastikan kalian menambahkan satu file pada root directory proyek kalian dan namakan file tersebut `vercel.json`.
+
+```json copy showLineNumbers filename="vercel.json"
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+}
+```
+
+1. Buka situs [Vercel](https://vercel.com/) dan buatlah akun jika belum memiliki akun, jika sudah silahkan untuk login terlebih dahulu.
+
+2. Setelah login, kita akan diarah ke halaman dashboard dari Vercel yang berisi tentang proyek-proyek yang telah kita buat, klik tombol `Add New...` dan pilih `Project` untuk melakukan deployment.
+
+![Vercel Dashboard](/images/vercel/vercel1.png)
+
+3. Saat kita telah menekan menu `Project` kita akan diarahkan ke halaman pemilihan proyek yang ingin kita deploy. Pada halaman ini jika kamu menggunakan akun yang masih baru dibuat dan belum menyambungkan akun vercel-mu dengan github yang kalian miliki, silahkan sambungkan terlebih dahulu dengan cara klik pada input `Select a Git Namespace` dan pilih `Add GitHub Namespace`, jika sudah menyambungkan silahkan pilih proyek yang kalian inginkan untuk di deploy. pada contoh ini kita akan memilih proyek `bookquest` dengan cara klik `Import`.
+
+![Select Project](/images/vercel/vercel2.png)
+
+4. Setelah memilih proyek yang ingin di deploy, maka tampilan akan seperti dibawah ini. Di halaman ini kita dapat mengkonfigurasi proyek seperti nama proyek, framework yang digunakan, directory tempat proyek berada (jika proyek berada didalam folder), script build, dan juga penambahan `environment variable`.
+
+![Config Project](/images/vercel/vercel3.png)
+
+Pada tahap ini kita dapat menambahkan `environment variable` jika kita memiliki suatu variabel yang kita deklarasi pada file `.env` seperti base url dari backend ataupun hal lainnya. Tekan tombol `Deploy` untuk menjalankan proses deployment.
+
+![Add Environment Variable](/images/vercel/vercel4.png)
+
+5. Proses deployment akan berjalan, waktu yang dibutuhkan terbilang variatif tergantung dari proyeknya itu sendiri. Tunggu beberapa saat sampai proses deployment selesai, jika terdapat error atau semacamnya yang mengakibatkan gagalnya proses deployment dapat kalian lihat log-nya di halaman ini.
+
+![Deployment Process](/images/vercel/vercel5.png)
+
+6. Setelah proses deployment selesai, nantinya akan diperlihatkan tampilan seperti dibawah ini, menandakan bahwa deployment berhasil dilakukan dan kalian dapat mengakses website yang telah kalian buat secara daring.
+
+![Deployment Result](/images/vercel/vercel6.png)
+
+## Kesimpulan
+
+Panduan ini telah menjelajahi proses deployment pada proyek React, dari konsep dasar hingga implementasi menggunakan berbagai platform, termasuk beberapa yang gratis seperti GitHub Pages dan Surge.sh. Kamu diharapkan dapat mengaplikasikan pengetahuan ini untuk meningkatkan proses deployment proyekmu sendiri. Perbarui pengetahuan kamu seiring perkembangan teknologi dan praktik terbaik di dunia pengembangan perangkat lunak.
