@@ -29,8 +29,8 @@ Dengan melakukan pengujian secara teratur, kita dapat meningkatkan kualitas pera
 
 Pengujian unit fokus pada pengujian komponen kecil atau fungsi dalam isolasi. Ini memastikan bahwa setiap bagian kecil dari kode berperilaku sesuai dengan yang diharapkan. Sebagai contoh, mari kita lihat pengujian unit sederhana pada fungsi penjumlahan:
 
-```js copy showLineNumbers filename="penjumlahan.js"
-function tambah(a, b) {
+```js copy showLineNumbers filename="penjumlahan.ts"
+function tambah(a: number, b: number) {
   return a + b;
 }
 
@@ -44,19 +44,19 @@ test("menambahkan dua angka", () => {
 Pengujian integrasi memeriksa bagaimana komponen-komponen berinteraksi satu sama lain. Contohnya, dalam pengembangan React, kita mungkin ingin memastikan bahwa komponen A dapat berkomunikasi dengan komponen B dengan benar.
 
 ```jsx copy showLineNumbers
-// KomponenA.js
+// KomponenA.ts
 function KomponenA() {
   // ...
   return <div>A</div>;
 }
 
-// KomponenB.js
+// KomponenB.ts
 function KomponenB() {
   // ...
   return <div>B</div>;
 }
 
-// Integrasi.test.js
+// Integrasi.test.ts
 test("Komponen A dan B berinteraksi dengan baik", () => {
   // Logika pengujian integrasi di sini
 });
@@ -67,7 +67,7 @@ test("Komponen A dan B berinteraksi dengan baik", () => {
 Pengujian antarmuka pengguna memastikan bahwa antarmuka pengguna berfungsi sesuai yang diharapkan. Dalam pengembangan React, kita dapat menggunakan alat seperti Vitest untuk melakukan pengujian ini.
 
 ```jsx copy showLineNumbers
-// UITest.js
+// UITest.ts
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
@@ -96,25 +96,25 @@ Sekarang, mari kita lihat bagaimana kita dapat mengimplementasikan pengujian men
 <Tabs items={["npm", "yarn", "pnpm", "bun"]}>
   <Tab>
     ```bash copy
-    npm install -D vitest
+    npm install -D vitest @testing-library/jest-dom @testing-library/react @types/jest jsdom
     ```
 
   </Tab>
   <Tab>
     ```bash copy
-    yarn add -D vitest
+    yarn add -D vitest @testing-library/jest-dom @testing-library/react @types/jest jsdom
     ```
 
   </Tab>
   <Tab>
     ```bash copy
-    pnpm add -D vitest
+    pnpm add -D vitest @testing-library/jest-dom @testing-library/react @types/jest jsdom
     ```
 
   </Tab>
   <Tab>
     ```bash copy
-    bun add -D vitest
+    bun add -D vitest @testing-library/jest-dom @testing-library/react @types/jest jsdom
     ```
 
   </Tab>
@@ -124,7 +124,7 @@ Sekarang, mari kita lihat bagaimana kita dapat mengimplementasikan pengujian men
 
 Setelah itu tambahkan script baru dalam file `package.json` untuk mempermudah menjalankan testing.
 
-```json copy showLineNumbers filename="package.json" {11-12}
+```json copy showLineNumbers filename="package.json" {11-12, 19-24}
 {
   "name": "project-name",
   "private": true,
@@ -143,8 +143,12 @@ Setelah itu tambahkan script baru dalam file `package.json` untuk mempermudah me
   },
   "devDependencies": {
     // ........
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@types/jest": "^29.5.8",
     "@vitest/coverage-v8": "^0.34.6",
-    "vitest": "^0.34.5"
+    "jsdom": "^22.1.0",
+    "vitest": "^0.34.6"
   }
 }
 ```
@@ -178,7 +182,7 @@ export default defineConfig({
 
 3. Buat sebuah folder khusus yang menampung file-file testing didalam folder `src` seperti misalnya `__tests__`, setelah itu buat sebuah file yang nantinya akan kita gunakan me-`render` component nantinya.
 
-```jsx copy showLineNumbers filename="src/__tests__/test-utils.jsx"
+```jsx copy showLineNumbers filename="src/__tests__/test-utils.tsx"
 import { BrowserRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 
@@ -204,7 +208,7 @@ export { customRender as render };
 
 4. Setelah itu kita bisa memulai membuat file testing untuk setiap `pages` dan `components` yang kita miliki. Disini kita akan mencoba ambil satu sample saja yaitu untuk mengetes component Navbar. Pastikan untuk menamai file testing kalian dengan format seperti `navbar.test.jsx`.
 
-```jsx copy showLineNumbers filename="src/__tests__/components/navbar.test.jsx"
+```jsx copy showLineNumbers filename="src/__tests__/components/navbar.test.tsx"
 import "@testing-library/jest-dom";
 
 import { render, screen, within, fireEvent, act } from "@/__tests__/test-utils";
