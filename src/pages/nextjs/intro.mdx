@@ -7,35 +7,21 @@ description: "Pengenalan Next.js: Explore fitur lengkap, keunggulan, dan cara pe
 
 ## Overview
 
-Pengenalan Next.js merupakan langkah awal yang penting untuk memahami kerangka kerja ini secara mendalam. Next.js adalah sebuah framework React yang populer dan kuat yang digunakan untuk membangun aplikasi web modern. Dikembangkan oleh tim Vercel, Next.js menawarkan berbagai fitur canggih yang membuat pengembangan aplikasi web menjadi lebih efisien dan produktif.
+Next.js adalah sebuah framework React yang populer dan kuat yang digunakan untuk membangun aplikasi web modern. Dikembangkan oleh tim Vercel, Next.js menawarkan berbagai fitur canggih yang membuat pengembangan aplikasi web menjadi lebih efisien dan produktif.
 
-Dengan menggunakan Next.js, Anda dapat dengan mudah membuat aplikasi web dengan performa tinggi dan pengalaman pengguna yang luar biasa. Framework ini telah menjadi pilihan utama bagi banyak pengembang karena kemampuannya dalam menghadapi tuntutan kompleksitas proyek modern.
+Dengan menggunakan Next.js, kamu dapat dengan mudah membuat aplikasi web dengan performa tinggi dan pengalaman pengguna yang luar biasa. Framework ini telah menjadi pilihan utama bagi banyak pengembang karena kemampuannya dalam menghadapi tuntutan kompleksitas proyek modern.
 
 Next.js dirancang untuk memberikan solusi atas beberapa masalah umum dalam pengembangan aplikasi web, seperti rendering server-side, routing dinamis, code splitting, pre-rendering halaman, dan masih banyak lagi. Dalam artikel ini, kita akan menjelajahi fitur utama dari Next.js serta keuntungan dan kekurangan penggunaannya.
-
-Jika Anda tertarik pada teknologi web modern dan ingin meningkatkan skill development Anda ke level berikutnya, pengetahuan tentang Next.js akan memberikan fondasi yang kuat untuk kesuksesan Anda. Mari kita mulai dengan mengenal lebih jauh tentang apa itu Next.js!
 
 ## Apa itu Next.js?
 
 Next.js adalah sebuah framework JavaScript yang bersifat open-source dan digunakan untuk mengembangkan aplikasi web modern. Dikembangkan oleh tim Vercel, Next.js memberikan kemudahan dalam membangun aplikasi dengan menggunakan React, serta menghadirkan berbagai fitur yang sangat berguna bagi pengembang.
 
-Dengan Next.js, Anda dapat membuat aplikasi web yang responsif dan cepat, dengan dukungan server-side rendering (SSR) dan static site generation (SSG). SSR memungkinkan konten dari halaman web disajikan langsung dari server sebelum dikirim ke browser pengguna. Sementara itu, SSG memungkinkan Anda untuk menghasilkan halaman statis saat waktu pembuatan build, sehingga meningkatkan kecepatan akses dan kinerja aplikasi.
+Dengan Next.js, kita dapat membuat aplikasi web yang responsif dan cepat, dengan dukungan server-side rendering (SSR) dan static site generation (SSG). SSR memungkinkan konten dari halaman web disajikan langsung dari server sebelum dikirim ke browser pengguna. Sementara itu, SSG memungkinkan kita untuk menghasilkan halaman statis saat waktu pembuatan build, sehingga meningkatkan kecepatan akses dan kinerja aplikasi.
 
 Next.js juga menyediakan fitur hot module replacement (HMR) yang memungkinkan perubahan kode JavaScript langsung terlihat tanpa perlu melakukan refresh pada browser. Fitur ini sangat membantu dalam proses pengembangan karena dapat menghemat waktu dan meningkatkan produktivitas.
 
-Dalam mengembangkan aplikasi dengan Next.js, Anda juga akan mendapatkan kelebihan dari konfigurasi default yang sudah disediakan oleh framework ini. Misalnya, konfigurasi routing otomatis sehingga tidak perlu melakukan setting secara manual untuk setiap halaman baru yang dibuat. Selain itu, Next.js secara otomatis melakukan code-splitting sehingga hanya kode yang diperlukan pada halaman tersebut saja yang akan diunduh oleh browser pengguna.
-
-## Kenapa Menggunakan Next.js?
-
-Next.js merupakan framework React yang sangat populer dan digunakan secara luas dalam pengembangan aplikasi web modern. Ada beberapa alasan mengapa Next.js menjadi pilihan utama para pengembang:
-
-Pertama-tama, Next.js menyediakan fitur-fitur yang mempermudah pengembangan aplikasi web. Salah satu fitur utamanya adalah server-side rendering (SSR). SSR memungkinkan konten halaman untuk dirender di sisi server sebelum dikirim ke browser. Hal ini membuat aplikasi lebih cepat dimuat dan memberikan pengalaman pengguna yang lebih baik.
-
-Selain itu, Next.js memiliki dukungan penuh terhadap static site generation. Fitur ini memungkinkan pembuatan situs statis dengan mudah, menghasilkan situs yang dapat dihosting dengan biaya rendah dan performa yang tinggi. Dengan pendekatan ini, Anda dapat menghindari kompleksitas infrastruktur server tradisional.
-
-Next.js juga memiliki integrasi yang kuat dengan React dan ekosistemnya. Anda dapat menggunakan semua komponen, hook, dan library React favorit Anda tanpa masalah. Selain itu, Next.js mendukung enkapsulasi komponen dengan menggunakan CSS modules, sehingga membantu dalam membangun tampilan UI yang bersih dan terorganisir.
-
-Tak kalah pentingnya adalah fokus Next.js pada pengalaman developer. Framework ini menyediakan berbagai fitur seperti hot reloading (penggantian modul tanpa refresh halaman), error reporting yang informatif, dan dukungan penuh untuk debugging. Semua ini membantu para pengembang dalam meningkatkan produktivitas dan membuat proses pengembangan menjadi lebih menyenangkan.
+Dalam mengembangkan aplikasi dengan Next.js, kita juga akan mendapatkan kelebihan dari konfigurasi default yang sudah disediakan oleh framework ini. Misalnya, konfigurasi routing otomatis sehingga tidak perlu melakukan setting secara manual untuk setiap halaman baru yang dibuat. Selain itu, Next.js secara otomatis melakukan code-splitting sehingga hanya kode yang diperlukan pada halaman tersebut saja yang akan diunduh oleh browser pengguna.
 
 ## Apa yang Membedakan Next.js Dengan React?
 
@@ -43,47 +29,86 @@ Next.js adalah framework React yang dikembangkan dengan tujuan untuk mempermudah
 
 Pertama-tama, Next.js menyediakan server-side rendering (SSR) secara default. SSR merupakan teknik untuk menghasilkan HTML pada sisi server sebelum dikirim ke browser. Hal ini memungkinkan konten website dapat diakses lebih cepat oleh pengguna dan juga mendukung SEO yang lebih baik. Berbeda dengan React yang melakukan rendering di sisi klien (client-side rendering), Next.js menggabungkan SSR dan client-side rendering sehingga memberikan pengalaman pengguna yang lebih baik.
 
-Selain itu, routing di Next.js juga lebih sederhana dibandingkan dengan React. Dalam React, Anda perlu mengimplementasikan routing secara manual menggunakan library tambahan seperti react-router. Namun dalam Next.js, Anda dapat menggunakan fitur built-in untuk menentukan halaman dan rute aplikasi dengan mudah hanya melalui struktur berkas dan folder.
+Selain itu, routing di Next.js juga lebih sederhana dibandingkan dengan React. Dalam React, kita perlu mengimplementasikan routing secara manual menggunakan library tambahan seperti react-router. Namun dalam Next.js, kita dapat menggunakan fitur built-in untuk menentukan halaman dan rute aplikasi dengan mudah hanya melalui struktur berkas dan folder.
 
 Fitur lain yang membedakan Next.js dengan React adalah kemampuan untuk melakukan pre-fetching data (data pre-fetching). Saat menjelajahi sebuah halaman di website yang dibangun dengan Next.js, data yang diperlukan akan dipre-fetch sebelum halaman tersebut ditampilkan kepada pengguna. Hal ini meningkatkan kecepatan loading halaman dan memberikan pengalaman browsing yang lebih lancar pada user.
 
 ## Kelebihan dari Next.js
 
-Next.js adalah kerangka kerja yang memiliki beberapa kelebihan yang membuatnya menonjol dan menjadi pilihan yang baik untuk pengembangan aplikasi web modern. Berikut ini adalah beberapa kelebihan utama dari Next.js:
+Next.js memiliki sejumlah kelebihan yang membuatnya menjadi pilihan utama dalam pengembangan aplikasi web React.
 
-### 1. Pengembangan Sisi Server dan Klien Terintegrasi
+1. **Server-Side Rendering (SSR)**:
+   Next.js menyediakan dukungan bawaan untuk SSR, memungkinkan rendering halaman di server sebelum dikirim ke browser. Hal ini meningkatkan performa aplikasi dengan mengurangi waktu pemuatan halaman, karena kontennya sudah ada sebelum tampil di layar pengguna.
 
-Salah satu keunggulan utama Next.js adalah kemampuannya untuk menggabungkan pengembangan sisi server dan klien dalam satu kerangka kerja. Dengan demikian, Anda dapat mengembangkan aplikasi dengan lebih efisien, karena tidak perlu berpindah-pindah antara teknologi server dan klien secara terpisah.
+2. **Static Site Generation (SSG)**:
+   SSG memungkinkan kita menghasilkan halaman statis pada waktu pembangunan. Ini sangat bermanfaat untuk meningkatkan kecepatan pemuatan halaman dan mengurangi beban server, terutama untuk halaman yang jarang berubah.
 
-Dengan integrasi ini, Anda dapat membuat komponen UI statis yang disajikan secara langsung oleh server saat permintaan pertama kali dibuat. Kemudian, saat pengguna berinteraksi dengan aplikasi, Next.js akan beralih ke mode pengembangan klien dan akan melakukan rendering di sisi klien menggunakan JavaScript.
+3. **Automatic Code Splitting**:
+   Next.js secara otomatis memecah kode menjadi bundle yang lebih kecil, yang hanya diunduh jika diperlukan. Ini mengoptimalkan waktu pemuatan halaman dengan mengurangi jumlah data yang harus diunduh pengguna.
 
-### 2. Pemilihan Modus Rendam (Pre-rendering) yang Fleksibel
+4. **Hot Module Replacement (HMR)**:
+   HMR memungkinkan kita melihat perubahan langsung saat kita mengedit kode tanpa perlu menyegarkan halaman secara manual. Ini membuat siklus pengembangan menjadi lebih cepat dan efisien.
 
-Next.js menyediakan pilihan modus rendam (pre-rendering) yang fleksibel, sehingga Anda dapat memilih cara terbaik untuk merender halaman sesuai dengan kebutuhan aplikasi Anda.
+5. **Peningkatan SEO**:
+   SSR membantu meningkatkan indeksabilitas mesin pencari karena konten halaman dihasilkan di server. Ini berkontribusi pada peringkat SEO yang lebih baik.
 
-Modus Static Generation memungkinkan Anda untuk merender halaman pada waktu pembangunan (build time), sehingga hasilnya bisa disampaikan kepada pengguna tanpa perlu melakukan komputasi tambahan di sisi server saat permintaan dilakukan. Ini sangat berguna untuk halaman yang tidak berubah sering, seperti halaman statis.
-
-Sementara itu, Modus Server-side Rendering memungkinkan Anda untuk merender halaman pada waktu permintaan (request time), sehingga Anda dapat menghasilkan halaman secara dinamis berdasarkan data terkini. Ini sangat berguna ketika Anda menghadapi kasus penggunaan yang kompleks atau ketika data dihalaman perlu diperbarui secara real-time.
-
-### 3. Dukungan Penuh untuk Ekosistem React
-
-Next.js adalah kerangka kerja yang dibangun di atas React, sehingga mendukung penuh ekosistem React. Anda dapat menggunakan semua fitur dan fungsionalitas React dalam pengembangan aplikasi Next.js tanpa batasan.
-
-Ini berarti Anda dapat menggunakan komponen React, hooks, context API, dan semua fitur lainnya yang disediakan oleh React. Dengan dukungan penuh untuk ekosistem React, Next.js memudahkan tim pengembang yang sudah terbiasa dengan cara kerja dan alat-alat pengembangan dari ekosistem ini.
-
-Dengan kelebihan-kelebihan tersebut, Next.js menjadi pilihan yang kuat untuk mengembangkan aplikasi web modern dengan performa tinggi dan kemampuan pre-rendering yang fleksibel. Dengan integrasi antara pengembangan sisi server dan klien, serta dukungan penuh untuk ekosistem React, Next.js menawarkan solusi lengkap bagi para pengembang aplikasi web.
+6. **Rich Ecosystem**:
+   Next.js memiliki ekosistem yang kaya dengan banyak plugin dan dukungan komunitas yang besar. Hal ini membuatnya lebih mudah untuk menemukan solusi dan alat bantu yang diperlukan dalam pengembangan.
 
 ## Kekurangan dari Next.js
 
 Setiap teknologi memiliki kelebihan dan kekurangan, begitu juga dengan Next.js. Meskipun memiliki banyak keunggulan, ada beberapa kekurangan yang perlu diperhatikan sebelum menggunakan Next.js dalam pengembangan aplikasi web.
 
-Pertama-tama, salah satu kekurangan yang cukup signifikan adalah kurangnya dukungan untuk pemrograman server-side languages selain JavaScript. Next.js didesain khusus untuk pengembangan dengan menggunakan JavaScript sebagai bahasa utama. Ini berarti jika Anda ingin menggunakan bahasa server-side seperti PHP atau Python, anda harus mencari alternatif lain.
+1. **Kurva Pembelajaran Awal**:
+   Bagi pengembang yang baru memulai, Next.js mungkin memiliki kurva pembelajaran yang agak curam, terutama jika belum memiliki pengalaman dengan konsep-konsep SSR dan SSG.
 
-Kelemahan lainnya adalah kurangnya dukungan resmi dari komunitas dan dokumentasi yang terbatas. Meskipun sudah ada komunitas aktif yang membantu dalam mengatasi masalah umum, tetapi dibandingkan dengan framework populer lainnya seperti React atau Angular, dokumentasi resmi dan tutorial yang berkualitas mungkin tidak sebanyak.
+2. **Kompleksitas SSR**:
+   Meskipun SSR meningkatkan performa, implementasinya dapat menjadi kompleks terutama pada proyek-proyek besar. Pengembang perlu memahami dengan baik arsitektur aplikasi dan manajemen state untuk menghindari potensi kerumitan.
 
-Selanjutnya, Next.js memiliki ukuran bundle file yang relatif besar dibandingkan dengan aplikasi React biasa. Hal ini terjadi karena Next.js mengambil semua file dari halaman web serta dependensinya kemudian dikompilasikan menjadi satu bundle file JavaScript. Konsekuensinya, ini dapat mempengaruhi waktu muat halaman pada website Anda jika bundel filenya cukup besar.
+3. **Ukuran Build yang Besar**:
+   Secara default, build Next.js bisa menjadi cukup besar, terutama jika proyek memiliki banyak dependensi. Hal ini bisa berdampak pada waktu yang dibutuhkan untuk melakukan deploy.
 
-Namun demikian, meskipun ada beberapa kekurangan tersebut, Next.js masih merupakan pilihan framework web yang kuat untuk pengembangan aplikasi modern. Dalam banyak kasus, manfaat dan fitur-fiturnya yang canggih dapat mengatasi kekurangan-kekurangan tadi. Dengan peningkatan yang terus menerus dan komunitas yang semakin berkembang, kita bisa berharap bahwa kekurangan-kekurangan ini akan segera teratasi dalam waktu dekat.
+4. **Pengaturan Tambahan untuk SSR/SSG**:
+   Beberapa proyek mungkin memerlukan konfigurasi tambahan untuk SSR atau SSG, terutama jika ada kebutuhan yang lebih kompleks. Ini bisa memerlukan pemahaman yang lebih mendalam tentang konfigurasi Next.js.
+
+5. **Keterbatasan dalam SSR Eksternal**:
+   Meskipun Next.js sangat baik dalam SSR halaman yang dibuat dengan frameworknya sendiri, SSR untuk aplikasi yang menggunakan server backend eksternal mungkin memerlukan penanganan khusus.
+
+## Cara Instalasi
+
+Langkah pertama untuk menggunakan Next.js adalah menginstalnya. Kita dapat melakukan instalasi menggunakan npm atau yarn. Berikut adalah langkah-langkahnya:
+
+Syarat-syarat:
+
+- Versi [Node.js 18.17](https://nodejs.org/) atau diatasnya.
+- macOS, Windows (termasuk WSL), dan Linux.
+
+Pada terminal yang digunakan, jalankan perintah dibawah untuk men-generate project,
+
+```bash copy
+npx create-next-app@latest
+```
+
+Lalu setelah perintah diatas nantinya akan ada interaksi didalam terminal untuk memilih konfigurasi daripada project Next.js kita nantinya
+
+```bash
+1. What is your project named? my-app
+2. Would you like to use TypeScript? No / Yes
+3. Would you like to use ESLint? No / Yes
+4. Would you like to use Tailwind CSS? No / Yes
+5. Would you like to use 'src/' directory? No / Yes
+6. Would you like to use App Router? (recommended) No / Yes
+7. Would you like to customize the default import alias (@/*)? No / Yes
+8. What import alias would you like configured? @/*
+```
+
+Setelah proses pemilihan konfigurasi selesai, nantinya `create-next-app` akan membuat suatu folder bernama sesuai dari nama project yang telah kita pilih sebelumnya.
+
+## Menjalankan Server Development
+
+1. Jalankan perintah `npm run dev` pada terminal IDE untuk menjalankan server development.
+2. Buka http://localhost:3000 pada peramban yang digunakan untuk melihat web app kita.
+3. Ubah file `app/page.tsx` (atau `pages/index.tsx`) lalu simpan untuk melihat perubahan tampilan/code secara langsung.
 
 ## Kesimpulan
 
@@ -93,4 +118,4 @@ Dibandingkan dengan React murni, Next.js menawarkan beberapa kelebihan yang sign
 
 Next.js juga menawarkan kemudahan dalam hal routing. Framework ini menyediakan sistem routing internal yang otomatis menghasilkan URL yang ramah SEO serta memiliki dukungan penuh untuk dynamic routes. Dengan adanya fitur-fitur ini, developer dapat fokus pada pengembangan aplikasi tanpa harus khawatir tentang konfigurasi routing secara manual.
 
-Secara keseluruhan, Next.js adalah framework yang kuat dan sangat berguna bagi para pengembang web. Dengan kemampuannya dalam melakukan server-side rendering serta static site generation, membuat aplikasi menjadi lebih cepat dimuat dan memiliki performa yang unggul tanpa harus melakukan banyak konfigurasi tambahan. Jika Anda ingin meningkatkan kualitas dan performa website Anda dengan mudah menggunakan React, maka Next.js adalah pilihan terbaik.
+Secara keseluruhan, Next.js adalah framework yang kuat dan sangat berguna bagi para pengembang web. Dengan kemampuannya dalam melakukan server-side rendering serta static site generation, membuat aplikasi menjadi lebih cepat dimuat dan memiliki performa yang unggul tanpa harus melakukan banyak konfigurasi tambahan. Jika kita ingin meningkatkan kualitas dan performa website kita dengan mudah menggunakan React, maka Next.js adalah pilihan terbaik.
