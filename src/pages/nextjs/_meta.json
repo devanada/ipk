@@ -1,3 +1,5 @@
 {
-    "intro": "Intro"
+  "intro": "Intro",
+  "data-fetch": "Data Fetching",
+  "rendering-modes": "Rendering Modes"
 }
