@@ -10,6 +10,7 @@
     "title": "Fundamental"
   },
   "javascript": "JavaScript",
+  "typescript": "TypeScript",
   "html": "HTML",
   "-- Advanced": {
     "type": "separator",

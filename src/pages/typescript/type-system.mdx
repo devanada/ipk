@@ -1,0 +1,246 @@
+---
+title: "Type System"
+description: "Optimalkan pengembangan perangkat lunak dengan TypeScript, bahasa pemrograman berbasis JavaScript yang meningkatkan keamanan dan keterbacaan kode melalui fitur typing statis."
+---
+
+# TypeScript | Type System
+
+## Overview
+
+Di dalam TypeScript, penting untuk mengetahui bagaimana kita menentukan tipe data dari sebuah variabel maupun function. Penggunaan tipe data yang statis dapat memastikan dan meminimalisir kesalahan yang mungkin terjadi karena inkonsistensi dari sebuah tipe data.
+
+## Tipe Berdasarkan Nilai
+
+TypeScript mengetahui bahasa JavaScript dan akan menghasilkan tipe untuk kita dalam banyak kasus. Misalnya dalam membuat variabel dan menugaskannya ke nilai tertentu, TypeScript akan menggunakan nilai tersebut sebagai tipenya.
+
+```typescript copy
+let helloWorld = "Hello World";
+// let helloWorld: string
+```
+
+Dengan memahami cara kerja JavaScript, TypeScript dapat membangun sistem tipe yang menerima kode JavaScript tetapi memiliki tipe. Ini menawarkan sistem tipe tanpa perlu menambahkan karakter tambahan untuk membuat tipe menjadi eksplisit dalam kodemu. Begitulah cara TypeScript mengetahui bahwa helloWorld adalah string pada contoh di atas.
+
+## Menentukan Tipe
+
+Kita dapat menggunakan berbagai macam pola desain dalam JavaScript. Namun, beberapa pola desain menyulitkan jenis untuk disimpulkan secara otomatis (misalnya, pola yang menggunakan pemrograman dinamis). Untuk mengatasi kasus ini, TypeScript mendukung ekstensi bahasa JavaScript, yang menawarkan tempat bagi Anda untuk memberi tahu TypeScript jenis apa yang seharusnya.
+
+Misalnya, untuk membuat objek dengan tipe inferensi yang mencakup `name: string` dan `id: number`, kita dapat menulis:
+
+```typescript copy
+const user = {
+  name: "Hayes",
+  id: 0,
+};
+```
+
+Kita dapat mendeskripsikan secara eksplisit tipe data dari object tersebut dengan menggunakan interface declaration:
+
+```typescript copy
+interface User {
+  name: string;
+  id: number;
+}
+```
+
+Lalu kita dapat mendeklarasikan bahwa object sesuai dengan interface yang telah kita buat sebelumnya dengan menggunakan syntax ` : TypeName` setelah deklarasi variabel:
+
+```typescript copy
+const user: User = {
+  name: "Hayes",
+  id: 0,
+};
+```
+
+Jika kita mencoba untuk memberikan sebuah object yang kurang sesuai dengan interface yang dibuat seperti nama `key` yang kurang sesuai atau nilai yang kurang sesuai, TypeScript akan memberitahu kita:
+
+```typescript copy {8-9}
+interface User {
+  name: string;
+  id: number;
+}
+
+const user: User = {
+  username: "Hayes",
+Type '{ username: string; id: number; }' is not assignable to type 'User'.
+  Object literal may only specify known properties, and 'username' does not exist in type 'User'.
+  id: 0,
+};
+```
+
+Karena JavaScript mendukung `class` dan `object-oriented programming`, TypeScript juga mendukungnya. Kita dapat menggunakan deklarasi `interface` dengan class:
+
+```typescript
+interface User {
+  name: string;
+  id: number;
+}
+
+class UserAccount {
+  name: string;
+  id: number;
+
+  constructor(name: string, id: number) {
+    this.name = name;
+    this.id = id;
+  }
+}
+
+const user: User = new UserAccount("Murphy", 1);
+```
+
+Kita dapat menggunakan `interface` untuk memberi anotasi pada sebuah parameter dan nilai keluaran/return di sebuah function:
+
+```typescript
+function deleteUser(user: User) {
+  // ...
+}
+
+function getAdminUser(): User {
+  //...
+}
+```
+
+Di dalam JavaScript terdapat beberapa set tipe data yang sudah ada: `boolean`, `bigint`, `null`, `number`, `string`, `symbol`, dan `undefined`, yang mana dapat kita gunakan di dalam `interface`. TypeScript mencoba memperluas daftar tipe data dengan beberapa hal, seperti `any` (memperboleh semua tipe data), `unknown` (pastikan seseorang yang menggunakan tipe ini mendeklarasikan tipenya), `never` (tidak mungkin tipe ini bisa terjadi), dan `void` (sebuah function dimana me-return nilai `undefined` atau tidak me-return nilai apapun).
+
+Kita juga dapat melihat bahwa ada dua sintaks yang dapat kita gunakan untuk membuat sebuah tipe data: [`interface` dan `type`](https://www.typescriptlang.org/play/?e=83#example/types-vs-interfaces). Kita sebaiknya menggunakan `interface`. Gunakan `type` ketika membutuhkan fitur yang spesifik.
+
+## Membuat Tipe
+
+Dengan TypeScript, kita dapat membuat suatu tipe data yang kompleks dengan menggabungkan dua atau lebih tipe data. Ada dua cara yang cukup populer yang dapat digunakan: `unions`, dan `generics`.
+
+### Unions
+
+Dengan menggunakan `union`, kita dapat mendeklarasikan bahwa sebuah tipe data dapat mengandung lebih dari satu tipe. Seperti misalnya, kita dapat mendeskripsikan sebuah tipe `boolean` dapat berupa nilai `true` ataupun `false`:
+
+```typescript copy
+type MyBool = true | false;
+```
+
+Penggunaan yang populer dari tipe `union` adalah untuk mendeskripsikan sebuah set `string` atau `number` yang nilainya hanya diperbolehkan beberapa saja:
+
+```typescript copy
+type WindowStates = "open" | "closed" | "minimized";
+type LockStates = "locked" | "unlocked";
+type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+```
+
+`Unions` memberikan sebuah cara untuk mengatur tipe yang berbeda. Seperti misalnya, kita memiliki sebuah `function` yang dapat menerima sebuah `array` atau sebuah `string`:
+
+```typescript copy
+function getLength(obj: string | string[]) {
+  return obj.length;
+}
+```
+
+Untuk mengetahui tipe dari sebuah variabel, gunakan `typeof`:
+
+| Type      | Predicate                          |
+| --------- | ---------------------------------- |
+| string    | `typeof s === "string"`            |
+| number    | `typeof n === "number"`            |
+| boolean   | `typeof b === "boolean"`           |
+| undefined | `typeof undefined === "undefined"` |
+| function  | `typeof f === "function"`          |
+| array     | `Array.isArray(a)`                 |
+
+Sebagai contoh, kita dapat membuat sebuah `function` yang me-return keluaran nilai yang berbeda tergantung dari apakah yang dilempar berupa `string` atau `array`:
+
+```typescript copy
+function wrapInArray(obj: string | string[]) {
+  if (typeof obj === "string") {
+    return [obj];
+  }
+  return obj;
+}
+```
+
+### Generics
+
+`Generics` memberikan variabel kepada tipe. Contoh umumnya adalah sebuah `array`. `Array` tanpa `generics` dapat memiliki nilai apapun. Sebuah `Array` yang menggunakan `generics` dapat mendeskripsikan apa nilai yang array tersebut miliki.
+
+```typescript copy
+type StringArray = Array<string>;
+type NumberArray = Array<number>;
+type ObjectWithNameArray = Array<{ name: string }>;
+```
+
+Kita dapat mendeklarasikan tipe kita sendiri dengan menggunakan `generics`:
+
+```typescript copy showLineNumbers {15}
+interface Backpack<Type> {
+  add: (obj: Type) => void;
+  get: () => Type;
+}
+
+// This line is a shortcut to tell TypeScript there is a
+// constant called `backpack`, and to not worry about where it came from.
+declare const backpack: Backpack<string>;
+
+// object is a string, because we declared it above as the variable part of Backpack.
+const object = backpack.get();
+
+// Since the backpack variable is a string, you can't pass a number to the add function.
+backpack.add(23);
+Argument of type 'number' is not assignable to parameter of type 'string'.
+```
+
+## Sistem Structural Type
+
+Salah satu prinsip utama TypeScript adalah `type checking` fokus ke bentuk yang dimiliki oleh sebuah nilai. Hal ini biasa disebut sebagai `duck typing` atau `structural typing`.
+
+Di dalam sebuah sistem structural type, jika dua object memiliki bentuk yang sama, maka dua object tersebut dianggap memiliki tipe yang sama.
+
+```typescript copy showLineNumbers
+interface Point {
+  x: number;
+  y: number;
+}
+
+function logPoint(p: Point) {
+  console.log(`${p.x}, ${p.y}`);
+}
+
+// logs "12, 26"
+const point = { x: 12, y: 26 };
+logPoint(point);
+```
+
+Variabel `point` tidak di deklarasikan memiliki tipe data `Point`. Meski begitu, TypeScript mengkomparasi bentuk dari `point` dengan bentuk dari `Point` di dalam `type-check`. Mereka memiliki bentuk yang sama, jadi diperbolehkan.
+
+Pencocokan bentuk hanya memerlukan sebuah subset dari objek untuk dicocokkan.
+
+```typescript copy showLineNumbers {9-10}
+const point3 = { x: 12, y: 26, z: 89 };
+logPoint(point3); // logs "12, 26"
+
+const rect = { x: 33, y: 3, width: 30, height: 80 };
+logPoint(rect); // logs "33, 3"
+
+const color = { hex: "#187ABF" };
+logPoint(color);
+Argument of type '{ hex: string; }' is not assignable to parameter of type 'Point'.
+  Type '{ hex: string; }' is missing the following properties from type 'Point': x, y
+```
+
+Tidak ada perbedaan diantara bagaimana `classess` dan `objects` menyesuaikan dengan bentuk:
+
+```typescript copy showLineNumbers
+class VirtualPoint {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+const newVPoint = new VirtualPoint(13, 56);
+logPoint(newVPoint); // logs "13, 56"
+```
+
+Jika `object` atau `class` memiliki `properties` yang dibutuhkan, TypeScript akan mengatakan bahwa `property` tersebut cocok, terlepas dari detail implementasinya.
+
+## Kesimpulan
+
+Dengan diterapkannya sistem pengecekan tipe data membuat program yang kita buat menjadi less bug, bukan berarti programnya bebas dari bug, hanya saja bug-bug yang cenderung terjadi karena inkonsistensi tipe data berkurang. Selain itu juga membuat tipe data dari setiap variabel maupun function tetap konsisten.
