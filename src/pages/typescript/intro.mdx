@@ -1,0 +1,72 @@
+---
+title: "Intro to TypeScript"
+description: "Optimalkan pengembangan perangkat lunak dengan TypeScript, bahasa pemrograman berbasis JavaScript yang meningkatkan keamanan dan keterbacaan kode melalui fitur typing statis."
+---
+
+import { Callout } from "nextra/components";
+
+# TypeScript | Introduction
+
+## Overview
+
+Dalam eksplorasi dunia pengembangan perangkat lunak, kita akan menjelajahi TypeScript, sebuah bahasa pemrograman yang berkembang pesat. Mari kita dalami dasar-dasar TypeScript, perbedaannya dengan JavaScript, dan langkah-langkah untuk menjalankan kode TypeScript.
+
+<Callout type="info" emoji="ℹ️">
+  Pastikan untuk mempelajari [JavaScript](/javascript/intro) terlebih dahulu
+  untuk mempermudah pemahaman.
+</Callout>
+
+## Apa itu TypeScript
+
+TypeScript adalah bahasa pemrograman open-source yang dikembangkan oleh Microsoft. Ini adalah superset dari JavaScript yang menambahkan fitur-fitur statis typing ke dalam bahasa tersebut. Dengan TypeScript, kita dapat menentukan tipe data untuk variabel, parameter fungsi, dan properti objek, membantu kita mengidentifikasi kesalahan pada tahap pengembangan. Selain itu, TypeScript dapat dikompilasi menjadi JavaScript sehingga dapat dijalankan di lingkungan runtime JavaScript.
+
+TypeScript memiliki sintaks yang mirip dengan JavaScript, namun dengan tambahan tipe data statis dan fitur-fitur baru seperti kelas, antarmuka (interfaces), dan modul. Hal ini memungkinkan kita untuk mengembangkan kode yang lebih aman, mudah dipelihara, dan dapat diperluas. Dengan kemampuan mendefinisikan tipe data, TypeScript membantu mendeteksi potensi kesalahan pada tahap pengembangan, sambil tetap menghasilkan kode yang dapat dijalankan di lingkungan JavaScript.
+
+## Apa Perbedaan TypeScript dengan JavaScript
+
+Perbedaan mendasar antara TypeScript dan JavaScript terletak pada penggunaan tipe data statis. Di JavaScript, tipe data dapat berubah secara dinamis selama runtime, sementara TypeScript memungkinkan penentuan tipe data pada saat kompilasi. Selain itu, TypeScript menambahkan fitur-fitur seperti kelas, antarmuka, dan modul, menyempurnakan kemampuan pengembangan dan pemeliharaan kode.
+
+TypeScript menyediakan semua fitur JavaScript, dan lapisan tambahan di atasnya: sistem tipe TypeScript. Sebagai contoh, JavaScript mempunyai tipe data seperti `string` dan `number`, tetapi tidak memeriksa apakah kamu secara konsisten telah menetapkannya. TypeScript melakukan pemeriksaan tersebut.
+
+Ini berarti bahwa kode JavaScript yang sudah berfungsi juga merupakan kode TypeScript. Manfaat utama dari TypeScript adalah bahwa ia dapat menyorot perilaku yang tidak terduga dalam kodemu, mengurangi peluang terjadinya bug.
+
+Contoh penggunaan tipe data statis TypeScript:
+
+```javascript copy showLineNumbers filename="app.js"
+let number = 5;
+number = "hello"; // Valid in JavaScript, but may cause issues
+```
+
+```typescript copy showLineNumbers filename="app.ts"
+let number: number = 5;
+number = "hello"; // Error: Type 'string' is not assignable to type 'number'
+```
+
+Selain itu, TypeScript juga mendukung fitur-fitur lanjutan seperti enums, decorators, dan generic types yang tidak ada dalam JavaScript murni.
+
+## Cara Menjalankan TypeScript
+
+Untuk menjalankan TypeScript, kita perlu mengkompilasi kode TypeScript menjadi JavaScript menggunakan TypeScript Compiler (tsc). Langkah-langkahnya melibatkan membuat file konfigurasi (tsconfig.json), menulis kode TypeScript, dan kemudian menjalankan perintah kompilasi.
+
+Yang pertama kita akan meng-install TypeScript compiler untuk menjalankan program TypeScript kita dengan cara,
+
+```bash copy
+npm install -g typescript
+```
+
+Setelah itu kita akan mencoba membuat sebuah file TypeScript sederhana yang mengeluarkan output `Hello World` dengan menggunakan `console.log`
+
+```typescript copy filename="hello.ts"
+// Greets the world.
+console.log("Hello world!");
+```
+
+Jalankan perintah berikut untuk mengkompilasi:
+
+```bash copy
+tsc hello.ts
+```
+
+## Kesimpulan
+
+Konsep dasarnya, perbedaannya dengan JavaScript, dan langkah-langkah untuk menjalankan kode TypeScript telah kita eksplorasi. Dengan fitur-fitur seperti typing statis dan kemampuan modernnya, TypeScript menjadi pilihan yang tangguh untuk pengembangan perangkat lunak yang aman dan mudah dipelihara. Teruslah menjelajahi potensi penuh bahasa ini dalam proyek pengembangan nyata.
